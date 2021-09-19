@@ -1,0 +1,21 @@
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: $size-mobile;
+}
+
+body {
+    margin: 0;
+    background-color: $gray-light;
+    color: $black;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}

@@ -1,0 +1,8 @@
+// Mixin para imágenes de fondo
+@mixin background-image {
+    max-width: 100%;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

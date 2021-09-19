@@ -1,0 +1,71 @@
+/*  Hero    */
+.hero {
+    height: 95vh;
+    padding: 2em 0;
+    display: flex;
+    @include background-image;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+
+    &__title {
+        margin: .5em 0;
+        letter-spacing: 2px;
+    }
+
+    &__text {
+        margin: 1.5em 0;
+    }
+
+    &__title,
+    &__text {
+        color: $white;
+        font-family: $font-title;        
+        align-self: start;
+        justify-self: center;
+        text-align: left;
+    }
+
+    /* El span pone el fondo de color y así 
+    puedo tener que el fondo se mantenga en todo
+    el texto sin depender de las col */
+
+    &__title span,
+    &__text span {
+        background-color: $black;        
+        /*  agregar los dos que brave no soporta 
+            box-decoration-break solo
+         */
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+    }
+
+    /*  box-decoration-break en el span junto con 
+        text-align en el title/text hacen que el 
+        fondo se pegue al contenido del texto
+     */
+
+    &__title span {
+        font-size: $size1;   
+        padding: 0.05em 0.3em 0.05em 0.3em;
+        line-height: 1.3;
+    }
+
+    &__text span {
+        font-size: $size5;
+        padding: 0.25em 0.7em;
+        margin-bottom: 3rem;
+        line-height: 1.6;
+        font-weight: 300;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero__text {
+        max-width: 45vw;
+    }
+}
