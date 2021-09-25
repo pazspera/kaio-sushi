@@ -1,0 +1,61 @@
+/*  Header  */
+.navbar {
+    background-color: $black !important;
+ 
+    &-brand {
+        font-family: $font-logo;
+        font-size: $size4;
+        margin-left: 0;
+        letter-spacing: 0.1rem;
+    }
+
+}
+
+.nav-link{
+    font-size: $size5;
+}
+
+/*  Agrega margin a los nav-links en desktop */
+@media(min-width: 996px) {
+    .nav-item {
+        margin-left: 1.2rem !important;
+    }
+}
+
+// Override color a los nav-links
+.navbar-dark, 
+.navbar-brand,
+.navbar-nav,
+.nav-link {
+    color: $white !important;
+    text-transform: uppercase;
+    transition: all 0.5s ease-in-out;
+
+    &:hover,
+    &:focus {
+        color: $primary-medium !important;
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+// Color para mostrar página activa en navbar
+.active {
+    font-weight: 700;
+    color: $white !important;
+}
+
+// Override color del navbar-toggler
+.navbar-dark, 
+.navbar-toggler {
+    color: $white;
+
+    &:hover,
+    &:focus {
+        color: $primary-medium;
+    }
+}
+
+// Override color de navbar-dark
+.bg-dark{
+    background-color: $black !important;
+}

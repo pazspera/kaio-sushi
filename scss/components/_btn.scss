@@ -4,11 +4,10 @@
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-weight: 600;
-    border: 2px solid $black;
 
     &__primary {
-        background-color: $white;
-        color: $black;
+        background-color: $primary-medium;
+        color: $white;
         transition: all 0.5s ease-in-out;
 
         &:hover,
