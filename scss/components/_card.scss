@@ -9,7 +9,7 @@
     justify-content: space-between;
 }
 
-.card__name,
+.card__title,
 .card__description{
     margin-bottom: 0;
 }
@@ -23,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     border: 1px solid $gray-medium;
-    padding: 0.25rem;
+    padding: 0.25rem 0.35rem;
 
     &__text,
     &__amount{
