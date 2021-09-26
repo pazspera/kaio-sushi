@@ -56,3 +56,11 @@
 .bg-dark{
     background-color: $black !important;
 }
+
+// Anchor para arreglar padding link menu
+.anchor{
+    display: block;
+    height: 79px;
+    margin-top: -79px;
+    visibility: hidden;
+}

@@ -23,6 +23,10 @@ h2{
     font-size: $size3;
 }
 
+a {
+    color: $primary-medium;
+}
+
 // Cambio font-size dependiendo tamaño dispositivo
 @media(min-width: 720px){
     html {

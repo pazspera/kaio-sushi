@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv=”Content-Security-Policy” content=”upgrade-insecure-requests”>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d797ccce11.js" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,9 +31,9 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Menu</a>
+                    <a class="nav-link" href="#anchor_menu">Menu</a>
                   </li>
-                  <li class="nav-item"><a class="nav-link" href="#">Donde Estamos</a>
+                  <li class="nav-item"><a class="nav-link" href="#footer">Donde Estamos</a>
                   </li>
                 </ul>
               </div>
@@ -45,13 +47,14 @@
           <div class="row">
               <div class="col-10 col-md-9 col-lg-8">
                   <p class="hero__text mb-5"><span>Para el almuerzo, la cena o para un antojo, Kaió está siempre con vos</span> </p>
-                  <a href="#menu" class="btn btn__primary">Nuestro Menu</a>
+                  <a href="#anchor_menu" class="btn btn__primary">Nuestro Menu</a>
               </div>
           </div>
       </div>
     </section>
 
     <main class="py-5">
+      <span class="anchor" id="anchor_menu"></span>
       <!-- Menu -->
       <section id="menu" class="menu pb-5">
         <div class="container">
@@ -161,6 +164,29 @@
               <!-- Logo -->
               <div class="col-12">
                   <h3 class="footer__logo mb-4">Kaió Sushi</h3>
+              </div>
+              <!-- Texto -->
+              <div class="col-12 col-lg-5 footer__section">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, dicta nihil dolore esse consequuntur rerum.</p>
+                <div class="footer__group">
+                  <i class="fab fa-instagram footer__social"></i>
+                  <i class="fab fa-whatsapp footer__social"></i>
+                </div>
+              </div>
+              <!-- Contacto -->
+              <div class="col-12 col-lg-5 offset-lg-2 footer__section">
+                <div class="footer__group">
+                  <i class="far fa-map"></i>
+                  <p>Julián Álvarez 414 (Villa Crespo, CABA)</p>
+                </div>
+                <div class="footer__group">
+                  <i class="far fa-clock"></i>
+                  <p>Lunes a Domingos 12:00 a 23:00 hs</p>
+                </div>
+                <div class="footer__group">
+                  <i class="far fa-envelope"></i>
+                  <a href="#">hola@kaio-sushi.com.ar</a>
+                </div>
               </div>
               
           </div>

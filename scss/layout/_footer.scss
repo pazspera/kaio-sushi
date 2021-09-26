@@ -9,6 +9,26 @@
     font-weight: 500;
 }
 
+.footer__group{
+    display: flex;
+    align-items: baseline;
+
+    .fas,
+    .far, 
+    .fab {
+        margin-right: 15px;
+        color: $primary-medium;
+    }
+}
+
+.footer__social{
+    font-size: $size5;
+}
+
+.footer__section{
+    margin-bottom: 2rem;
+}
+
 /* .footer {
     background-color: $black;
     color: $white;
