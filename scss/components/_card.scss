@@ -1,0 +1,40 @@
+.card{
+    max-width: 300px;
+    border-radius: 0;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card__name,
+.card__description{
+    margin-bottom: 0;
+}
+
+.card__description{
+    font-size: $size6;
+    margin-bottom: 0;
+}
+
+.card__price{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid $gray-medium;
+    padding: 0.25rem;
+
+    &__text,
+    &__amount{
+        margin-bottom: 0;
+    }
+
+    &__text{
+        text-transform: uppercase;
+    }
+
+    &__amount{
+        font-weight: 700;
+    }
+}

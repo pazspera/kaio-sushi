@@ -65,27 +65,76 @@ h2 {
 }
 
 .btn {
-  padding: 0.75rem 1.5rem;
   border-radius: 0;
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
   font-weight: 600;
+  letter-spacing: 0.1rem;
 }
 
 .btn__primary {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+}
+
+.btn__secondary {
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn__primary, .btn__secondary {
   background-color: #E03616;
   color: #FCFFFE;
   transition: all 0.5s ease-in-out;
 }
 
-.btn__primary:hover, .btn__primary:focus, .btn__primary:active {
+.btn__primary:hover, .btn__primary:focus, .btn__primary:active, .btn__secondary:hover, .btn__secondary:focus, .btn__secondary:active {
   background-color: #0A0908;
   color: #FCFFFE;
   transition: all 0.5s ease-in-out;
 }
 
-.btn__primary:focus {
+.btn__primary:focus, .btn__secondary:focus {
   box-shadow: 0 0 0 0.25rem #FCFFFE;
+}
+
+.card {
+  max-width: 300px;
+  border-radius: 0;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card__name,
+.card__description {
+  margin-bottom: 0;
+}
+
+.card__description {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.card__price {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #E2DFE1;
+  padding: 0.25rem;
+}
+
+.card__price__text, .card__price__amount {
+  margin-bottom: 0;
+}
+
+.card__price__text {
+  text-transform: uppercase;
+}
+
+.card__price__amount {
+  font-weight: 700;
 }
 
 /*  Hero    */
@@ -160,6 +209,14 @@ h2 {
   .hero__text {
     max-width: 40vw;
   }
+}
+
+.menu {
+  padding: 3rem 0;
+}
+
+.menu__title {
+  font-size: 3.052rem;
 }
 
 /*  Header  */
