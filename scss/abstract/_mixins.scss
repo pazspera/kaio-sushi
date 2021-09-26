@@ -6,3 +6,10 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+@mixin logo {
+    font-family: $font-logo;
+    font-size: $size4;
+    margin-left: 0;
+    letter-spacing: 0.1rem;
+}

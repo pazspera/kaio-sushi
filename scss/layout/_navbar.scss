@@ -3,10 +3,7 @@
     background-color: $black !important;
  
     &-brand {
-        font-family: $font-logo;
-        font-size: $size4;
-        margin-left: 0;
-        letter-spacing: 0.1rem;
+        @include logo();
     }
 
 }
