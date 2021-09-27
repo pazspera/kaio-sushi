@@ -119,15 +119,19 @@ a {
 }
 
 .card__description {
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-bottom: 0;
+}
+
+.card__title {
+  font-size: 1.563rem;
 }
 
 .card__price {
   display: flex;
   justify-content: space-between;
   border: 1px solid #E2DFE1;
-  padding: 0.25rem 0.35rem;
+  padding: 0.25rem 0.5rem;
 }
 
 .card__price__text, .card__price__amount {
@@ -285,40 +289,6 @@ a {
   margin-bottom: 2rem;
 }
 
-/* .footer {
-    background-color: $black;
-    color: $white;
-
-
-    &__logo {
-        font-family: $font-logo, sans-serif;
-        font-size: $size4;
-        letter-spacing: 0.1rem;
-    }
-
-    &__text p {
-        margin-bottom: 0;
-    }
-
-    &__text,
-    &__text a {
-        font-size: $size6;
-    }
-
-    &__icons {
-        font-size: $size4;
-    }
-    
-/* 
-    &__content {
-        display: flex;
-        flex-direction: column;
-        height: 50vh;
-        justify-content: space-evenly;
-    }
-}
-
- */
 .menu__title {
   font-size: 3.052rem;
 }

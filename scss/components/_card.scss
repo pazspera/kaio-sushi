@@ -15,15 +15,19 @@
 }
 
 .card__description{
-    font-size: $size6;
+    font-size: $size7;
     margin-bottom: 0;
+}
+
+.card__title{
+    font-size: $size4;
 }
 
 .card__price{
     display: flex;
     justify-content: space-between;
     border: 1px solid $gray-medium;
-    padding: 0.25rem 0.35rem;
+    padding: 0.25rem 0.5rem;
 
     &__text,
     &__amount{
