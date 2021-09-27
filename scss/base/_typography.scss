@@ -24,7 +24,7 @@ h2{
 }
 
 a {
-    color: $primary-medium;
+    @include links();
 }
 
 // Cambio font-size dependiendo tamaño dispositivo

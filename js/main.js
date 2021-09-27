@@ -1,12 +1,3 @@
-/* 
-    Desafío 06: Incorporar arreglos
-
-    -   Agregué el arreglo productos con los objetos de productos
-    -   Con un for of recorrí el arreglo y agregué las propiedades de sus objetos en la variable menu
-    -   En el prompt, en vez de escribir los datos de cada objeto manualmente, lo reemplacé por la variable menu
- 
-*/
-
 // CLASES
 class Producto {
     constructor(id, descripcion, precio){

@@ -12,12 +12,22 @@
     right: 5vw;
     z-index: 10;
     filter: drop-shadow(5px 5px 0px $black);
+    transition: all 0.5s ease-in-out;
     
     i{
         font-size: $size3;
         color: $white;
     }
+
 }
+
+.cart:hover,
+.cart:focus, 
+.cart:active {
+        transition: all 0.5s ease-in-out;
+        background-color: $black;
+        filter: drop-shadow(0px 0px 0px $white);
+    }
 
 @media(min-width: 576px){
     .cart{

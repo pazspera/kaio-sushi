@@ -23,6 +23,7 @@
 
 .footer__social{
     font-size: $size5;
+    @include links();
 }
 
 .footer__section{

@@ -49,6 +49,12 @@ h2 {
 
 a {
   color: #E03616;
+  transition: all 0.5s ease-in-out;
+}
+
+a:hover, a:focus, a:active {
+  color: #FCFFFE;
+  transition: all 0.5s ease-in-out;
 }
 
 @media (min-width: 720px) {
@@ -160,11 +166,20 @@ a {
   right: 5vw;
   z-index: 10;
   filter: drop-shadow(5px 5px 0px #0A0908);
+  transition: all 0.5s ease-in-out;
 }
 
 .cart i {
   font-size: 1.953rem;
   color: #FCFFFE;
+}
+
+.cart:hover,
+.cart:focus,
+.cart:active {
+  transition: all 0.5s ease-in-out;
+  background-color: #0A0908;
+  filter: drop-shadow(0px 0px 0px #FCFFFE);
 }
 
 @media (min-width: 576px) {
@@ -283,6 +298,13 @@ a {
 
 .footer__social {
   font-size: 1.25rem;
+  color: #E03616;
+  transition: all 0.5s ease-in-out;
+}
+
+.footer__social:hover, .footer__social:focus, .footer__social:active {
+  color: #FCFFFE;
+  transition: all 0.5s ease-in-out;
 }
 
 .footer__section {
