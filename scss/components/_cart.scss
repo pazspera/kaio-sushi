@@ -1,0 +1,26 @@
+.cart{
+    padding: 2rem;
+    border-radius: 100%;
+    background-color: $primary-medium;
+    height: 75px;
+    width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 5rem;
+    right: 5vw;
+    z-index: 10;
+    filter: drop-shadow(5px 5px 0px $black);
+    
+    i{
+        font-size: $size3;
+        color: $white;
+    }
+}
+
+@media(min-width: 576px){
+    .cart{
+        right: 12vw;
+    }
+}
