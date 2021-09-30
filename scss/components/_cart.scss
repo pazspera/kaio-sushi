@@ -25,6 +25,8 @@
 .cart:focus, 
 .cart:active {
         transition: all 0.5s ease-in-out;
+        transform: translate(5px, 5px);
+        filter: drop-shadow(0 0 0 $black);
         background-color: $black;
         color: $primary-medium;
     }

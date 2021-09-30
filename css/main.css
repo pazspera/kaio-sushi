@@ -190,6 +190,8 @@ a:hover, a:focus, a:active {
 .cart:focus,
 .cart:active {
   transition: all 0.5s ease-in-out;
+  transform: translate(5px, 5px);
+  filter: drop-shadow(0 0 0 #0A0908);
   background-color: #0A0908;
   color: #E03616;
 }
