@@ -21,6 +21,18 @@
 
 .card__title{
     font-size: $size4;
+    position: relative;
+    margin-left: 7px;
+
+    &:before{
+        content: '';
+        position: absolute;
+        background-color: $primary-medium;
+        width: 4px;
+        height: 70%;
+        top: 12%;
+        left: -7px;
+    }
 }
 
 .card__price{

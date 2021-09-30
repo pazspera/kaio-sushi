@@ -19,7 +19,8 @@
     }
 
     &__text {
-        margin: 1.5em 0;
+        margin: 0 0 1.5em 0;
+        font-size: $size1;
     }
 
     &__title,
