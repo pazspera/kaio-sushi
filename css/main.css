@@ -132,7 +132,7 @@ a:hover, a:focus, a:active {
 .card__title {
   font-size: 1.563rem;
   position: relative;
-  margin-left: 7px;
+  margin-left: 10px;
 }
 
 .card__title:before {
@@ -142,7 +142,7 @@ a:hover, a:focus, a:active {
   width: 4px;
   height: 70%;
   top: 12%;
-  left: -7px;
+  left: -10px;
 }
 
 .card__price {
@@ -344,6 +344,7 @@ a:hover, a:focus, a:active {
 
 .nav-link {
   font-size: 1.25rem;
+  font-weight: 700;
 }
 
 /*  Agrega margin a los nav-links en desktop */

@@ -22,7 +22,7 @@
 .card__title{
     font-size: $size4;
     position: relative;
-    margin-left: 7px;
+    margin-left: 10px;
 
     &:before{
         content: '';
@@ -31,7 +31,7 @@
         width: 4px;
         height: 70%;
         top: 12%;
-        left: -7px;
+        left: -10px;
     }
 }
 

@@ -1,9 +1,11 @@
 // CLASES
 class Producto {
-    constructor(id, descripcion, precio){
+    constructor(id, nombre, precio, piezas, descripcion){
         this.id = id;
-        this.descripcion = descripcion;
+        this.nombre = nombre;
         this.precio = precio;
+        this.piezas = piezas;
+        this.descripcion = descripcion;
     }
     contarProductosPedidos(){
         totalProductosPedidos++;
@@ -11,11 +13,11 @@ class Producto {
 }
 
 // VARIABLES
-const rollNuevaYork = new Producto(1, 'Roll Nueva York', 350) ;
-const rollAtun = new Producto(2, 'Roll de atún', 250);
-const rollSalmonDoble = new Producto(3, 'Roll de salmón doble', 450);
-const sashimi = new Producto(4, 'Sashimi', 450);
-const promo30Piezas = new Producto(5, 'Promo 30 piezas surtidas', 1500);
+const rollNuevaYork = new Producto('roll_new_york', 'Nueva York', 350, 5, 'Salmón rosado, queso Philadelphia y palta.') ;
+const rollAtun = new Producto('roll_atun', 'Atún', 250, 5, 'Atún, queso Philadelphia y palta.');
+const rollSalmonDoble = new Producto('roll_salmon_doble', 'Salmón doble', 450, 5, 'Relleno de salmón y palta con cobertura de salmón.');
+const sashimi = new Producto('sashimi', 'Sashimi', 450, 5, 'Lonjas de salmón rosado.');
+const promo30Piezas = new Producto('promo_20_piezas', 'Promo 20 piezas', 2100, 20, '5 rolls Nueva York, 5 rolls de atún, 5 rolls de salmón doble y 5 sashimi.');
 
 const productos = [rollNuevaYork, rollAtun, rollSalmonDoble, sashimi, promo30Piezas];
 let menu = '';
@@ -31,10 +33,12 @@ let estadoCostoEnvio = 'Costo de envío: $0';
 let detallePedido = 'Detalle del pedido:\n';
 let tiempoPreparacionPedido = 'Tiempo estimado de preparación del pedido: ';
 
+let $menuCards = document.getElementById('menu-cards');
+
 // FUNCIONES
 // Imprimir productos en menu para colocar en el prompt
 for(let producto of productos){
-    menu += `${producto.id}: ${producto.descripcion} $${producto.precio}`;
+    menu += `${producto.id}: ${producto.nombre} $${producto.precio}`;
     menu += '\n';
 }
 
@@ -56,31 +60,31 @@ const buscarDatosProducto = (numProducto) => {
     switch (numProducto){
         case 1:
             agregarImporteATotalPedido(rollNuevaYork.precio);
-            agregarProductoADetallePedido(`1 ${rollNuevaYork.descripcion}: $${rollNuevaYork.precio}\n`);
+            agregarProductoADetallePedido(`1 ${rollNuevaYork.nombre}: $${rollNuevaYork.precio}\n`);
             calcularCostoEnvio(totalPedido);
             rollNuevaYork.contarProductosPedidos();
             break;
         case 2: 
             agregarImporteATotalPedido(rollAtun.precio);
-            agregarProductoADetallePedido(`1 ${rollAtun.descripcion}: $${rollAtun.precio}\n`);
+            agregarProductoADetallePedido(`1 ${rollAtun.nombre}: $${rollAtun.precio}\n`);
             calcularCostoEnvio(totalPedido);
             rollAtun.contarProductosPedidos();
             break;
         case 3: 
             agregarImporteATotalPedido(rollSalmonDoble.precio);
-            agregarProductoADetallePedido(`1 ${rollSalmonDoble.descripcion}: $${rollSalmonDoble.precio}\n`);
+            agregarProductoADetallePedido(`1 ${rollSalmonDoble.nombre}: $${rollSalmonDoble.precio}\n`);
             calcularCostoEnvio(totalPedido);
             rollSalmonDoble.contarProductosPedidos();
             break;            
         case 4: 
             agregarImporteATotalPedido(sashimi.precio);
-            agregarProductoADetallePedido(`1 ${sashimi.descripcion}: $${sashimi.precio}\n`);
+            agregarProductoADetallePedido(`1 ${sashimi.nombre}: $${sashimi.precio}\n`);
             calcularCostoEnvio(totalPedido);
             sashimi.contarProductosPedidos();
             break;
         case 5: 
             agregarImporteATotalPedido(promo30Piezas.precio);
-            agregarProductoADetallePedido(`1 ${promo30Piezas.descripcion}: $${promo30Piezas.precio}\n`);
+            agregarProductoADetallePedido(`1 ${promo30Piezas.nombre}: $${promo30Piezas.precio}\n`);
             calcularCostoEnvio(totalPedido);
             promo30Piezas.contarProductosPedidos();
             break;
@@ -143,6 +147,30 @@ const mostrarEstadoPedido = () => {
         console.log(`${detallePedido}\nTotal pedido: $${totalPedido}\n${estadoCostoEnvio}\nTotal a abonar: $${totalAPagar}`);    
     }
 }
+
+// Imprimir cards de producto en #menu-cards
+for(item of productos){
+    let $card = document.createElement('div');
+    $card.classList.add('col');
+    $card.innerHTML = `
+        <div class="card h-100">
+            <img src="./img/img_${item.id}.jpg" class="card-img-top" alt="${item.descripcion}">
+            <div class="card-body">
+            <div class="mb-2">
+                <h3 class="card__title">${item.nombre}</h3>
+                <p class="card__description">${item.descripcion}</p>
+            </div>
+            <div class="card__price mb-3">
+                <p class="card__price__text">${item.piezas} piezas</p>
+                <p class="card__price__amount">$${item.precio}</p>
+            </div>
+            <button class="btn btn__secondary">Agregar a pedido</button>
+            </div>  
+        </div>
+    </div>`;
+    $menuCards.appendChild($card);
+}
+
 
 // Llamar función principal
 ingresarPedido();
