@@ -193,7 +193,7 @@ a:hover, a:focus, a:active {
   right: 5vw;
   z-index: 10;
   filter: drop-shadow(5px 5px 0px #0A0908);
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .cart i {
@@ -204,10 +204,9 @@ a:hover, a:focus, a:active {
 .cart:hover,
 .cart:focus,
 .cart:active {
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease-in-out;
   transform: translate(5px, 5px);
   filter: drop-shadow(0 0 0 #0A0908);
-  background-color: #0A0908;
   color: #E03616;
 }
 
