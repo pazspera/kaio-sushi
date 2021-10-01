@@ -1,7 +1,8 @@
 // CLASES
 class Producto {
-    constructor(id, nombre, precio, piezas, descripcion){
+    constructor(id, num, nombre, precio, piezas, descripcion){
         this.id = id;
+        this.num = num;
         this.nombre = nombre;
         this.precio = precio;
         this.piezas = piezas;
@@ -13,11 +14,11 @@ class Producto {
 }
 
 // VARIABLES
-const rollNuevaYork = new Producto('roll_new_york', 'Nueva York', 350, 5, 'Salmón rosado, queso Philadelphia y palta.') ;
-const rollAtun = new Producto('roll_atun', 'Atún', 250, 5, 'Atún, queso Philadelphia y palta.');
-const rollSalmonDoble = new Producto('roll_salmon_doble', 'Salmón doble', 450, 5, 'Relleno de salmón y palta con cobertura de salmón.');
-const sashimi = new Producto('sashimi', 'Sashimi', 450, 5, 'Lonjas de salmón rosado.');
-const promo30Piezas = new Producto('promo_20_piezas', 'Promo 20 piezas', 2100, 20, '5 rolls Nueva York, 5 rolls de atún, 5 rolls de salmón doble y 5 sashimi.');
+const rollNuevaYork = new Producto('roll_new_york', 1, 'Nueva York', 350, 5, 'Salmón rosado, queso Philadelphia y palta.') ;
+const rollAtun = new Producto('roll_atun', 2, 'Atún', 250, 5, 'Atún, queso Philadelphia y palta.');
+const rollSalmonDoble = new Producto('roll_salmon_doble', 3, 'Salmón doble', 450, 5, 'Relleno de salmón y palta con cobertura de salmón.');
+const sashimi = new Producto('sashimi', 4, 'Sashimi', 450, 5, 'Lonjas de salmón rosado.');
+const promo30Piezas = new Producto('promo_20_piezas', 5, 'Promo 20 piezas', 2100, 20, '5 rolls Nueva York, 5 rolls de atún, 5 rolls de salmón doble y 5 sashimi.');
 
 const productos = [rollNuevaYork, rollAtun, rollSalmonDoble, sashimi, promo30Piezas];
 let menu = '';
@@ -38,7 +39,7 @@ let $menuCards = document.getElementById('menu-cards');
 // FUNCIONES
 // Imprimir productos en menu para colocar en el prompt
 for(let producto of productos){
-    menu += `${producto.id}: ${producto.nombre} $${producto.precio}`;
+    menu += `${producto.num}: ${producto.nombre} $${producto.precio}`;
     menu += '\n';
 }
 
@@ -156,16 +157,18 @@ for(item of productos){
         <div class="card h-100">
             <img src="./img/img_${item.id}.jpg" class="card-img-top" alt="${item.descripcion}">
             <div class="card-body">
-            <div class="mb-2">
-                <h3 class="card__title">${item.nombre}</h3>
-                <p class="card__description">${item.descripcion}</p>
+                <div class="mb-2">
+                    <h3 class="card__title">${item.nombre}</h3>
+                    <p class="card__description">${item.descripcion}</p>
+                </div>
+                <div class="card__bottom-info">
+                    <div class="card__price mb-3">
+                        <p class="card__price__text">${item.piezas} piezas</p>
+                        <p class="card__price__amount">$${item.precio}</p>
+                    </div>
+                    <button class="btn btn__secondary">Agregar a pedido</button>
+                </div>  
             </div>
-            <div class="card__price mb-3">
-                <p class="card__price__text">${item.piezas} piezas</p>
-                <p class="card__price__amount">$${item.precio}</p>
-            </div>
-            <button class="btn btn__secondary">Agregar a pedido</button>
-            </div>  
         </div>
     </div>`;
     $menuCards.appendChild($card);

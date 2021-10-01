@@ -9,18 +9,25 @@
     justify-content: space-between;
 }
 
+// Hace que piezas y btn estén siempre en la parte 
+// de abajo de la card
+.card__bottom-info{
+    justify-self: flex-end;
+}
+
 .card__title,
 .card__description{
-    margin-bottom: 0;
+    margin-bottom: 0.45em;
 }
 
 .card__description{
     font-size: $size7;
     margin-bottom: 0;
+    line-height: 25px;
 }
 
 .card__title{
-    font-size: $size4;
+    font-size: $size5;
     position: relative;
     margin-left: 10px;
 
@@ -53,4 +60,11 @@
     &__amount{
         font-weight: 700;
     }
+}
+
+// Override border-radius en card-img
+.card-img, 
+.card-img-top{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }

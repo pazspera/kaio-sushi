@@ -119,18 +119,23 @@ a:hover, a:focus, a:active {
   justify-content: space-between;
 }
 
+.card__bottom-info {
+  justify-self: flex-end;
+}
+
 .card__title,
 .card__description {
-  margin-bottom: 0;
+  margin-bottom: 0.45em;
 }
 
 .card__description {
   font-size: 0.8rem;
   margin-bottom: 0;
+  line-height: 25px;
 }
 
 .card__title {
-  font-size: 1.563rem;
+  font-size: 1.25rem;
   position: relative;
   margin-left: 10px;
 }
@@ -162,6 +167,12 @@ a:hover, a:focus, a:active {
 
 .card__price__amount {
   font-weight: 700;
+}
+
+.card-img,
+.card-img-top {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .cart {
