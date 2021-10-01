@@ -13,6 +13,10 @@
 // de abajo de la card
 .card__bottom-info{
     justify-self: flex-end;
+
+    .btn__secondary{
+        width: 100%;
+    }
 }
 
 .card__title,

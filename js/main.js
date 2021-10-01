@@ -1,4 +1,19 @@
-// CLASES
+/* 
+    DESAFIO 08: Interactuar con HTML
+
+    -   Modifiqué la clase Producto para poder imprimir toda la información 
+        de los productos en HTML
+    -   Agregué un for para imprimir la $card de cada producto dentro de $menuCards
+    -   Agregué section #pedido para imprimir el estado del pedido en el HTML
+    -   Agregué agregarProductoADetallePedido() que agrega los pedidos recibidos en una ul
+    -   Modifiqué mostrarEstadoPedido() para que actualice los datos del estado de pedido en 
+        #pedido en vez de por consola
+
+*/
+
+
+
+// --------- CLASES ---------
 class Producto {
     constructor(id, num, nombre, precio, piezas, descripcion){
         this.id = id;
@@ -13,7 +28,9 @@ class Producto {
     }
 }
 
-// VARIABLES
+
+
+// --------- VARIABLES ---------
 const rollNuevaYork = new Producto('roll_new_york', 1, 'Nueva York', 350, 5, 'Salmón rosado, queso Philadelphia y palta.') ;
 const rollAtun = new Producto('roll_atun', 2, 'Atún', 250, 5, 'Atún, queso Philadelphia y palta.');
 const rollSalmonDoble = new Producto('roll_salmon_doble', 3, 'Salmón doble', 450, 5, 'Relleno de salmón y palta con cobertura de salmón.');
@@ -21,10 +38,9 @@ const sashimi = new Producto('sashimi', 4, 'Sashimi', 450, 5, 'Lonjas de salmón
 const promo30Piezas = new Producto('promo_20_piezas', 5, 'Promo 20 piezas', 2100, 20, '5 rolls Nueva York, 5 rolls de atún, 5 rolls de salmón doble y 5 sashimi.');
 
 const productos = [rollNuevaYork, rollAtun, rollSalmonDoble, sashimi, promo30Piezas];
+
 let menu = '';
-
 const COSTO_ENVIO = 150;
-
 let pedido;
 let totalPedido = 0;
 let totalAPagar = 0;
@@ -34,9 +50,19 @@ let estadoCostoEnvio = 'Costo de envío: $0';
 let detallePedido = 'Detalle del pedido:\n';
 let tiempoPreparacionPedido = 'Tiempo estimado de preparación del pedido: ';
 
+// Variables elementos HTML
 let $menuCards = document.getElementById('menu-cards');
+let $pedido = document.getElementById('pedido');
+let $pedidoItems = document.getElementById('pedido-items');
+let $pedidoEstado = document.getElementById('pedido-estado');
+let $totalPedido = document.createElement('p');
+let $costoEnvio = document.createElement('p');
+let $totalAPagar = document.createElement('p');
+let $tiempoPreparacion = document.createElement('p');
 
-// FUNCIONES
+
+
+// --------- FUNCIONES ---------
 // Imprimir productos en menu para colocar en el prompt
 for(let producto of productos){
     menu += `${producto.num}: ${producto.nombre} $${producto.precio}`;
@@ -91,7 +117,6 @@ const buscarDatosProducto = (numProducto) => {
             break;
         case 0:
             calcularTiempoPreparacionPedido(totalProductosPedidos);
-            console.log('FIN DEL PEDIDO');
             break;
         default: 
             console.log('Código de producto inválido');
@@ -108,6 +133,9 @@ const agregarImporteATotalPedido = (num) => {
 // Agregar el nombre de producto a detalle pedido
 const agregarProductoADetallePedido = (descripcion) => {
     detallePedido += descripcion;
+    let $pedidoItem = document.createElement('li');
+    $pedidoItem.innerHTML = descripcion;
+    $pedidoItems.appendChild($pedidoItem);
 };
 
 // Calcular costo de envío
@@ -140,13 +168,25 @@ const calcularTiempoPreparacionPedido = (cantPedidos) => {
 
 // Mostrar estado del pedido
 const mostrarEstadoPedido = () => {
-    if(pedido === 0 && totalProductosPedidos > 0){
-        // Agrega tiempoPreparacionPedido en caso que se finalice el pedido y haya al menos un producto
-        // añadido al pedido
-        console.log(`${detallePedido}\nTotal pedido: $${totalPedido}\n${estadoCostoEnvio}\nTotal a abonar: $${totalAPagar}\n${tiempoPreparacionPedido}`);    
-    } else {
-        console.log(`${detallePedido}\nTotal pedido: $${totalPedido}\n${estadoCostoEnvio}\nTotal a abonar: $${totalAPagar}`);    
+    // Hacer visible section pedidos cuando haya al menos un pedido añadido
+    if(totalProductosPedidos > 0){
+        $pedido.classList.remove('d-none');
     }
+
+    $totalPedido.innerHTML = `Total pedido: $${totalPedido}`;
+    $pedidoEstado.appendChild($totalPedido);
+
+    $costoEnvio.innerHTML = `${estadoCostoEnvio}`;
+    $pedidoEstado.appendChild($costoEnvio);
+
+    $totalAPagar.innerHTML = `Total a pagar: $${totalAPagar}`;
+    $pedidoEstado.appendChild($totalAPagar);
+
+    
+    if(pedido === 0 && totalProductosPedidos > 0){
+        $tiempoPreparacion.innerHTML = `${tiempoPreparacionPedido}`;
+        $pedidoEstado.appendChild($tiempoPreparacion);
+    } 
 }
 
 // Imprimir cards de producto en #menu-cards
@@ -173,6 +213,7 @@ for(item of productos){
     </div>`;
     $menuCards.appendChild($card);
 }
+
 
 
 // Llamar función principal

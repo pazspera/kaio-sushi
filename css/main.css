@@ -123,6 +123,10 @@ a:hover, a:focus, a:active {
   justify-self: flex-end;
 }
 
+.card__bottom-info .btn__secondary {
+  width: 100%;
+}
+
 .card__title,
 .card__description {
   margin-bottom: 0.45em;
@@ -410,5 +414,13 @@ a:hover, a:focus, a:active {
   height: 79px;
   margin-top: -79px;
   visibility: hidden;
+}
+
+.pedido {
+  background-color: #FCFFFE;
+}
+
+.pedido__title {
+  font-size: 1.953rem;
 }
 /*# sourceMappingURL=main.css.map */
