@@ -7,35 +7,12 @@
     - Al cargar el documento, recuperamos las cards que se generan con JS en $cardsMenu (nodelist) y las pasamos a $cardsMenuArray (array)
     - Cada card va a tener el id que es el id del objeto Producto correspondiente a esa card. Este id permite acceder a las propiedades del objeto que representa la card y así poder imprimirlo en el resumen del pedido
 
+    AGREGAR CONTADOR DE PEDIDOS A CADA PRESS DE BTN QUE SAQUÉ LA FUNCIÓN QUE ESTABA EN LA CLASE
 */
 
 
 
-// --------- CLASES ---------
-class Producto {
-    constructor(id, num, nombre, precio, piezas, descripcion){
-        this.id = id;
-        this.num = num;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.piezas = piezas;
-        this.descripcion = descripcion;
-    }
-    contarProductosPedidos(){
-        totalProductosPedidos++;
-    }
-}
-
-
-
 // --------- VARIABLES ---------
-const rollNuevaYork = new Producto('roll_new_york', 1, 'Nueva York', 350, 5, 'Salmón rosado, queso Philadelphia y palta.') ;
-const rollAtun = new Producto('roll_atun', 2, 'Atún', 250, 5, 'Atún, queso Philadelphia y palta.');
-const rollSalmonDoble = new Producto('roll_salmon_doble', 3, 'Salmón doble', 450, 5, 'Relleno de salmón y palta con cobertura de salmón.');
-const sashimi = new Producto('sashimi', 4, 'Sashimi', 450, 5, 'Lonjas de salmón rosado.');
-const promo30Piezas = new Producto('promo_20_piezas', 5, 'Promo 20 piezas', 2100, 20, '5 rolls Nueva York, 5 rolls de atún, 5 rolls de salmón doble y 5 sashimi.');
-
-const productos = [rollNuevaYork, rollAtun, rollSalmonDoble, sashimi, promo30Piezas];
 
 let menu = '';
 const COSTO_ENVIO = 150;
@@ -223,6 +200,7 @@ window.addEventListener('load', (e)=>{
     // Agrega eventListener a cada card
     $cardsMenu.forEach(card => {
         card.addEventListener('click', (e) =>{
+            // Hace que el eventListener se active solo al clickear el btn de agregar pedido
             if(e.target.matches('.btn__card-pedido')){
                 console.log(card);
             }
