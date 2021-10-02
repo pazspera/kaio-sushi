@@ -16,6 +16,7 @@
 
 let menu = '';
 const COSTO_ENVIO = 150;
+let pedidoArray = [];
 let pedido;
 let totalPedido = 0;
 let totalAPagar = 0;
@@ -38,11 +39,6 @@ let $tiempoPreparacion = document.createElement('p');
 
 
 // --------- FUNCIONES ---------
-// Imprimir productos en menu para colocar en el prompt
-for(let producto of productos){
-    menu += `${producto.num}: ${producto.nombre} $${producto.precio}`;
-    menu += '\n';
-}
 
 // Imprimir cards de producto en #menu-cards
 for(item of productos){
@@ -83,7 +79,7 @@ const ingresarPedido = () => {
 
 // Buscar datos de producto
 // Dentro de cada case se llaman a las funciones secundarias
-const buscarDatosProducto = (numProducto) => {
+const buscarDatosProducto2 = (numProducto) => {
     switch (numProducto){
         case 1:
             agregarImporteATotalPedido(rollNuevaYork.precio);
@@ -169,7 +165,7 @@ const calcularTiempoPreparacionPedido = (cantPedidos) => {
 // Mostrar estado del pedido
 const mostrarEstadoPedido = () => {
     // Hacer visible section pedidos cuando haya al menos un pedido añadido
-    if(totalProductosPedidos > 0){
+    if(pedidoArray.length > 0){
         $pedido.classList.remove('d-none');
     }
 
@@ -203,11 +199,22 @@ window.addEventListener('load', (e)=>{
             // Hace que el eventListener se active solo al clickear el btn de agregar pedido
             if(e.target.matches('.btn__card-pedido')){
                 console.log(card);
+                console.log(card.id);
+                buscarDatosProducto(card.id);
+                mostrarEstadoPedido();
             }
         })
     });
 });
 
+// Buscar la info de producto en productos[] con el id de la card
+const buscarDatosProducto = (id) =>{
+    let producto = productos.find(producto => producto.id === id);
+    console.log(producto);
+    // Agregar producto elegido a pedidoArray
+    pedidoArray.push(producto);
+    console.log(pedidoArray);
+};
 
 
 
