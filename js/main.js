@@ -1,13 +1,11 @@
 /* 
-    DESAFIO 08: Interactuar con HTML
+    DESAFIO 09: Incorporar Eventos
 
-    -   Modifiqué la clase Producto para poder imprimir toda la información 
-        de los productos en HTML
-    -   Agregué un for para imprimir la $card de cada producto dentro de $menuCards
-    -   Agregué section #pedido para imprimir el estado del pedido en el HTML
-    -   Agregué agregarProductoADetallePedido() que agrega los pedidos recibidos en una ul
-    -   Modifiqué mostrarEstadoPedido() para que actualice los datos del estado de pedido en 
-        #pedido en vez de por consola
+    - Una vez que carga el documento, guardamos los btn__card-pedido en $cardsBtn
+    - A cada elemento de $cardsBtn le quiero asignar un evento on click que imprima por consola la info de la card a la que pertenece
+
+    - Al cargar el documento, recuperamos las cards que se generan con JS en $cardsMenu (nodelist) y las pasamos a $cardsMenuArray (array)
+    - Cada card va a tener el id que es el id del objeto Producto correspondiente a esa card. Este id permite acceder a las propiedades del objeto que representa la card y así poder imprimirlo en el resumen del pedido
 
 */
 
@@ -67,6 +65,31 @@ let $tiempoPreparacion = document.createElement('p');
 for(let producto of productos){
     menu += `${producto.num}: ${producto.nombre} $${producto.precio}`;
     menu += '\n';
+}
+
+// Imprimir cards de producto en #menu-cards
+for(item of productos){
+    let $card = document.createElement('div');
+    $card.classList.add('col');
+    $card.innerHTML = `
+        <div class="card h-100" id="${item.id}">
+            <img src="./img/img_${item.id}.jpg" class="card-img-top" alt="${item.descripcion}">
+            <div class="card-body">
+                <div class="mb-2">
+                    <h3 class="card__title">${item.nombre}</h3>
+                    <p class="card__description">${item.descripcion}</p>
+                </div>
+                <div class="card__bottom-info">
+                    <div class="card__price mb-3">
+                        <p class="card__price__text">${item.piezas} piezas</p>
+                        <p class="card__price__amount">$${item.precio}</p>
+                    </div>
+                    <button class="btn btn__secondary btn__card-pedido">Agregar a pedido</button>
+                </div>  
+            </div>
+        </div>
+    </div>`;
+    $menuCards.appendChild($card);
 }
 
 // Ingresar pedido
@@ -189,32 +212,29 @@ const mostrarEstadoPedido = () => {
     } 
 }
 
-// Imprimir cards de producto en #menu-cards
-for(item of productos){
-    let $card = document.createElement('div');
-    $card.classList.add('col');
-    $card.innerHTML = `
-        <div class="card h-100">
-            <img src="./img/img_${item.id}.jpg" class="card-img-top" alt="${item.descripcion}">
-            <div class="card-body">
-                <div class="mb-2">
-                    <h3 class="card__title">${item.nombre}</h3>
-                    <p class="card__description">${item.descripcion}</p>
-                </div>
-                <div class="card__bottom-info">
-                    <div class="card__price mb-3">
-                        <p class="card__price__text">${item.piezas} piezas</p>
-                        <p class="card__price__amount">$${item.precio}</p>
-                    </div>
-                    <button class="btn btn__secondary">Agregar a pedido</button>
-                </div>  
-            </div>
-        </div>
-    </div>`;
-    $menuCards.appendChild($card);
-}
+// Recuperar info de la card al hacer click en el btn
+
+let $cardsMenu;
+// Una vez que carga el documento, se obtienen las cards en $cardMenu
+// para poder asignarles eventos
+window.addEventListener('load', (e)=>{
+    console.log('ejecuta funcion');
+    $cardsMenu = document.querySelectorAll('.card');
+    // Agrega eventListener a cada card
+    $cardsMenu.forEach(card => {
+        card.addEventListener('click', (e) =>{
+            if(e.target.matches('.btn__card-pedido')){
+                console.log(card);
+            }
+        })
+    });
+});
+
+
+
+
 
 
 
 // Llamar función principal
-ingresarPedido();
+// ingresarPedido();
