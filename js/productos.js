@@ -26,7 +26,7 @@ const productos = [
     {
         id: 'sashimi',
         num: 4,
-        nombre: 'Salmón doble',
+        nombre: 'Sashimi',
         precio: 450,
         piezas: 5,
         descripcion: 'Lonjas de salmón rosado.',
