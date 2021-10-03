@@ -46,6 +46,13 @@
     }
 }
 
+@media (min-width: 1300px){
+    .card__title:before{
+        height: 85%;
+        top: 3%;
+    }
+}
+
 .card__price{
     display: flex;
     justify-content: space-between;

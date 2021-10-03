@@ -26,6 +26,7 @@
     &__title,
     &__text {
         color: $white;
+    
         font-family: $font-title;        
         align-self: start;
         justify-self: center;
@@ -69,5 +70,11 @@
 @media (min-width: 992px) {
     .hero__text {
         max-width: 40vw;
+    }
+}
+
+@media (min-width: 1400px){
+    .hero{
+        height: 75vh;
     }
 }

@@ -154,6 +154,13 @@ a:hover, a:focus, a:active {
   left: -10px;
 }
 
+@media (min-width: 1300px) {
+  .card__title:before {
+    height: 85%;
+    top: 3%;
+  }
+}
+
 .card__price {
   display: flex;
   justify-content: space-between;
@@ -288,6 +295,12 @@ a:hover, a:focus, a:active {
 @media (min-width: 992px) {
   .hero__text {
     max-width: 40vw;
+  }
+}
+
+@media (min-width: 1400px) {
+  .hero {
+    height: 75vh;
   }
 }
 

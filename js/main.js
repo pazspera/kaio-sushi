@@ -73,11 +73,9 @@ window.addEventListener('load', (e)=>{
         card.addEventListener('click', (e) =>{
             // Hace que el eventListener se active solo al clickear el btn de agregar pedido
             if(e.target.matches('.btn__card-pedido')){
-                console.log(card);
-                console.log(card.id);
                 // Obtiene objeto producto en base al id
                 let objetoProducto = buscarObjetoPorId(card.id);
-                buscarDatosProducto(objetoProducto);
+                agregarProductoAPedido(objetoProducto);
                 calcularTotalPedido(pedidoArray);
                 mostrarEstadoPedido();
                 agregarProductoADetallePedido(objetoProducto);
@@ -93,10 +91,8 @@ const buscarObjetoPorId = (id) => {
 }
 
 // Agregar producto elegido a pedidoArray
-const buscarDatosProducto = (objeto) =>{
-    console.log(objeto);
+const agregarProductoAPedido = (objeto) =>{
     pedidoArray.push(objeto);
-    console.log(pedidoArray);
 };
 
 // Calcular total pedido
@@ -124,7 +120,6 @@ const calcularTiempoPreparacionPedido = (array) => {
     let cantidadPiezas = 0;
     for(item of array){
         cantidadPiezas += item.piezas;
-        console.log(cantidadPiezas);
     }
     if(cantidadPiezas <= 20) {
         return '15 minutos';
