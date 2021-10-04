@@ -1,16 +1,8 @@
 /* 
-    DESAFIO 09: Incorporar Eventos
+    DESAFIO 09 COMPLEMENTARIO: Generar HTML
 
-    -   Una vez que carga el documento, guardo todas las cards en $cardsMenu 
-        A cada card le agrego un addEventListener on click a los eventos cuyo
-        target sea la clase .btn__card-pedido
-    -   Al activarse este evento: 
-        -   Busco el producto seleccionado por id dentro de productos[] para hacer 
-            todas las operaciones siguiente con el objeto
-        -   Agrego producto a pedidoArray[]
-        -   Calculo total del pedido, costo de envío y tiempo de preparación
-        -   Muestro estado de pedido en el HTML
-        -   Agrego elementos del pedidoArray[] al HTML
+    - Cuando se hace click en un botón y se agrega un producto al pedido,  hacer visible un indicador en el cart que muestre que hay un item en el carrito
+    - Que este indicador se actualice con la cantidad de pedidos a medida que se agregan más productos (pedidoArray.length)
 
 */
 

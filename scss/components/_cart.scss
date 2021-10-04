@@ -1,19 +1,16 @@
 .cart{
+    position: relative;
     padding: 2rem;
     border-radius: 100%;
+    margin-top: 0.5rem;
     background-color: $primary-medium;
     height: 75px;
     width: 75px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: fixed;
-    top: 5rem;
-    right: 5vw;
-    z-index: 10;
     filter: drop-shadow(5px 5px 0px $black);
     transition: all 0.4s ease-in-out;
-    
     i{
         font-size: $size3;
         color: $white;
@@ -30,8 +27,35 @@
         color: $primary-medium;
     }
 
+.cart-container{
+    position: fixed;
+    top: 5rem;
+    right: 5vw;
+    z-index: 10;
+}
+
 @media(min-width: 576px){
-    .cart{
+    .cart-container{
         right: 12vw;
     }
+}
+
+.cart__icon{
+    position: relative;
+}
+
+.cart__indicador{
+    background-color: $black;
+    color: $white;
+    border-radius: 50%;
+    z-index: 15;
+    text-align: center;
+    position: absolute;
+    top: -15%;
+    left: 55%;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    filter: drop-shadow(0 0 0 transparent) !important;
+    font-size: $size7;
+    padding: 0.04em 0.5em;
 }
