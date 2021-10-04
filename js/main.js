@@ -25,7 +25,7 @@ let $costoEnvio = document.createElement('p');
 let $totalAPagar = document.createElement('p');
 let $tiempoPreparacion = document.createElement('p');
 let $cardsMenu;
-
+let $cartIndicador = document.querySelector('.cart__indicador');
 
 
 // --------- FUNCIONES ---------
@@ -85,6 +85,15 @@ const buscarObjetoPorId = (id) => {
 // Agregar producto elegido a pedidoArray
 const agregarProductoAPedido = (objeto) =>{
     pedidoArray.push(objeto);
+    activarIndicadorCart();
+};
+
+// Activar indicador cart para que muestre cantidad productos agregardos a carrito
+const activarIndicadorCart = () =>{
+    if(pedidoArray.length > 0){
+        $cartIndicador.classList.remove('d-none');
+        $cartIndicador.innerHTML = pedidoArray.length;
+    }
 };
 
 // Calcular total pedido

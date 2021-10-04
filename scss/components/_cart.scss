@@ -11,6 +11,7 @@
     justify-content: center;
     filter: drop-shadow(5px 5px 0px $black);
     transition: all 0.4s ease-in-out;
+
     i{
         font-size: $size3;
         color: $white;
@@ -30,7 +31,7 @@
 .cart-container{
     position: fixed;
     top: 5rem;
-    right: 5vw;
+    right: 8vw;
     z-index: 10;
 }
 
@@ -56,6 +57,21 @@
     margin-top: 0.5em;
     margin-left: 0.5em;
     filter: drop-shadow(0 0 0 transparent) !important;
-    font-size: $size7;
+    font-size: $size6;
     padding: 0.04em 0.5em;
+    min-width: 28px;
+    min-height: 28px;
+}
+
+@media(min-width: 576px){
+    .cart__indicador{
+        min-width: 34px;
+        min-height: 34px;
+    }
+}
+
+@media(min-width: 992px){
+    .cart__indicador{
+        font-size: $size7;
+    }
 }
