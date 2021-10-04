@@ -254,7 +254,7 @@ a:hover, a:focus, a:active {
   min-height: 28px;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   .cart__indicador {
     min-width: 34px;
     min-height: 34px;

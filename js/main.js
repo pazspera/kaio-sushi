@@ -3,7 +3,8 @@
 
     -   En la primera función genero las cards de los productos en base al
         array de productos, creo los elementos html y añado el contenido 
-        dinámicamente con innerHTML 
+        dinámicamente con innerHTML. También en mostrarEstadoPedido() agrego
+        elementos HTML en base a la información del pedido actual
     -   Adicionalmente, para este desafío cree la función activarIndicadorCart(). 
         Al agregar un producto, se hace visible el indicador de productos
         que muestra la cantidad de productos que hay en el pedido
