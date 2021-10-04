@@ -1,8 +1,14 @@
 /* 
     DESAFIO 09 COMPLEMENTARIO: Generar HTML
 
-    - Cuando se hace click en un botón y se agrega un producto al pedido,  hacer visible un indicador en el cart que muestre que hay un item en el carrito
-    - Que este indicador se actualice con la cantidad de pedidos a medida que se agregan más productos (pedidoArray.length)
+    -   En la primera función genero las cards de los productos en base al
+        array de productos, creo los elementos html y añado el contenido 
+        dinámicamente con innerHTML 
+    -   Adicionalmente, para este desafío cree la función activarIndicadorCart(). 
+        Al agregar un producto, se hace visible el indicador de productos
+        que muestra la cantidad de productos que hay en el pedido
+    -   El indicador se actualiza dinámicamente en base a la cantidad de items
+        agregados al array pedidoArray
 
 */
 
