@@ -121,6 +121,8 @@ const activarIndicadorCart = () =>{
     if(pedidoArray.length > 0){
         $cartIndicador.classList.remove('d-none');
         $cartIndicador.innerHTML = pedidoArray.length;
+    } else if (pedidoArray.length <= 0){
+        $cartIndicador.classList.add('d-none');
     }
 };
 
@@ -174,6 +176,11 @@ const mostrarEstadoPedido = () => {
         $pedido.classList.remove('d-none');
     }
 
+    // Ocultar section pedidos si se eliminan todos los items del pedido
+    if(pedidoArray.length <= 0){
+        $pedido.classList.add('d-none');
+    }
+
     totalPedido = calcularTotalPedido(pedidoArray);
     $totalPedido.innerHTML = `Total pedido: $${totalPedido}`;
     $pedidoEstado.appendChild($totalPedido);
@@ -218,17 +225,21 @@ const agregarProductoADetallePedido = (objeto) =>{
     // Agrega eventListener al $pedidoIcon para eliminar items
     $pedidoItem.onclick = () => {
         console.log('eliminar');
-        eliminarProductoDePedido(objeto);
+        console.log($pedidoItem);
+        eliminarProductoDePedido(objeto, $pedidoItem);
     }
 }
 
 // Elimina producto de pedidoArray
-const eliminarProductoDePedido = (objeto) => {
+const eliminarProductoDePedido = (objeto, elementoHTML) => {
     // Devuelva objeto.nombre y posicion en pedidoArray
-    // index = a.findIndex(x => x.prop2 ==="yutu");
-    console.log(objeto);
     let indexObjeto = pedidoArray.findIndex(x => x.pedidoId === objeto.pedidoId);
-    console.log(`Nombre: ${objeto.nombre} Pedido Id: ${objeto.pedidoId} Index: ${indexObjeto}`);
-
+    pedidoArray.splice(indexObjeto, 1);
+    // Elimina el elementoHTML sobre el cual se clickeo
+    $pedidoItems.removeChild(elementoHTML);
+    // Actualiza estado de pedido
+    mostrarEstadoPedido();
+    // Actualiza cantidad de productos en el indicador cart
+    activarIndicadorCart();
 }
 
