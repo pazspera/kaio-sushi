@@ -73,6 +73,10 @@ for(item of productos){
 // Una vez que carga el documento, se obtienen las cards en $cardMenu
 // para poder asignarles eventos
 window.addEventListener('load', (e)=>{
+    // Inicializa pedidoId a 0 para asegurar que funcione
+    // bien la asignación dinámica de pedidoId en pedidoArray
+    pedidoId = 0;
+    console.log(`pedidoId ${pedidoId}`);
     $cardsMenu = document.querySelectorAll('.card');
     // Agrega eventListener a cada card
     $cardsMenu.forEach(card => {
@@ -98,16 +102,18 @@ const buscarObjetoPorId = (id) => {
 
 // Agregar producto elegido a pedidoArray
 const agregarProductoAPedido = (objeto) =>{
+    // Hago una copia del objeto a agregar con JSON.parse
+    // y JSON.stringify para asegurar que cada producto
+    // del array tenga su propio id
+    let copiaObjeto = JSON.parse(JSON.stringify(objeto));
     // pedidoId crear un id para cada producto dentro de
     // pedidoArray, de esa manera puedo buscar a cada
     // producto específico al momento de eliminarlos
     // del carrito
-    objeto.pedidoId = pedidoId;
-    console.log(objeto);
-    console.log(`pedidoId variable: ${pedidoId}`);
+    copiaObjeto.pedidoId = pedidoId;
+    console.log(copiaObjeto);
     pedidoId++;
-    console.log(`pedidoId variable: ${pedidoId}`);
-    pedidoArray.push(objeto);
+    pedidoArray.push(copiaObjeto);
     activarIndicadorCart();
 };
 
@@ -222,7 +228,8 @@ const eliminarProductoDePedido = (objeto) => {
     // Devuelva objeto.nombre y posicion en pedidoArray
     // index = a.findIndex(x => x.prop2 ==="yutu");
     console.log(objeto);
-    let indexObjeto = pedidoArray.findIndex( x => x.pedidoId === objeto.pedidoId);
+    // El index del objeto en pedidoArray sería pedidoId-1
+    let indexObjeto = (objeto.pedidoId) -1;
     console.log(`Nombre: ${objeto.nombre} Pedido Id: ${objeto.pedidoId} Index: ${indexObjeto}`);
 
 }
