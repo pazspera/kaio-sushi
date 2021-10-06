@@ -85,10 +85,14 @@ window.addEventListener('load', (e)=>{
             if(e.target.matches('.btn__card-pedido')){
                 // Obtiene objeto producto en base al id
                 let objetoProducto = buscarObjetoPorId(card.id);
-                agregarProductoAPedido(objetoProducto);
+                // Hago una copia del objeto a agregar con JSON.parse
+                // y JSON.stringify para asegurar que cada producto
+                // del array tenga su propio id
+                let copiaObjetoProducto = JSON.parse(JSON.stringify(objetoProducto));
+                agregarProductoAPedido(copiaObjetoProducto);
                 calcularTotalPedido(pedidoArray);
                 mostrarEstadoPedido();
-                agregarProductoADetallePedido(objetoProducto);
+                agregarProductoADetallePedido(copiaObjetoProducto);
             }
         })
     });
@@ -101,19 +105,14 @@ const buscarObjetoPorId = (id) => {
 }
 
 // Agregar producto elegido a pedidoArray
-const agregarProductoAPedido = (objeto) =>{
-    // Hago una copia del objeto a agregar con JSON.parse
-    // y JSON.stringify para asegurar que cada producto
-    // del array tenga su propio id
-    let copiaObjeto = JSON.parse(JSON.stringify(objeto));
+const agregarProductoAPedido = (copiaObjetoProducto) =>{
     // pedidoId crear un id para cada producto dentro de
     // pedidoArray, de esa manera puedo buscar a cada
     // producto específico al momento de eliminarlos
     // del carrito
-    copiaObjeto.pedidoId = pedidoId;
-    console.log(copiaObjeto);
+    copiaObjetoProducto.pedidoId = pedidoId;
     pedidoId++;
-    pedidoArray.push(copiaObjeto);
+    pedidoArray.push(copiaObjetoProducto);
     activarIndicadorCart();
 };
 
@@ -228,8 +227,7 @@ const eliminarProductoDePedido = (objeto) => {
     // Devuelva objeto.nombre y posicion en pedidoArray
     // index = a.findIndex(x => x.prop2 ==="yutu");
     console.log(objeto);
-    // El index del objeto en pedidoArray sería pedidoId-1
-    let indexObjeto = (objeto.pedidoId) -1;
+    let indexObjeto = pedidoArray.findIndex(x => x.pedidoId === objeto.pedidoId);
     console.log(`Nombre: ${objeto.nombre} Pedido Id: ${objeto.pedidoId} Index: ${indexObjeto}`);
 
 }
