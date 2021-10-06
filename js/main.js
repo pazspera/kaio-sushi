@@ -1,19 +1,6 @@
 /* 
-    DESAFIO 09 COMPLEMENTARIO: Generar HTML
+    DESAFIO 09: Generar HTML
 
-    -   En la primera función genero las cards de los productos en base al
-        array de productos, creo los elementos html y añado el contenido 
-        dinámicamente con innerHTML. También en mostrarEstadoPedido() agrego
-        elementos HTML en base a la información del pedido actual
-    -   Adicionalmente, para este desafío cree la función activarIndicadorCart(). 
-        Al agregar un producto, se hace visible el indicador de productos
-        que muestra la cantidad de productos que hay en el pedido
-    -   El indicador se actualiza dinámicamente en base a la cantidad de items
-        agregados al array pedidoArray
-
-    -   El item de pedido se agrega con un icono para eliminar pedido
-    -   Agregar eventListener al item para que cuando se haga click se busque el array pedido por id del item y eliminarlo del pedido array
-    -   En cart indicador, cuando sea cero hacer que vuelva a tener display: none
 
 */
 
@@ -76,7 +63,6 @@ window.addEventListener('load', (e)=>{
     // Inicializa pedidoId a 0 para asegurar que funcione
     // bien la asignación dinámica de pedidoId en pedidoArray
     pedidoId = 0;
-    console.log(`pedidoId ${pedidoId}`);
     $cardsMenu = document.querySelectorAll('.card');
     // Agrega eventListener a cada card
     $cardsMenu.forEach(card => {
@@ -223,9 +209,7 @@ const agregarProductoADetallePedido = (objeto) =>{
     $pedidoItems.appendChild($pedidoItem);
 
     // Agrega eventListener al $pedidoIcon para eliminar items
-    $pedidoItem.onclick = () => {
-        console.log('eliminar');
-        console.log($pedidoItem);
+    $pedidoIcon.onclick = () => {
         eliminarProductoDePedido(objeto, $pedidoItem);
     }
 }
