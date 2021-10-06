@@ -22,6 +22,9 @@
 // --------- VARIABLES ---------
 const COSTO_ENVIO = 150;
 let pedidoArray = [];
+// pedidoId va a generar un id a cada pedido que se agregue
+// a pedidoArray
+let pedidoId = 0;
 let totalPedido = 0;
 let totalAPagar = 0;
 let estadoCostoEnvio;
@@ -99,9 +102,11 @@ const agregarProductoAPedido = (objeto) =>{
     // pedidoArray, de esa manera puedo buscar a cada
     // producto específico al momento de eliminarlos
     // del carrito
-    let pedidoId = 1;
     objeto.pedidoId = pedidoId;
+    console.log(objeto);
+    console.log(`pedidoId variable: ${pedidoId}`);
     pedidoId++;
+    console.log(`pedidoId variable: ${pedidoId}`);
     pedidoArray.push(objeto);
     activarIndicadorCart();
 };
@@ -216,6 +221,7 @@ const agregarProductoADetallePedido = (objeto) =>{
 const eliminarProductoDePedido = (objeto) => {
     // Devuelva objeto.nombre y posicion en pedidoArray
     // index = a.findIndex(x => x.prop2 ==="yutu");
+    console.log(objeto);
     let indexObjeto = pedidoArray.findIndex( x => x.pedidoId === objeto.pedidoId);
     console.log(`Nombre: ${objeto.nombre} Pedido Id: ${objeto.pedidoId} Index: ${indexObjeto}`);
 
