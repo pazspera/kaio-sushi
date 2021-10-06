@@ -483,4 +483,20 @@ a:hover, a:focus, a:active {
 .pedido__title {
   font-size: 1.953rem;
 }
+
+.pedido__item {
+  display: flex;
+  align-items: baseline;
+}
+
+.pedido__item .far {
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.pedido__item .far:hover, .pedido__item .far:focus {
+  transition: all 0.15s ease-in-out;
+  color: #E03616;
+}
 /*# sourceMappingURL=main.css.map */

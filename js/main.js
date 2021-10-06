@@ -11,6 +11,10 @@
     -   El indicador se actualiza dinámicamente en base a la cantidad de items
         agregados al array pedidoArray
 
+    -   El item de pedido se agrega con un icono para eliminar pedido
+    -   Agregar eventListener al item para que cuando se haga click se busque el array pedido por id del item y eliminarlo del pedido array
+    -   En cart indicador, cuando sea cero hacer que vuelva a tener display: none
+
 */
 
 
@@ -91,6 +95,13 @@ const buscarObjetoPorId = (id) => {
 
 // Agregar producto elegido a pedidoArray
 const agregarProductoAPedido = (objeto) =>{
+    // pedidoId crear un id para cada producto dentro de
+    // pedidoArray, de esa manera puedo buscar a cada
+    // producto específico al momento de eliminarlos
+    // del carrito
+    let pedidoId = 1;
+    objeto.pedidoId = pedidoId;
+    pedidoId++;
     pedidoArray.push(objeto);
     activarIndicadorCart();
 };
@@ -173,9 +184,40 @@ const mostrarEstadoPedido = () => {
 
 // Agrega listado de pedido[] a HTML 
 const agregarProductoADetallePedido = (objeto) =>{
+    // Crea contenedor para el item de pedido
+    let $pedidoItem = document.createElement('div');
+    $pedidoItem.classList.add('pedido__item');
+    // Crea icono para el item de pedido
+    let $pedidoIcon = document.createElement('i');
+    $pedidoIcon.classList.add('far');
+    $pedidoIcon.classList.add('fa-trash-alt');
+    
+    // Agregar icono a $pedidoItem
+    $pedidoItem.appendChild($pedidoIcon);
+    
+    // Crea detalle del pedido
     let detalle = `1 ${objeto.nombre}: $${objeto.precio}`;
-    let $pedidoItem = document.createElement('li');
-    $pedidoItem.innerHTML = detalle;
+    let $pedidoDetalle = document.createElement('p');
+    $pedidoDetalle.innerHTML = detalle;
+    // Agrega detalle pedido a $pedidoItem
+    $pedidoItem.appendChild($pedidoDetalle);
+
+    // Agrega el item completo a listado $pedidoItems
     $pedidoItems.appendChild($pedidoItem);
+
+    // Agrega eventListener al $pedidoIcon para eliminar items
+    $pedidoItem.onclick = () => {
+        console.log('eliminar');
+        eliminarProductoDePedido(objeto);
+    }
+}
+
+// Elimina producto de pedidoArray
+const eliminarProductoDePedido = (objeto) => {
+    // Devuelva objeto.nombre y posicion en pedidoArray
+    // index = a.findIndex(x => x.prop2 ==="yutu");
+    let indexObjeto = pedidoArray.findIndex( x => x.pedidoId === objeto.pedidoId);
+    console.log(`Nombre: ${objeto.nombre} Pedido Id: ${objeto.pedidoId} Index: ${indexObjeto}`);
+
 }
 

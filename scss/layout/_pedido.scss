@@ -5,3 +5,20 @@
 .pedido__title{
     font-size: $size3;
 }
+
+.pedido__item{
+    display: flex;
+    align-items: baseline;
+
+    .far{
+        margin-right: 1rem;
+        cursor: pointer;
+        transition: all 0.15s ease-in-out;
+
+        &:hover,
+        &:focus {
+            transition: all 0.15s ease-in-out;
+            color: $primary-medium;
+        }
+    }
+}
