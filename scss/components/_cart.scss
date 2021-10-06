@@ -1,5 +1,7 @@
 .cart{
-    position: relative;
+    position: fixed;
+    top: 5rem;
+    z-index: 998;
     padding: 2rem;
     border-radius: 100%;
     margin-top: 0.5rem;
@@ -9,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: drop-shadow(5px 5px 0px $black);
+    filter: drop-shadow(5px 5px 0px $black-transparent);
     transition: all 0.4s ease-in-out;
 
     i{
@@ -32,7 +34,11 @@
     position: fixed;
     top: 5rem;
     right: 8vw;
-    z-index: 10;
+    z-index: 999;
+}
+
+.container-cart{
+    position: relative;
 }
 
 @media(min-width: 576px){
@@ -56,22 +62,16 @@
     left: 55%;
     margin-top: 0.5em;
     margin-left: 0.5em;
-    filter: drop-shadow(0 0 0 transparent) !important;
     font-size: $size6;
     padding: 0.04em 0.5em;
-    min-width: 28px;
-    min-height: 28px;
+    min-width: 1.7em;
+    min-height: 1.75em;
 }
 
-@media(min-width: 768px){
-    .cart__indicador{
-        min-width: 34px;
-        min-height: 34px;
-    }
-}
-
-@media(min-width: 992px){
-    .cart__indicador{
-        font-size: $size7;
+@media(min-width: 1200px){
+    .cart__indicator{
+        min-width: 2em;
+        min-height: 2em;
+        font-size: $size6;
     }
 }
