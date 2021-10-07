@@ -333,22 +333,21 @@ a:hover, a:focus, a:active {
 }
 
 .hero__text span {
-  font-size: 1.25rem;
+  font-size: 1.953rem;
   padding: 0.25em 0.7em;
-  margin-bottom: 3rem;
   line-height: 1.6;
   font-weight: 300;
 }
 
 @media (min-width: 992px) {
-  .hero__text {
-    max-width: 40vw;
+  .hero__text span {
+    font-size: 2.441rem;
   }
 }
 
 @media (min-width: 1400px) {
   .hero {
-    height: 75vh;
+    height: 80vh;
   }
 }
 

@@ -59,22 +59,21 @@
     }
 
     &__text span {
-        font-size: $size5;
+        font-size: $size3;
         padding: 0.25em 0.7em;
-        margin-bottom: 3rem;
         line-height: 1.6;
         font-weight: 300;
     }
 }
 
-@media (min-width: 992px) {
-    .hero__text {
-        max-width: 40vw;
+@media(min-width: 992px){
+    .hero__text span {
+        font-size: $size2;
     }
 }
 
 @media (min-width: 1400px){
     .hero{
-        height: 75vh;
+        height: 80vh;
     }
 }
