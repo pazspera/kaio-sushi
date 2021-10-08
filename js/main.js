@@ -1,9 +1,19 @@
 /* 
-    DESAFIO 09: Generar HTML
+    DESAFIO 09: Incorporar Eventos
 
+    -   A las cards de productos agregué un eventListener que, al hacer click en el btn
+        de la card, recupere el objeto que corresponde a esa card y lo agregue a
+        pedidoArray
+    -   Cuando hay al menos un item en el pedidoArray, se hace visible la sección Mi Pedido
+        y se actualizan todos los datos del pedido (total pedido, estado de envío, 
+        total a pagar y tiempo estimado preparación)
+    -   También al agregarse un item a pedidoArray actualizo el indicador de carrito
+        con activarIndicadorCart(), que muestra la cantidad de items en el pedido actual
+    -   A la sección de Mi Pedido agregué un eventListener a los iconos de papelera
+        de cada item de pedido que eliminan el item de pedidoArray y también llaman
+        a activarIndicadorCart() para actualizar la cantidad de items en el cart
 
 */
-
 
 
 // --------- VARIABLES ---------
