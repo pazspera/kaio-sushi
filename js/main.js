@@ -1,17 +1,13 @@
 /* 
-    DESAFIO 09: Incorporar Eventos
+    SEGUNDA ENTREGA
 
-    -   A las cards de productos agregué un eventListener que, al hacer click en el btn
-        de la card, recupere el objeto que corresponde a esa card y lo agregue a
-        pedidoArray
-    -   Cuando hay al menos un item en el pedidoArray, se hace visible la sección Mi Pedido
-        y se actualizan todos los datos del pedido (total pedido, estado de envío, 
-        total a pagar y tiempo estimado preparación)
-    -   También al agregarse un item a pedidoArray actualizo el indicador de carrito
-        con activarIndicadorCart(), que muestra la cantidad de items en el pedido actual
-    -   A la sección de Mi Pedido agregué un eventListener a los iconos de papelera
-        de cada item de pedido que eliminan el item de pedidoArray y también llaman
-        a activarIndicadorCart() para actualizar la cantidad de items en el cart
+    -   Dividir los archivos js
+    -   Agregar más productos al menu
+    -   Pasar los productos al Local Storage
+    -   Recuperar los productos en 2 arrays, uno de piezas y otro de combos
+    -   Escribir la funcionalidad de los botones del menú, para que muestren o escondan
+        piezas y combos en base a cuál esté seleccionado
+    
 
 */
 
@@ -37,7 +33,7 @@ let $totalAPagar = document.createElement('p');
 let $tiempoPreparacion = document.createElement('p');
 let $cardsMenu;
 let $cartIndicador = document.querySelector('.cart__indicador');
-
+let $cart = document.querySelector('.cart__icon');
 
 // --------- FUNCIONES ---------
 
@@ -116,11 +112,27 @@ const agregarProductoAPedido = (copiaObjetoProducto) =>{
 const activarIndicadorCart = () =>{
     if(pedidoArray.length > 0){
         $cartIndicador.classList.remove('d-none');
-        $cartIndicador.innerHTML = pedidoArray.length;
+        $cartIndicador.innerHTML = pedidoArray.length
+        // Actualiza atributo href de carrito para que lleve a Mi Pedido
+        actualizarRutaEnlaceCart();
     } else if (pedidoArray.length <= 0){
         $cartIndicador.classList.add('d-none');
+        // Actualiza atributo href de carrito para que lleve a Menu
+        actualizarRutaEnlaceCart();
     }
 };
+
+// Revisa si pedidoArray[], si tiene items actualiza href a Pedido
+// Si no tiene items, mantiene href a Menu
+const actualizarRutaEnlaceCart = () =>{
+    console.log('funcion actualizarRutaEnlaceCart')
+    $cart.setAttribute('href', '#anchor_menu');
+    if(pedidoArray.length > 0){
+        $cart.setAttribute('href', '#anchor_pedido');
+    } else if (pedidoArray.length <= 0) {
+        $cart.setAttribute('href', '#anchor_menu');
+    }
+}
 
 // Calcular total pedido
 const calcularTotalPedido = (array) =>{
