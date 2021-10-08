@@ -305,7 +305,7 @@ a:hover, a:focus, a:active {
 
 .hero__text {
   margin: 0 0 1.5em 0;
-  font-size: 3.052rem;
+  font-size: 1.563rem;
 }
 
 .hero__title, .hero__text {
@@ -333,7 +333,7 @@ a:hover, a:focus, a:active {
 }
 
 .hero__text span {
-  font-size: 1.953rem;
+  font-size: 1.563rem;
   padding: 0.25em 0.7em;
   line-height: 1.6;
   font-weight: 300;
@@ -341,13 +341,19 @@ a:hover, a:focus, a:active {
 
 @media (min-width: 992px) {
   .hero__text span {
-    font-size: 2.441rem;
+    font-size: 1.953rem;
   }
 }
 
 @media (min-width: 1400px) {
   .hero {
     height: 80vh;
+  }
+}
+
+@media (min-width: 1600px) {
+  .hero {
+    height: 70vh;
   }
 }
 
