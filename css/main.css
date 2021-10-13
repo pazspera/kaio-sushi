@@ -415,6 +415,29 @@ a:hover, a:focus, a:active {
   flex-direction: column;
 }
 
+.menu__btn {
+  border: 2px solid #0A0908;
+  padding: 0.5em 1em;
+  min-width: 148px;
+  transition: all 0.5s ease-in-out;
+}
+
+.menu__btn:hover, .menu__btn:focus, .menu__btn:active {
+  background-color: #0A0908;
+  color: #FCFFFE;
+  transition: all 0.5s ease-in-out;
+}
+
+.menu__btn:focus {
+  box-shadow: 0 0 0 0.25em #FCFFFE;
+}
+
+.menu-active {
+  background-color: #0A0908;
+  color: #FCFFFE;
+  border: 2px solid #0A0908;
+}
+
 /*  Header  */
 .navbar {
   background-color: #0A0908 !important;
