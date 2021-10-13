@@ -41,3 +41,19 @@ const productos = [
     },
 ]
 
+// Guardar array con todos los productos en localStorage
+let productosJSON = JSON.stringify(productos)
+localStorage.setItem('productos', productosJSON);
+
+const menuPiezas = [];
+const menuCombos = [];
+
+// Recupera todos los valores de productos desde el localStorage
+let menuProductos = JSON.parse(localStorage.getItem('productos'));
+
+// Divide los productos en dos arrays: combos y piezas
+for(producto of menuProductos){
+    if(producto.tipo === 'combo') menuCombos.push(producto);
+    if(producto.tipo === 'piezas') menuPiezas.push(producto);
+}
+

@@ -1,3 +1,0 @@
-DESAFIO 09 COMPLEMENTARIO: Generar HTML
-    - Cuando se hace click en un botón y se agrega un producto al pedido,  hacer visible un indicador en el cart que muestre que hay un item en el carrito
-    - Que este indicador se actualice con la cantidad de pedidos a medida que se agregan más productos (pedidoArray.length)

@@ -410,6 +410,11 @@ a:hover, a:focus, a:active {
   font-size: 3.052rem;
 }
 
+.menu__opciones {
+  display: flex;
+  flex-direction: column;
+}
+
 /*  Header  */
 .navbar {
   background-color: #0A0908 !important;

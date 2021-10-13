@@ -1,13 +1,14 @@
 /* 
     SEGUNDA ENTREGA
-
-    -   Dividir los archivos js
-    -   Agregar más productos al menu
-    -   Pasar los productos al Local Storage
-    -   Recuperar los productos en 2 arrays, uno de piezas y otro de combos
-    -   Escribir la funcionalidad de los botones del menú, para que muestren o escondan
-        piezas y combos en base a cuál esté seleccionado
-    
+  
+    -   En productos.js guardé el array de productos en el localStorage y recuperé los valores dividiendo 
+        los productos en dos arrays: menuPiezas y menuCombos
+    -   En la section Menu agregué dos btn que permiten cargar/eliminar productos de acuerdo a lo que esté seleccionado.
+        Por ejemplo, a hacer clic en el btn combos se ocultan todos los productos del listado de piezas y se 
+        actualizan los productos con el listado de combos.
+    -   Reformulé las funciones imprimirCards() y agregarEventosBtnCards() para poder ejecutarlas varias veces
+    -   Agregué que al evento onload se imprima la lista de productos seleccionadas en menuPiezas que va a ser
+        la carga por defecto de la página
 
 */
 
@@ -34,40 +35,41 @@ let $tiempoPreparacion = document.createElement('p');
 let $cardsMenu;
 let $cartIndicador = document.querySelector('.cart__indicador');
 let $cart = document.querySelector('.cart__icon');
+let $menuPiezas = document.getElementById('menu-piezas');
+let $menuCombos = document.getElementById('menu-combos');
+let $menuOpciones = document.getElementById('menu__opciones');
+
 
 // --------- FUNCIONES ---------
-
 // Imprimir cards de producto en #menu-cards
-for(item of productos){
-    let $card = document.createElement('div');
-    $card.classList.add('col');
-    $card.innerHTML = `
-        <div class="card h-100" id="${item.id}">
-            <img src="./img/img_${item.id}.jpg" class="card-img-top" alt="${item.descripcion}">
-            <div class="card-body">
-                <div class="mb-2">
-                    <h3 class="card__title">${item.nombre}</h3>
-                    <p class="card__description">${item.descripcion}</p>
-                </div>
-                <div class="card__bottom-info">
-                    <div class="card__price mb-3">
-                        <p class="card__price__text">${item.piezas} piezas</p>
-                        <p class="card__price__amount">$${item.precio}</p>
+const imprimirCards = (array) => { 
+    for(item of array){
+        let $card = document.createElement('div');
+        $card.classList.add('col');
+        $card.innerHTML = `
+            <div class="card h-100" id="${item.id}">
+                <img src="./img/img_${item.id}.jpg" class="card-img-top" alt="${item.descripcion}">
+                <div class="card-body">
+                    <div class="mb-2">
+                        <h3 class="card__title">${item.nombre}</h3>
+                        <p class="card__description">${item.descripcion}</p>
                     </div>
-                    <button class="btn btn__secondary btn__card-pedido">Agregar a pedido</button>
-                </div>  
+                    <div class="card__bottom-info">
+                        <div class="card__price mb-3">
+                            <p class="card__price__text">${item.piezas} piezas</p>
+                            <p class="card__price__amount">$${item.precio}</p>
+                        </div>
+                        <button class="btn btn__secondary btn__card-pedido">Agregar a pedido</button>
+                    </div>  
+                </div>
             </div>
-        </div>
-    </div>`;
-    $menuCards.appendChild($card);
-}
+        </div>`;
+        $menuCards.appendChild($card);
+    }
+ }
 
-// Recuperar info de la card al hacer click en el btn
-// Una vez que carga el documento, se obtienen las cards en $cardMenu
-// para poder asignarles eventos
-window.addEventListener('load', (e)=>{
-    // Inicializa pedidoId a 0 para asegurar que funcione
-    // bien la asignación dinámica de pedidoId en pedidoArray
+// Función para agregar event listners a btn de cards
+ const agregarEventosBtnCards = (e)=>{
     pedidoId = 0;
     $cardsMenu = document.querySelectorAll('.card');
     // Agrega eventListener a cada card
@@ -88,7 +90,40 @@ window.addEventListener('load', (e)=>{
             }
         })
     });
+}
+
+// Menú: muestra y oculta cards dependiendo si el btn piezas o combos está activado
+$menuOpciones.addEventListener('click', (e)=>{
+    if(e.target.matches('#menu-piezas')){
+        // Toggle estado activo de los btn 
+        $menuPiezas.classList.add('menu-active');
+        $menuCombos.classList.remove('menu-active');
+        // Toggle estado activo de los btn
+        $($menuCards).empty();
+        // Imprime cards de menuPiezas
+        imprimirCards(menuPiezas);
+    }
+    
+    if(e.target.matches('#menu-combos')){
+        // Toggle estado activo de los btn
+        $menuCombos.classList.add('menu-active');
+        $menuPiezas.classList.remove('menu-active');
+        // Borra elementos ya impresos
+        $($menuCards).empty();
+        // Imprime cards de menuCombos
+        imprimirCards(menuCombos);
+    }
+
+    agregarEventosBtnCards();
 });
+
+// Por defecto, el menú de piezas va a estar seleccionado
+// Cuando se carga la página, se cargan automáticamente las cards de menuPiezas
+window.addEventListener('load', (e)=>{
+    imprimirCards(menuPiezas);
+    agregarEventosBtnCards();
+});
+
 
 // Buscar la info de producto en productos[] con el id de la card
 const buscarObjetoPorId = (id) => {
