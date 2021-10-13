@@ -16,8 +16,7 @@
 // --------- VARIABLES ---------
 const COSTO_ENVIO = 150;
 let pedidoArray = [];
-// pedidoId va a generar un id a cada pedido que se agregue
-// a pedidoArray
+// pedidoId va a generar un id a cada pedido que se agregue a pedidoArray
 let pedidoId = 0;
 let totalPedido = 0;
 let totalAPagar = 0;
