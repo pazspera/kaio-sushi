@@ -418,7 +418,7 @@ a:hover, a:focus, a:active {
 .menu__btn {
   border: 2px solid #0A0908;
   padding: 0.5em 1em;
-  min-width: 148px;
+  min-width: 7em;
   transition: all 0.5s ease-in-out;
 }
 
