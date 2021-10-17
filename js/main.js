@@ -1,14 +1,18 @@
 /* 
-    SEGUNDA ENTREGA
-  
-    -   En productos.js guardé el array de productos en el localStorage y recuperé los valores dividiendo 
-        los productos en dos arrays: menuPiezas y menuCombos
-    -   En la section Menu agregué dos btn que permiten cargar/eliminar productos de acuerdo a lo que esté seleccionado.
-        Por ejemplo, a hacer clic en el btn combos se ocultan todos los productos del listado de piezas y se 
-        actualizan los productos con el listado de combos.
-    -   Reformulé las funciones imprimirCards() y agregarEventosBtnCards() para poder ejecutarlas varias veces
-    -   Agregué que al evento onload se imprima la lista de productos seleccionadas en menuPiezas que va a ser
-        la carga por defecto de la página
+    DESAFÍO CLASE 12
+
+    ¿Qué quiero hacer para esta entrega?
+    - En el pedido, en vez de agregar un item cada vez que se agrega un producto, tener funcionalidad para que llevar la cuenta de qué cantidad se agregó de cada producto 
+    Por ejemplo, mostrar 4 sashimi en vez 1 sashimi 1 sashimi 1 sashimi 1 sashimi
+    - Que el botón de la papelera remueva 1 de la cantidad total de productos que tiene ese item en el pedido
+    - Actualizar la función on load con jQuery
+
+    Todas las cards tienen un btn con un eventListener que recuperan el objeto de productos por id, crean una copia y lo agregan pedidoArray[]
+    Después de crear la copia, hacer que verifique si hay un elemento con el mismo id en pedidoArray[]
+    - Si no hay, agrega el objecto al array. También le agrega un contador de pedidosAgregados que va a llevar la cuenta de cuántos productos con ese id se agregaron a pedidoArray[]
+    - Si ya hay un pedido con el mismo array, recuperar ese objeto y actualizar el contador 
+
+    Cuando quiera borrar un item del pedido, en vez de eliminar el objeto del array, puedo acceder al objeto que tiene el mismo id y hacer contador--
 
 */
 
@@ -131,16 +135,79 @@ const buscarObjetoPorId = (id) => {
 }
 
 // Agregar producto elegido a pedidoArray
-const agregarProductoAPedido = (copiaObjetoProducto) =>{
-    // pedidoId crear un id para cada producto dentro de
+/* const agregarProductoAPedido = (copiaObjetoProducto) =>{
+    // pedidoId crea un id para cada producto dentro de
     // pedidoArray, de esa manera puedo buscar a cada
     // producto específico al momento de eliminarlos
     // del carrito
     copiaObjetoProducto.pedidoId = pedidoId;
     pedidoId++;
+    console.log(copiaObjetoProducto);
     pedidoArray.push(copiaObjetoProducto);
     activarIndicadorCart();
-};
+}; */
+
+const agregarProductoAPedido = (copiaObjetoProducto) => {
+    console.log('agregarProductoAPedido() ejecutándose');
+    console.log(copiaObjetoProducto);
+    // Revisar si en pedidoArray[] ya existe un producto que tenga
+    // el mismo id que copiaObjetoProducto
+    /* if(pedidoArray.length === 0){
+        copiaObjetoProducto.contadorProductoEnPedido = 1;
+        console.log(copiaObjetoProducto);
+        return pedidoArray.push(copiaObjetoProducto);
+    } */
+
+    // El primer objeto que ingresa al pedidoArray[] 
+    // se agrega directamente
+    if(pedidoArray.length === 0){
+        console.log('primer producto');
+        // Crear contador para llevar registro de la cantidad
+        // de productos de este tipo que se agregan
+        // a pedidoArray[]
+        copiaObjetoProducto.contadorProductoEnPedido = 1;
+        console.log(copiaObjetoProducto);
+        pedidoArray.push(copiaObjetoProducto);
+        return console.log(pedidoArray);
+    }
+
+    // A partir del segundo objeto, buscar si el id de 
+    // copiaObjetoPedido existe en pedidoArray[]
+    // - Si ya existe, actualizar el contadorProductoEnPedido
+    // - Si no existe, agregar el objeto y actualizar contador a 1
+    if(pedidoArray.length >= 1){
+        // Ver si hay un objeto con el mismo id en pedidoArray[]
+        for(producto of pedidoArray){
+            console.log(producto.id);
+            if(producto.id === copiaObjetoProducto.id){
+                console.log('el producto está en el pedido');
+                console.log(producto.contadorProductoEnPedido);
+                producto.contadorProductoEnPedido++;
+                console.log(producto.contadorProductoEnPedido);
+            } else{
+                console.log('el producto no está en el pedido');
+                copiaObjetoProducto.contadorProductoEnPedido = 1;
+                pedidoArray.push(copiaObjetoProducto);
+                return console.log(pedidoArray);
+            } 
+        } 
+    } 
+    
+    
+    // Si hay al menos un producto en pedidoArray[], revisar si 
+    // copiaObjetoProducto ya existe en pedidoArray
+    // Verificar si en pedidoArray[] ya hay un objeto con el mismo id
+    /* for(productos of pedidoArray){
+        if(producto.id === copiaObjetoProducto.id){
+            console.log('El producto está en el array');
+        } else {
+            console.log('El producto no está en el array');
+            pedidoArray.push(copiaObjetoProducto);
+            activarIndicadorCart();
+        }
+    }*/
+}
+
 
 // Activar indicador cart para que muestre cantidad productos agregardos a carrito
 const activarIndicadorCart = () =>{
