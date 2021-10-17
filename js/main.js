@@ -153,9 +153,8 @@ const agregarProductoAPedido = (copiaObjetoProducto) => {
         // Crear contador para llevar registro de la cantidad
         // de productos de este tipo que se agregan a pedidoArray[]
         copiaObjetoProducto.contadorProductoEnPedido = 1;
-        console.log(copiaObjetoProducto);
         pedidoArray.push(copiaObjetoProducto);
-        return console.log(pedidoArray);
+        return activarIndicadorCart();
     }
 
     // Esta variable sirve para verificar si el producto
@@ -169,26 +168,24 @@ const agregarProductoAPedido = (copiaObjetoProducto) => {
         for(producto of pedidoArray){
             if(producto.id === copiaObjetoProducto.id) productoDentroPedido = true;
         }
-        console.log(productoDentroPedido);
         // Si el id ya existe, actualizar el contadorProductoEnPedido
         if(productoDentroPedido){
-            return producto.contadorProductoEnPedido++;
+            producto.contadorProductoEnPedido++;
+            return activarIndicadorCart();
         } else{
             // Si el id no existe, agregar el objeto y actualizar contador a 1
-            console.log('el producto no está en el pedido');
             copiaObjetoProducto.contadorProductoEnPedido = 1;
             pedidoArray.push(copiaObjetoProducto);
-            return console.log(pedidoArray);
+            return activarIndicadorCart();
         } 
     } 
 }
-
 
 // Activar indicador cart para que muestre cantidad productos agregardos a carrito
 const activarIndicadorCart = () =>{
     if(pedidoArray.length > 0){
         $cartIndicador.classList.remove('d-none');
-        $cartIndicador.innerHTML = pedidoArray.length
+        $cartIndicador.innerHTML = actualizarValorCart();
         // Actualiza atributo href de carrito para que lleve a Mi Pedido
         actualizarRutaEnlaceCart();
     } else if (pedidoArray.length <= 0){
@@ -197,6 +194,15 @@ const activarIndicadorCart = () =>{
         actualizarRutaEnlaceCart();
     }
 };
+
+// Recorre pedidoArray[] y suma los contadores de todos los productos
+const actualizarValorCart = () =>{
+    let contador = 0;
+    for(producto of pedidoArray){
+        contador += producto.contadorProductoEnPedido;
+    }
+    return contador;
+}
 
 // Revisa si pedidoArray[], si tiene items actualiza href a Pedido
 // Si no tiene items, mantiene href a Menu
