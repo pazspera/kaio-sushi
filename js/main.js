@@ -148,64 +148,39 @@ const buscarObjetoPorId = (id) => {
 }; */
 
 const agregarProductoAPedido = (copiaObjetoProducto) => {
-    console.log('agregarProductoAPedido() ejecutándose');
-    console.log(copiaObjetoProducto);
-    // Revisar si en pedidoArray[] ya existe un producto que tenga
-    // el mismo id que copiaObjetoProducto
-    /* if(pedidoArray.length === 0){
-        copiaObjetoProducto.contadorProductoEnPedido = 1;
-        console.log(copiaObjetoProducto);
-        return pedidoArray.push(copiaObjetoProducto);
-    } */
-
-    // El primer objeto que ingresa al pedidoArray[] 
-    // se agrega directamente
+    // El primer objeto que ingresa al pedidoArray[] se agrega directamente
     if(pedidoArray.length === 0){
-        console.log('primer producto');
         // Crear contador para llevar registro de la cantidad
-        // de productos de este tipo que se agregan
-        // a pedidoArray[]
+        // de productos de este tipo que se agregan a pedidoArray[]
         copiaObjetoProducto.contadorProductoEnPedido = 1;
         console.log(copiaObjetoProducto);
         pedidoArray.push(copiaObjetoProducto);
         return console.log(pedidoArray);
     }
 
+    // Esta variable sirve para verificar si el producto
+    // de copiaObjetoProducto ya existe dentro de pedidoArray[]
+    let productoDentroPedido = false;
+
     // A partir del segundo objeto, buscar si el id de 
     // copiaObjetoPedido existe en pedidoArray[]
-    // - Si ya existe, actualizar el contadorProductoEnPedido
-    // - Si no existe, agregar el objeto y actualizar contador a 1
     if(pedidoArray.length >= 1){
         // Ver si hay un objeto con el mismo id en pedidoArray[]
         for(producto of pedidoArray){
-            console.log(producto.id);
-            if(producto.id === copiaObjetoProducto.id){
-                console.log('el producto está en el pedido');
-                console.log(producto.contadorProductoEnPedido);
-                producto.contadorProductoEnPedido++;
-                console.log(producto.contadorProductoEnPedido);
-            } else{
-                console.log('el producto no está en el pedido');
-                copiaObjetoProducto.contadorProductoEnPedido = 1;
-                pedidoArray.push(copiaObjetoProducto);
-                return console.log(pedidoArray);
-            } 
+            if(producto.id === copiaObjetoProducto.id) productoDentroPedido = true;
+        }
+        console.log(productoDentroPedido);
+        // Si el id ya existe, actualizar el contadorProductoEnPedido
+        if(productoDentroPedido){
+            return producto.contadorProductoEnPedido++;
+        } else{
+            // Si el id no existe, agregar el objeto y actualizar contador a 1
+            console.log('el producto no está en el pedido');
+            copiaObjetoProducto.contadorProductoEnPedido = 1;
+            pedidoArray.push(copiaObjetoProducto);
+            return console.log(pedidoArray);
         } 
     } 
-    
-    
-    // Si hay al menos un producto en pedidoArray[], revisar si 
-    // copiaObjetoProducto ya existe en pedidoArray
-    // Verificar si en pedidoArray[] ya hay un objeto con el mismo id
-    /* for(productos of pedidoArray){
-        if(producto.id === copiaObjetoProducto.id){
-            console.log('El producto está en el array');
-        } else {
-            console.log('El producto no está en el array');
-            pedidoArray.push(copiaObjetoProducto);
-            activarIndicadorCart();
-        }
-    }*/
 }
 
 
