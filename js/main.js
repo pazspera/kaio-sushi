@@ -150,7 +150,6 @@ const agregarProductoAPedido = (copiaObjetoProducto) => {
         // Crea item para imprimir en el HTML del detalle de pedido
         $itemPedido = crearHTMLItemPedido(copiaObjetoProducto);
         agregarProductoADetallePedido();
-        console.log($itemPedido);
         return activarIndicadorCart();
     }
 
@@ -170,7 +169,6 @@ const agregarProductoAPedido = (copiaObjetoProducto) => {
             producto.contadorProductoEnPedido++;
             agregarProductoADetallePedido();
             $itemPedido = crearHTMLItemPedido(copiaObjetoProducto);
-            console.log($itemPedido);
             return activarIndicadorCart();
         } else{
             // Si el id no existe, agregar el objeto y actualizar contador a 1
@@ -178,7 +176,6 @@ const agregarProductoAPedido = (copiaObjetoProducto) => {
             pedidoArray.push(copiaObjetoProducto);
             agregarProductoADetallePedido();
             $itemPedido = crearHTMLItemPedido(copiaObjetoProducto);
-            console.log($itemPedido);
             return activarIndicadorCart();
         } 
     } 
@@ -202,7 +199,6 @@ const crearHTMLItemPedido = (copiaObjetoProducto) => {
     // Genera contenido del HTML en base al producto
     detalle = `${itemPedidoEnArray.contadorProductoEnPedido} ${itemPedidoEnArray.nombre}: $${itemPedidoEnArray.precio}`;
     $pedidoDetalle.innerHTML = detalle;
-    console.log($pedidoDetalle);
     return $pedidoDetalle;
 }
 
@@ -232,7 +228,6 @@ const actualizarValorCart = () =>{
 // Revisa si pedidoArray[], si tiene items actualiza href a Pedido
 // Si no tiene items, mantiene href a Menu
 const actualizarRutaEnlaceCart = () =>{
-    console.log('funcion actualizarRutaEnlaceCart')
     $cart.setAttribute('href', '#anchor_menu');
     if(pedidoArray.length > 0){
         $cart.setAttribute('href', '#anchor_pedido');
@@ -265,7 +260,7 @@ const calcularCostoEnvio = (totalPedido) => {
 const calcularTiempoPreparacionPedido = (array) => {
     let cantidadPiezas = 0;
     for(item of array){
-        cantidadPiezas += item.piezas;
+        cantidadPiezas += (item.piezas * item.contadorProductoEnPedido);
     }
     if(cantidadPiezas <= 20) {
         return '15 minutos';
