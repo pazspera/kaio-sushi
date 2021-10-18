@@ -14,6 +14,12 @@
 
     Cuando quiera borrar un item del pedido, en vez de eliminar el objeto del array, puedo acceder al objeto que tiene el mismo id y hacer contador--
 
+    Faltan actualizar las funciones para imprimir los items del pedido y eliminar los productos del pedido
+    REESCRIBIR CON JQUERY LA FUNCIÓN PARA IMPRIMIR EL PEDIDO EN EL HTML
+
+    NOTAS PARA LA ENTREGA DEL DESAFÍO
+    -   Reformulé agregarProductoADetallePedido(), ahora para imprimir el HTML de los items del pedido recorrer pedidoArray e imprime los valores de los objetos dentro del array. Usé jQuery para eliminar los pedidos existentes cada vez que se llame a la función
+
 */
 
 
@@ -89,7 +95,6 @@ const imprimirCards = (array) => {
                 agregarProductoAPedido(copiaObjetoProducto);
                 calcularTotalPedido(pedidoArray);
                 mostrarEstadoPedido();
-                agregarProductoADetallePedido(copiaObjetoProducto);
             }
         })
     });
@@ -134,26 +139,18 @@ const buscarObjetoPorId = (id) => {
     return objeto;
 }
 
-// Agregar producto elegido a pedidoArray
-/* const agregarProductoAPedido = (copiaObjetoProducto) =>{
-    // pedidoId crea un id para cada producto dentro de
-    // pedidoArray, de esa manera puedo buscar a cada
-    // producto específico al momento de eliminarlos
-    // del carrito
-    copiaObjetoProducto.pedidoId = pedidoId;
-    pedidoId++;
-    console.log(copiaObjetoProducto);
-    pedidoArray.push(copiaObjetoProducto);
-    activarIndicadorCart();
-}; */
-
 const agregarProductoAPedido = (copiaObjetoProducto) => {
+    let $itemPedido = '';
     // El primer objeto que ingresa al pedidoArray[] se agrega directamente
     if(pedidoArray.length === 0){
         // Crear contador para llevar registro de la cantidad
         // de productos de este tipo que se agregan a pedidoArray[]
         copiaObjetoProducto.contadorProductoEnPedido = 1;
         pedidoArray.push(copiaObjetoProducto);
+        // Crea item para imprimir en el HTML del detalle de pedido
+        $itemPedido = crearHTMLItemPedido(copiaObjetoProducto);
+        agregarProductoADetallePedido();
+        console.log($itemPedido);
         return activarIndicadorCart();
     }
 
@@ -171,14 +168,42 @@ const agregarProductoAPedido = (copiaObjetoProducto) => {
         // Si el id ya existe, actualizar el contadorProductoEnPedido
         if(productoDentroPedido){
             producto.contadorProductoEnPedido++;
+            agregarProductoADetallePedido();
+            $itemPedido = crearHTMLItemPedido(copiaObjetoProducto);
+            console.log($itemPedido);
             return activarIndicadorCart();
         } else{
             // Si el id no existe, agregar el objeto y actualizar contador a 1
             copiaObjetoProducto.contadorProductoEnPedido = 1;
             pedidoArray.push(copiaObjetoProducto);
+            agregarProductoADetallePedido();
+            $itemPedido = crearHTMLItemPedido(copiaObjetoProducto);
+            console.log($itemPedido);
             return activarIndicadorCart();
         } 
     } 
+}
+
+// Crear elemento HTML del item de pedido
+const crearHTMLItemPedido = (copiaObjetoProducto) => {
+    // Crea elemento HTML
+    let $pedidoDetalle = document.createElement('p');
+    let detalle = '';
+    let itemPedidoEnArray;
+
+    for(producto of pedidoArray){
+        if(copiaObjetoProducto.id === producto.id){
+            // Se guarda el objeto en la variable para poder usar su info
+            // para imprimir el HTML
+            itemPedidoEnArray = producto;
+        } 
+    }
+
+    // Genera contenido del HTML en base al producto
+    detalle = `${itemPedidoEnArray.contadorProductoEnPedido} ${itemPedidoEnArray.nombre}: $${itemPedidoEnArray.precio}`;
+    $pedidoDetalle.innerHTML = detalle;
+    console.log($pedidoDetalle);
+    return $pedidoDetalle;
 }
 
 // Activar indicador cart para que muestre cantidad productos agregardos a carrito
@@ -290,7 +315,42 @@ const mostrarEstadoPedido = () => {
 }
 
 // Agrega listado de pedido[] a HTML 
-const agregarProductoADetallePedido = (objeto) =>{
+const agregarProductoADetallePedido = () =>{
+    $('#pedido-items').empty();
+    // En vez de recibir cada producto e ir agregándolo de a uno, 
+    // lo que puedo hacer es que cada vez que se agregue un producto, 
+    // se recorra pedidoArray y se impriman los elementos HTML desde el array
+    // en vez de enviarlos como parámetros
+    for(producto of pedidoArray){
+        // Crea contenedor para el item de pedido
+        let $pedidoItem = document.createElement('div');
+        $pedidoItem.classList.add('pedido__item');
+        // Crea icono para el item de pedido
+        let $pedidoIcon = document.createElement('i');
+        $pedidoIcon.classList.add('far');
+        $pedidoIcon.classList.add('fa-trash-alt');
+
+        // Agregar icono a $pedidoItem
+        $pedidoItem.appendChild($pedidoIcon);
+
+        // Crea detalle del pedido
+        let detalle = `${producto.contadorProductoEnPedido} ${producto.nombre}: $${producto.precio}`;
+        let $pedidoDetalle = document.createElement('p');
+        $pedidoDetalle.innerHTML = detalle;
+        // Agrega detalle pedido a $pedidoItem
+        $pedidoItem.appendChild($pedidoDetalle);
+
+        // Agrega $pedidoItems al listado completo de pedido
+        $pedidoItems.appendChild($pedidoItem);
+
+        // Agrega eventListener al $pedidoIcon para eliminar items
+        $pedidoIcon.onclick = () => {
+            eliminarProductoDePedido(objeto, $pedidoItem);
+        }
+    }
+
+
+    /* 
     // Crea contenedor para el item de pedido
     let $pedidoItem = document.createElement('div');
     $pedidoItem.classList.add('pedido__item');
@@ -302,6 +362,13 @@ const agregarProductoADetallePedido = (objeto) =>{
     // Agregar icono a $pedidoItem
     $pedidoItem.appendChild($pedidoIcon);
     
+    // Agrega elementoHTML al $pedidoItem
+    $pedidoItem.appendChild(elementoHTML);
+
+    // Agrega $pedidoItems al listado completo de pedido
+    $pedidoItems.appendChild($pedidoItem);
+
+    /* 
     // Crea detalle del pedido
     let detalle = `1 ${objeto.nombre}: $${objeto.precio}`;
     let $pedidoDetalle = document.createElement('p');
@@ -310,12 +377,12 @@ const agregarProductoADetallePedido = (objeto) =>{
     $pedidoItem.appendChild($pedidoDetalle);
 
     // Agrega el item completo a listado $pedidoItems
-    $pedidoItems.appendChild($pedidoItem);
+    $pedidoItems.appendChild($pedidoItem); 
 
     // Agrega eventListener al $pedidoIcon para eliminar items
     $pedidoIcon.onclick = () => {
         eliminarProductoDePedido(objeto, $pedidoItem);
-    }
+    } */
 }
 
 // Elimina producto de pedidoArray
