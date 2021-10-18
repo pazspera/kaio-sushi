@@ -18,8 +18,11 @@
     REESCRIBIR CON JQUERY LA FUNCIÓN PARA IMPRIMIR EL PEDIDO EN EL HTML
 
     NOTAS PARA LA ENTREGA DEL DESAFÍO
-    -   Reformulé agregarProductoADetallePedido(), ahora para imprimir el HTML de los items del pedido recorrer pedidoArray e imprime los valores de los objetos dentro del array. Usé jQuery para eliminar los pedidos existentes cada vez que se llame a la función
-
+    -   Actualicé el funcionamiento del carrito para que se muestre el total de items agregado de cada producto 
+        en vez de escribir cada producto individualmente. Hice los cambios en agregarProductoADetallePedido(), 
+        eliminarProductoDePedido(), calcularTotalPedido() y calcularTiempoPreparacionPedido()
+    -   Usos de jQuery:
+            - En agregarProductoADetallePedido() uso .empty para eliminar todos los elementos del div
 */
 
 
@@ -324,6 +327,9 @@ const agregarProductoADetallePedido = () =>{
         let $pedidoIcon = document.createElement('i');
         $pedidoIcon.classList.add('far');
         $pedidoIcon.classList.add('fa-trash-alt');
+        // Agregar producto id como clase a $pedidoIcon para poder después
+        // recuperar el id en eliminarProductoDePedido 
+        $pedidoIcon.classList.add(`${producto.id}`);
 
         // Agregar icono a $pedidoItem
         $pedidoItem.appendChild($pedidoIcon);
@@ -340,7 +346,16 @@ const agregarProductoADetallePedido = () =>{
 
         // Agrega eventListener al $pedidoIcon para eliminar items
         $pedidoIcon.onclick = () => {
-            eliminarProductoDePedido(objeto, $pedidoItem);
+            // Recibe una lista con las clases del icono de pedido
+            let arrayClasesIcon = Array.from($pedidoIcon.classList);
+            let pedidoIconId = '';
+            // Busco el id de producto en el listado de clases de pedido icon
+            for(clase of arrayClasesIcon){
+                if(clase !== 'far' && clase !== 'fa-trash-alt'){
+                    pedidoIconId = clase;
+                }
+            }
+            eliminarProductoDePedido(pedidoIconId);
         }
     }
     // Actualiza estado pedido cada vez que se imprime nuevo HTML
@@ -348,12 +363,27 @@ const agregarProductoADetallePedido = () =>{
 }
 
 // Elimina producto de pedidoArray
-const eliminarProductoDePedido = (objeto, elementoHTML) => {
-    // Devuelva objeto.nombre y posicion en pedidoArray
-    let indexObjeto = pedidoArray.findIndex(x => x.pedidoId === objeto.pedidoId);
-    pedidoArray.splice(indexObjeto, 1);
-    // Elimina el elementoHTML sobre el cual se clickeo
-    $pedidoItems.removeChild(elementoHTML);
+const eliminarProductoDePedido = (id) => {
+    // Actualiza el contador del objeto
+    for(producto of pedidoArray){
+        // Si la cantidad de items es al menos 1, se disminuye el contador
+        if(id === producto.id && producto.contadorProductoEnPedido >= 1){
+            console.log('coincidencia id');
+            producto.contadorProductoEnPedido--;
+        }
+        // Si la cantidad de items es 0, se borra el producto de pedidoArray
+        if(id === producto.id && producto.contadorProductoEnPedido < 1){
+            console.log(pedidoArray);
+            for(producto of pedidoArray) {
+                if(producto.id === id) {
+                    let posicionEnArray = pedidoArray.indexOf(producto);
+                    pedidoArray.splice(posicionEnArray, 1);
+                }
+            }
+        }
+    }
+    // Vuelve a imprimir HTML del pedido
+    agregarProductoADetallePedido();
     // Actualiza estado de pedido
     mostrarEstadoPedido();
     // Actualiza cantidad de productos en el indicador cart
