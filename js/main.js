@@ -75,7 +75,7 @@ const imprimirCards = (array) => {
         </div>`;
         $menuCards.appendChild($card);
     }
- }
+}
 
 // Función para agregar event listners a btn de cards
  const agregarEventosBtnCards = (e)=>{
@@ -245,7 +245,7 @@ const actualizarRutaEnlaceCart = () =>{
 const calcularTotalPedido = (array) =>{
     totalPedido = 0;
     for(item of array){
-        totalPedido += item.precio;
+        totalPedido += (item.precio * item.contadorProductoEnPedido);
     }
     return totalPedido;
 }
@@ -348,41 +348,8 @@ const agregarProductoADetallePedido = () =>{
             eliminarProductoDePedido(objeto, $pedidoItem);
         }
     }
-
-
-    /* 
-    // Crea contenedor para el item de pedido
-    let $pedidoItem = document.createElement('div');
-    $pedidoItem.classList.add('pedido__item');
-    // Crea icono para el item de pedido
-    let $pedidoIcon = document.createElement('i');
-    $pedidoIcon.classList.add('far');
-    $pedidoIcon.classList.add('fa-trash-alt');
-    
-    // Agregar icono a $pedidoItem
-    $pedidoItem.appendChild($pedidoIcon);
-    
-    // Agrega elementoHTML al $pedidoItem
-    $pedidoItem.appendChild(elementoHTML);
-
-    // Agrega $pedidoItems al listado completo de pedido
-    $pedidoItems.appendChild($pedidoItem);
-
-    /* 
-    // Crea detalle del pedido
-    let detalle = `1 ${objeto.nombre}: $${objeto.precio}`;
-    let $pedidoDetalle = document.createElement('p');
-    $pedidoDetalle.innerHTML = detalle;
-    // Agrega detalle pedido a $pedidoItem
-    $pedidoItem.appendChild($pedidoDetalle);
-
-    // Agrega el item completo a listado $pedidoItems
-    $pedidoItems.appendChild($pedidoItem); 
-
-    // Agrega eventListener al $pedidoIcon para eliminar items
-    $pedidoIcon.onclick = () => {
-        eliminarProductoDePedido(objeto, $pedidoItem);
-    } */
+    // Actualiza estado pedido cada vez que se imprime nuevo HTML
+    mostrarEstadoPedido();
 }
 
 // Elimina producto de pedidoArray
