@@ -1,28 +1,13 @@
 /* 
-    DESAFÍO CLASE 12
+    DESAFÍO CLASE 12 - Incorporar jQuery al proyecto
 
-    ¿Qué quiero hacer para esta entrega?
-    - En el pedido, en vez de agregar un item cada vez que se agrega un producto, tener funcionalidad para que llevar la cuenta de qué cantidad se agregó de cada producto 
-    Por ejemplo, mostrar 4 sashimi en vez 1 sashimi 1 sashimi 1 sashimi 1 sashimi
-    - Que el botón de la papelera remueva 1 de la cantidad total de productos que tiene ese item en el pedido
-    - Actualizar la función on load con jQuery
+    -   Reescribí la función imprimirCards() (línea 43) para imprimir en el DOM con jQuery
+    -   Reescribí la función para hacer el toggle de cards dependiendo de si son piezas o combos con jQuery (línea 121)
 
-    Todas las cards tienen un btn con un eventListener que recuperan el objeto de productos por id, crean una copia y lo agregan pedidoArray[]
-    Después de crear la copia, hacer que verifique si hay un elemento con el mismo id en pedidoArray[]
-    - Si no hay, agrega el objecto al array. También le agrega un contador de pedidosAgregados que va a llevar la cuenta de cuántos productos con ese id se agregaron a pedidoArray[]
-    - Si ya hay un pedido con el mismo array, recuperar ese objeto y actualizar el contador 
-
-    Cuando quiera borrar un item del pedido, en vez de eliminar el objeto del array, puedo acceder al objeto que tiene el mismo id y hacer contador--
-
-    Faltan actualizar las funciones para imprimir los items del pedido y eliminar los productos del pedido
-    REESCRIBIR CON JQUERY LA FUNCIÓN PARA IMPRIMIR EL PEDIDO EN EL HTML
-
-    NOTAS PARA LA ENTREGA DEL DESAFÍO
     -   Actualicé el funcionamiento del carrito para que se muestre el total de items agregado de cada producto 
         en vez de escribir cada producto individualmente. Hice los cambios en agregarProductoADetallePedido(), 
         eliminarProductoDePedido(), calcularTotalPedido() y calcularTiempoPreparacionPedido()
-    -   Usos de jQuery:
-            - En agregarProductoADetallePedido() uso .empty para eliminar todos los elementos del div
+    
 */
 
 
@@ -49,12 +34,37 @@ let $cartIndicador = document.querySelector('.cart__indicador');
 let $cart = document.querySelector('.cart__icon');
 let $menuPiezas = document.getElementById('menu-piezas');
 let $menuCombos = document.getElementById('menu-combos');
-let $menuOpciones = document.getElementById('menu__opciones');
+let $menuOpciones = document.getElementById('menu-opciones');
 
 
 // --------- FUNCIONES ---------
 // Imprimir cards de producto en #menu-cards
-const imprimirCards = (array) => { 
+// Función con jQuery
+const imprimirCards = (array) => {
+    for (item of array){
+        $('#menu-cards').append(`
+        <div class="col">
+            <div class="card h-100" id="${item.id}">
+                <img src="./img/img_${item.id}.jpg" class="card-img-top" alt="${item.descripcion}">
+                <div class="card-body">
+                <div class="mb-2">
+                    <h3 class="card__title">${item.nombre}</h3>
+                    <p class="card__description">${item.descripcion}</p>
+                </div>
+                <div class="card__bottom-info">
+                    <div class="card__price mb-3">
+                        <p class="card__price__text">${item.piezas} piezas</p>
+                        <p class="card__price__amount">$${item.precio}</p>
+                    </div>
+                    <button class="btn btn__secondary btn__card-pedido">Agregar a pedido</button>
+                </div>  
+                </div>
+            </div>
+        </div>`)
+    }
+}
+// Función con Vanilla JS
+/* const imprimirCards = (array) => { 
     for(item of array){
         let $card = document.createElement('div');
         $card.classList.add('col');
@@ -78,10 +88,11 @@ const imprimirCards = (array) => {
         </div>`;
         $menuCards.appendChild($card);
     }
-}
+} */
+
 
 // Función para agregar event listners a btn de cards
- const agregarEventosBtnCards = (e)=>{
+const agregarEventosBtnCards = (e)=>{
     pedidoId = 0;
     $cardsMenu = document.querySelectorAll('.card');
     // Agrega eventListener a cada card
@@ -103,8 +114,35 @@ const imprimirCards = (array) => {
     });
 }
 
+
 // Menú: muestra y oculta cards dependiendo si el btn piezas o combos está activado
-$menuOpciones.addEventListener('click', (e)=>{
+// Función con jQuery
+$('#menu-opciones').on('click', (e) => {
+    if(e.target.matches('#menu-piezas')){
+        // Toggle estado activo de los btn 
+        $('#menu-piezas').addClass( "menu-active" );
+        $('#menu-combos').removeClass( "menu-active" );
+        // Toggle estado activo de los btn
+        $($menuCards).empty();
+        // Imprime cards de menuPiezas
+        imprimirCards(menuPiezas);
+    }
+    
+    if(e.target.matches('#menu-combos')){
+        console.log('combos');
+        // Toggle estado activo de los btn
+        $('#menu-combos').addClass('menu-active');
+        $('#menu-piezas').removeClass('menu-active');
+        // Borra elementos ya impresos
+        $($menuCards).empty();
+        // Imprime cards de menuCombos
+        imprimirCards(menuCombos);
+    }
+
+    agregarEventosBtnCards();
+})
+// Función con Vanilla JS
+/* $menuOpciones.addEventListener('click', (e) =>{
     if(e.target.matches('#menu-piezas')){
         // Toggle estado activo de los btn 
         $menuPiezas.classList.add('menu-active');
@@ -126,7 +164,8 @@ $menuOpciones.addEventListener('click', (e)=>{
     }
 
     agregarEventosBtnCards();
-});
+}); */
+
 
 // Por defecto, el menú de piezas va a estar seleccionado
 // Cuando se carga la página, se cargan automáticamente las cards de menuPiezas
