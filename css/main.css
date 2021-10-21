@@ -456,6 +456,11 @@ a:hover, a:focus, a:active {
   font-weight: 700;
 }
 
+.nav-link,
+.nav-brand {
+  cursor: pointer;
+}
+
 /*  Agrega margin a los nav-links en desktop */
 @media (min-width: 996px) {
   .nav-item {
