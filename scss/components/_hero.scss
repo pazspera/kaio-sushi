@@ -1,6 +1,7 @@
 /*  Hero    */
 .hero {
-    height: 95vh;
+    height: 100vh;
+    margin-top: 1rem;
     padding: 2em 0;
     display: flex;
     @include background-image;
@@ -74,12 +75,12 @@
 
 @media (min-width: 1400px){
     .hero{
-        height: 80vh;
+        height: 85vh;
     }
 }
 
 @media(min-width: 1600px){
     .hero{
-        height: 70vh;
+        height: 75vh;
     }
 }
