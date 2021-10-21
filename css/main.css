@@ -275,7 +275,7 @@ a:hover, a:focus, a:active {
 .hero {
   height: 100vh;
   margin-top: 1rem;
-  padding: 2em 0;
+  padding: 2.5em 0 2em 0;
   display: flex;
   max-width: 100%;
   object-fit: cover;
@@ -340,21 +340,24 @@ a:hover, a:focus, a:active {
   font-weight: 300;
 }
 
+.hero__btn {
+  cursor: pointer;
+}
+
 @media (min-width: 992px) {
   .hero__text span {
     font-size: 1.953rem;
   }
 }
 
-@media (min-width: 1400px) {
-  .hero {
-    height: 85vh;
-  }
-}
-
+/* @media (min-width: 1400px){
+    .hero{
+        height: 85vh;
+    }
+} */
 @media (min-width: 1600px) {
   .hero {
-    height: 75vh;
+    height: 80vh;
   }
 }
 

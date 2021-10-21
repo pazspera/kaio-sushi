@@ -2,7 +2,7 @@
 .hero {
     height: 100vh;
     margin-top: 1rem;
-    padding: 2em 0;
+    padding: 2.5em 0 2em 0;
     display: flex;
     @include background-image;
     background-image: url(../img/index_hero.jpg);
@@ -67,20 +67,25 @@
     }
 }
 
+.hero__btn{
+    cursor: pointer;
+}
+
+
 @media(min-width: 992px){
     .hero__text span {
         font-size: $size3;
     }
 }
 
-@media (min-width: 1400px){
+/* @media (min-width: 1400px){
     .hero{
         height: 85vh;
     }
-}
+} */
 
 @media(min-width: 1600px){
     .hero{
-        height: 75vh;
+        height: 80vh;
     }
 }

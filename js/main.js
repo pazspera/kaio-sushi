@@ -447,3 +447,9 @@ $('#navbar-menu').on('click', function(){
         scrollTop: $('#anchor_menu').offset().top
     }, 1500);
 });
+
+$('#btn-main').on('click', function(){
+    $('html, body').animate({
+        scrollTop: $('#anchor_menu').offset().top
+    }, 1500);
+});
