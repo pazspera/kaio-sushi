@@ -48,9 +48,9 @@
     <div class="container container-cart">
       <div class="row">
         <div class="col-2 offset-8 col-sm-2 offset-sm-9 col-md-1 offset-md-10">
-          <div class="cart" id="cart">
+          <div class="cart" id="cart" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             <p class="cart__indicador d-none"></p>
-            <a href="#anchor_menu" class="stretched-link cart__icon">
+            <a class="stretched-link cart__icon">
               <i class="fas fa-shopping-cart">
               </i>
             </a>
@@ -96,6 +96,18 @@
             </div>
         </div>
       </section>
+
+      <!-- Menú pedido -->
+      <aside class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h2 id="offcanvasRightLabel" class="pedido__title">Mi pedido</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div id="pedido-items"></div>
+          <div id="pedido-estado"></div>
+        </div>
+      </aside>
 
       <section id="pedido" class="d-none">
         <span class="anchor" id="anchor_pedido"></span>

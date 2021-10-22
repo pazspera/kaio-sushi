@@ -120,12 +120,8 @@ const activarIndicadorCart = () =>{
     if(pedidoArray.length > 0){
         $cartIndicador.classList.remove('d-none');
         $cartIndicador.innerHTML = actualizarValorCart();
-        // Actualiza atributo href de carrito para que lleve a Mi Pedido
-        actualizarRutaEnlaceCart();
     } else if (pedidoArray.length <= 0){
         $cartIndicador.classList.add('d-none');
-        // Actualiza atributo href de carrito para que lleve a Menu
-        actualizarRutaEnlaceCart();
     }
 };
 
@@ -138,16 +134,7 @@ const actualizarValorCart = () =>{
     return contador;
 }
 
-// Revisa si pedidoArray[], si tiene items actualiza href a Pedido
-// Si no tiene items, mantiene href a Menu
-const actualizarRutaEnlaceCart = () =>{
-    $cart.setAttribute('href', '#anchor_menu');
-    if(pedidoArray.length > 0){
-        $cart.setAttribute('href', '#anchor_pedido');
-    } else if (pedidoArray.length <= 0) {
-        $cart.setAttribute('href', '#anchor_menu');
-    }
-}
+
 
 // Calcular total pedido
 const calcularTotalPedido = (array) =>{
@@ -194,16 +181,6 @@ const calcularTiempoPreparacionPedido = (array) => {
 
 // Mostrar estado del pedido
 const mostrarEstadoPedido = () => {
-    // Hacer visible section pedidos cuando haya al menos un pedido añadido
-    if(pedidoArray.length > 0){
-        $pedido.classList.remove('d-none');
-    }
-
-    // Ocultar section pedidos si se eliminan todos los items del pedido
-    if(pedidoArray.length <= 0){
-        $pedido.classList.add('d-none');
-    }
-
     totalPedido = calcularTotalPedido(pedidoArray);
     $totalPedido.innerHTML = `Total pedido: $${totalPedido}`;
     $pedidoEstado.appendChild($totalPedido);
