@@ -16,6 +16,7 @@ for(producto of menuProductos){
     if(producto.tipo === 'piezas') menuPiezas.push(producto);
 } */
 
+// --------- VARIABLES ---------
 
 const menuPiezas = [];
 const menuCombos = [];
@@ -30,6 +31,12 @@ let $menuOpciones = document.getElementById('menu-opciones');
 // Es importante que esta variable tenga el array
 // con todos los productos para que funcione el carrito
 let productos;
+
+
+// --------- FUNCIONES ---------
+
+// Dar formato a los números
+
 
 // Recuperar los productos desde productos.json
 $(document).ready( () => {
@@ -104,7 +111,7 @@ const imprimirCards = (array) => {
 }
 
 
-// Función para agregar event listners a btn de cards
+// Función para agregar event listeners a btn de cards
 const agregarEventosBtnCards = (e)=>{
     pedidoId = 0;
     $cardsMenu = document.querySelectorAll('.card');
@@ -115,11 +122,7 @@ const agregarEventosBtnCards = (e)=>{
             if(e.target.matches('.btn__card-pedido')){
                 // Obtiene objeto producto en base al id
                 let objetoProducto = buscarObjetoPorId(card.id);
-                // Hago una copia del objeto a agregar con JSON.parse
-                // y JSON.stringify para asegurar que cada producto
-                // del array tenga su propio id
-                let copiaObjetoProducto = JSON.parse(JSON.stringify(objetoProducto));
-                agregarProductoAPedido(copiaObjetoProducto);
+                agregarProductoAPedido(objetoProducto);
                 calcularTotalPedido(pedidoArray);
                 mostrarEstadoPedido();
             }
