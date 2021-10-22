@@ -110,7 +110,7 @@ const crearHTMLItemPedido = (copiaObjetoProducto) => {
     }
 
     // Genera contenido del HTML en base al producto
-    detalle = `${itemPedidoEnArray.contadorProductoEnPedido} ${itemPedidoEnArray.nombre}: $${itemPedidoEnArray.precio}`;
+    detalle = `${itemPedidoEnArray.contadorProductoEnPedido} ${itemPedidoEnArray.nombre}: $${formatoCurrency(itemPedidoEnArray.precio)}`;
     $pedidoDetalle.innerHTML = detalle;
     return $pedidoDetalle;
 }
@@ -183,14 +183,14 @@ const calcularTiempoPreparacionPedido = (array) => {
 const mostrarEstadoPedido = () => {
 
     totalPedido = calcularTotalPedido(pedidoArray);
-    $totalPedido.innerHTML = `Total pedido: $${totalPedido}`;
+    $totalPedido.innerHTML = `Total pedido: $${formatoCurrency(totalPedido)}`;
     $pedidoEstado.appendChild($totalPedido);
 
     calcularCostoEnvio(totalPedido);
     $costoEnvio.innerHTML = `${estadoCostoEnvio}`;
     $pedidoEstado.appendChild($costoEnvio);
 
-    $totalAPagar.innerHTML = `Total a pagar: $${totalAPagar}`;
+    $totalAPagar.innerHTML = `Total a pagar: $${formatoCurrency(totalAPagar)}`;
     $pedidoEstado.appendChild($totalAPagar);
 
     let tiempo = calcularTiempoPreparacionPedido(pedidoArray);
@@ -223,7 +223,7 @@ const agregarProductoADetallePedido = () =>{
         $pedidoItem.appendChild($pedidoIcon);
 
         // Crea detalle del pedido
-        let detalle = `${producto.contadorProductoEnPedido} ${producto.nombre}: $${producto.precio}`;
+        let detalle = `${producto.contadorProductoEnPedido} ${producto.nombre}: $${formatoCurrency(producto.precio)}`;
         let $pedidoDetalle = document.createElement('p');
         $pedidoDetalle.innerHTML = detalle;
         // Agrega detalle pedido a $pedidoItem
