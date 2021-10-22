@@ -21,7 +21,7 @@ for(producto of menuProductos){
 const menuPiezas = [];
 const menuCombos = [];
 
-let $cardsMenu;
+let $cardsMenu = '';
 let $menuPiezas = document.getElementById('menu-piezas');
 let $menuCombos = document.getElementById('menu-combos');
 let $menuOpciones = document.getElementById('menu-opciones');
@@ -36,7 +36,9 @@ let productos;
 // --------- FUNCIONES ---------
 
 // Dar formato a los números
-
+const formatoCurrency = (num) => {
+    return Intl.NumberFormat('es-AR').format(num);
+}
 
 // Recuperar los productos desde productos.json
 $(document).ready( () => {
@@ -99,7 +101,7 @@ const imprimirCards = (array) => {
                     <div class="card__bottom-info">
                         <div class="card__price mb-3">
                             <p class="card__price__text">${item.piezas} piezas</p>
-                            <p class="card__price__amount">$${item.precio}</p>
+                            <p class="card__price__amount">$${formatoCurrency(item.precio)}</p>
                         </div>
                         <button class="btn btn__secondary btn__card-pedido">Agregar a pedido</button>
                     </div>  

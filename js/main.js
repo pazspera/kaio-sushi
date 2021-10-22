@@ -181,6 +181,7 @@ const calcularTiempoPreparacionPedido = (array) => {
 
 // Mostrar estado del pedido
 const mostrarEstadoPedido = () => {
+
     totalPedido = calcularTotalPedido(pedidoArray);
     $totalPedido.innerHTML = `Total pedido: $${totalPedido}`;
     $pedidoEstado.appendChild($totalPedido);
