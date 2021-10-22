@@ -6,6 +6,7 @@
     display: flex;
     @include background-image;
     background-image: url(../img/index_hero.jpg);
+    background-position: bottom;
 
     &__container {
         display: flex;

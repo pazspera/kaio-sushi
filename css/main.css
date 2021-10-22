@@ -284,6 +284,7 @@ a:hover, a:focus, a:active {
   background-position: center;
   background-repeat: no-repeat;
   background-image: url(../img/index_hero.jpg);
+  background-position: bottom;
   /* El span pone el fondo de color y así 
     puedo tener que el fondo se mantenga en todo
     el texto sin depender de las col */

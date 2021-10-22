@@ -1,23 +1,5 @@
-const URL_JSON = "json/productos.json";
-
-/* // Guardar array con todos los productos en localStorage
-let productosJSON = JSON.stringify(productos)
-localStorage.setItem('productos', productosJSON);
-
-const menuPiezas = [];
-const menuCombos = [];
-
-// Recupera todos los valores de productos desde el localStorage
-let menuProductos = JSON.parse(localStorage.getItem('productos'));
-
-// Divide los productos en dos arrays: combos y piezas
-for(producto of menuProductos){
-    if(producto.tipo === 'combo') menuCombos.push(producto);
-    if(producto.tipo === 'piezas') menuPiezas.push(producto);
-} */
-
 // --------- VARIABLES ---------
-
+const URL_JSON = "json/productos.json";
 const menuPiezas = [];
 const menuCombos = [];
 
@@ -28,8 +10,6 @@ let $menuOpciones = document.getElementById('menu-opciones');
 
 // A esta variable le agrego todos los productos que
 // vienen del JSON una vez que la petición funcione
-// Es importante que esta variable tenga el array
-// con todos los productos para que funcione el carrito
 let productos;
 
 
@@ -61,30 +41,6 @@ $(document).ready( () => {
 });
 
 // Imprimir cards de producto en #menu-cards
-// Función con jQuery
-/* const imprimirCards = (array) => {
-    for (item of array){
-        $('#menu-cards').append(`
-        <div class="col">
-            <div class="card h-100" id="${item.id}">
-                <img src="./img/img_${item.id}.jpg" class="card-img-top" alt="${item.descripcion}">
-                <div class="card-body">
-                <div class="mb-2">
-                    <h3 class="card__title">${item.nombre}</h3>
-                    <p class="card__description">${item.descripcion}</p>
-                </div>
-                <div class="card__bottom-info">
-                    <div class="card__price mb-3">
-                        <p class="card__price__text">${item.piezas} piezas</p>
-                        <p class="card__price__amount">$${item.precio}</p>
-                    </div>
-                    <button class="btn btn__secondary btn__card-pedido">Agregar a pedido</button>
-                </div>  
-                </div>
-            </div>
-        </div>`)
-    }
-} */
 // Función con Vanilla JS
 const imprimirCards = (array) => { 
     for(item of array){
@@ -111,6 +67,30 @@ const imprimirCards = (array) => {
         $menuCards.appendChild($card);
     }
 }
+// Función con jQuery
+/* const imprimirCards = (array) => {
+    for (item of array){
+        $('#menu-cards').append(`
+        <div class="col">
+            <div class="card h-100" id="${item.id}">
+                <img src="./img/img_${item.id}.jpg" class="card-img-top" alt="${item.descripcion}">
+                <div class="card-body">
+                <div class="mb-2">
+                    <h3 class="card__title">${item.nombre}</h3>
+                    <p class="card__description">${item.descripcion}</p>
+                </div>
+                <div class="card__bottom-info">
+                    <div class="card__price mb-3">
+                        <p class="card__price__text">${item.piezas} piezas</p>
+                        <p class="card__price__amount">$${item.precio}</p>
+                    </div>
+                    <button class="btn btn__secondary btn__card-pedido">Agregar a pedido</button>
+                </div>  
+                </div>
+            </div>
+        </div>`)
+    }
+} */
 
 
 // Función para agregar event listeners a btn de cards
