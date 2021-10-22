@@ -25,13 +25,19 @@ let $menuPiezas = document.getElementById('menu-piezas');
 let $menuCombos = document.getElementById('menu-combos');
 let $menuOpciones = document.getElementById('menu-opciones');
 
+// A esta variable le agrego todos los productos que
+// vienen del JSON una vez que la petición funcione
+// Es importante que esta variable tenga el array
+// con todos los productos para que funcione el carrito
+let productos;
+
 // Recuperar los productos desde productos.json
 $(document).ready( () => {
     $.get(URL_JSON, function(respuesta, estado){
         console.log(respuesta);
         console.log(estado);
         if(estado === 'success'){
-            let productos = respuesta;
+            productos = respuesta;
             // Divide los productos en dos arrays: combos y piezas
             for(producto of productos){
                 if(producto.tipo === 'combo') menuCombos.push(producto);
