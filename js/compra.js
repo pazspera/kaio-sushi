@@ -19,6 +19,7 @@
 let $fragmentoPedidoCompra = document.createDocumentFragment();
 let $fragmentoEstadoPedido = document.createDocumentFragment();
 let $listadoPedido = '';
+let $btnSubmit = document.getElementById('btn-submit');
 
 // Al cargar el documento, recupera el pedido guardado en el local storage
 // y lo muestra en la sección
@@ -56,3 +57,8 @@ const imprimirEstadoPedido = () => {
     };
     $listadoPedido.appendChild($fragmentoEstadoPedido);
 }
+
+// Impide que el btn-submit recargue la página
+$btnSubmit.addEventListener('click', (e) =>{
+    e.preventDefault();
+});
