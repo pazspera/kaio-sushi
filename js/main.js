@@ -41,7 +41,8 @@ let $tiempoPreparacion = document.createElement('p');
 let $cartIndicador = document.querySelector('.cart__indicador');
 let $cart = document.querySelector('.cart__icon');
 
-
+let $fragmentoPedidoItems = document.createDocumentFragment();
+let $fragmentoPedidoEstado = document.createDocumentFragment();
 
 // --------- FUNCIONES ---------
 
@@ -184,20 +185,22 @@ const mostrarEstadoPedido = () => {
 
     totalPedido = calcularTotalPedido(pedidoArray);
     $totalPedido.innerHTML = `Total pedido: $${formatoCurrency(totalPedido)}`;
-    $pedidoEstado.appendChild($totalPedido);
+    $fragmentoPedidoEstado.appendChild($totalPedido);
 
     calcularCostoEnvio(totalPedido);
     $costoEnvio.innerHTML = `${estadoCostoEnvio}`;
-    $pedidoEstado.appendChild($costoEnvio);
+    $fragmentoPedidoEstado.appendChild($costoEnvio);
 
     $totalAPagar.innerHTML = `Total a pagar: $${formatoCurrency(totalAPagar)}`;
-    $pedidoEstado.appendChild($totalAPagar);
+    $fragmentoPedidoEstado.appendChild($totalAPagar);
 
     let tiempo = calcularTiempoPreparacionPedido(pedidoArray);
     if(pedidoArray.length > 0){
         $tiempoPreparacion.innerHTML = `Tiempo estimado de preparación: ${tiempo}`;
-        $pedidoEstado.appendChild($tiempoPreparacion);
+        $fragmentoPedidoEstado.appendChild($tiempoPreparacion);
     } 
+
+    $pedidoEstado.appendChild($fragmentoPedidoEstado)
 }
 
 // Agrega listado de pedido[] a HTML 
@@ -229,8 +232,8 @@ const agregarProductoADetallePedido = () =>{
         // Agrega detalle pedido a $pedidoItem
         $pedidoItem.appendChild($pedidoDetalle);
 
-        // Agrega $pedidoItems al listado completo de pedido
-        $pedidoItems.appendChild($pedidoItem);
+        // Agrega $pedidoItems al fragmento de pedidoItems
+        $fragmentoPedidoItems.appendChild($pedidoItem);
 
         // Agrega eventListener al $pedidoIcon para eliminar items
         $pedidoIcon.onclick = () => {
@@ -246,6 +249,9 @@ const agregarProductoADetallePedido = () =>{
             eliminarProductoDePedido(pedidoIconId);
         }
     }
+
+    // Append del fragmento a $pedidoItems
+    $pedidoItems.append($fragmentoPedidoItems);
     // Actualiza estado pedido cada vez que se imprime nuevo HTML
     mostrarEstadoPedido();
 }

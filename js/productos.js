@@ -7,7 +7,7 @@ let $cardsMenu = '';
 let $menuPiezas = document.getElementById('menu-piezas');
 let $menuCombos = document.getElementById('menu-combos');
 let $menuOpciones = document.getElementById('menu-opciones');
-let $fragmentProductos = document.createDocumentFragment();
+let $fragmentoProductos = document.createDocumentFragment();
 // A esta variable le agrego todos los productos que
 // vienen del JSON una vez que la petición funcione
 let productos;
@@ -65,10 +65,10 @@ const imprimirCards = (array) => {
             </div>
         </div>`;
         // Append de la card al fragmento
-        $fragmentProductos.appendChild($card);
+        $fragmentoProductos.appendChild($card);
     }
     // Append del fragmento a menuCards
-    $menuCards.appendChild($fragment);
+    $menuCards.appendChild($fragmentoProductos);
 }
 // Función con jQuery
 /* const imprimirCards = (array) => {
