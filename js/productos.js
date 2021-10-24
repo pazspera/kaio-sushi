@@ -100,7 +100,11 @@ const agregarEventosBtnCards = (e)=>{
             if(e.target.matches('.btn__card-pedido')){
                 // Obtiene objeto producto en base al id
                 let objetoProducto = buscarObjetoPorId(card.id);
-                agregarProductoAPedido(objetoProducto);
+                // Hago una copia del objeto a agregar con JSON.parse
+                // y JSON.stringify para asegurar que cada producto
+                // del array tenga su propio id
+                let copiaObjetoProducto = JSON.parse(JSON.stringify(objetoProducto));
+                agregarProductoAPedido(copiaObjetoProducto);
                 calcularTotalPedido(pedidoArray);
                 mostrarEstadoPedido();
             }

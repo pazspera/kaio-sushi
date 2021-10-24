@@ -16,6 +16,9 @@
 
     AGREGAR HTML CON CONFIRMACION DE PEDIDO
     
+    1. Mover icono de + a flex end
+    2. Funcionalidad de icono +
+    3. Agregar preventDefault al btn de envío de pago
 */
 
 
@@ -216,39 +219,61 @@ const agregarProductoADetallePedido = () =>{
         // Crea contenedor para el item de pedido
         let $pedidoItem = document.createElement('div');
         $pedidoItem.classList.add('pedido__item');
-        // Crea icono para el item de pedido
-        let $pedidoIcon = document.createElement('i');
-        $pedidoIcon.classList.add('far');
-        $pedidoIcon.classList.add('fa-trash-alt');
-        // Agregar producto id como clase a $pedidoIcon para poder después
+        // Crea icono para eliminarItem de pedido
+        let $pedidoIconDelete = document.createElement('i');
+        $pedidoIconDelete.classList.add('far');
+        $pedidoIconDelete.classList.add('fa-trash-alt');
+        // Agregar producto id como clase a $pedidoIconDelete para poder después
         // recuperar el id en eliminarProductoDePedido 
-        $pedidoIcon.classList.add(`${producto.id}`);
+        $pedidoIconDelete.classList.add(`${producto.id}`);
 
         // Agregar icono a $pedidoItem
-        $pedidoItem.appendChild($pedidoIcon);
+        $pedidoItem.appendChild($pedidoIconDelete);
 
         // Crea detalle del pedido
-        let detalle = `${producto.contadorProductoEnPedido} ${producto.nombre}: $${formatoCurrency(producto.precio)}`;
+        let detalle = `${producto.contadorProductoEnPedido} ${producto.nombre}: $${formatoCurrency(producto.precio*producto.contadorProductoEnPedido)}`;
         let $pedidoDetalle = document.createElement('p');
         $pedidoDetalle.innerHTML = detalle;
         // Agrega detalle pedido a $pedidoItem
         $pedidoItem.appendChild($pedidoDetalle);
 
+        // Crea icono para agregarItem de pedido
+        let $pedidoIconAdd = document.createElement('i');
+        $pedidoIconAdd.classList.add('far');
+        $pedidoIconAdd.classList.add('fa-plus-square');
+        $pedidoIconAdd.classList.add('ms-auto');
+        $pedidoIconAdd.classList.add(`${producto.id}`);
+        $pedidoItem.appendChild($pedidoIconAdd);
+
         // Agrega $pedidoItems al fragmento de pedidoItems
         $fragmentoPedidoItems.appendChild($pedidoItem);
 
-        // Agrega eventListener al $pedidoIcon para eliminar items
-        $pedidoIcon.onclick = () => {
+        // Agrega eventListener al $pedidoIconDelete para eliminar items
+        $pedidoIconDelete.onclick = () => {
             // Recibe una lista con las clases del icono de pedido
-            let arrayClasesIcon = Array.from($pedidoIcon.classList);
-            let pedidoIconId = '';
+            let arrayClasesIconDelete = Array.from($pedidoIconDelete.classList);
+            let pedidoIconDeleteId = '';
             // Busco el id de producto en el listado de clases de pedido icon
-            for(clase of arrayClasesIcon){
+            for(clase of arrayClasesIconDelete){
                 if(clase !== 'far' && clase !== 'fa-trash-alt'){
-                    pedidoIconId = clase;
+                    pedidoIconDeleteId = clase;
                 }
             }
-            eliminarProductoDePedido(pedidoIconId);
+            eliminarProductoDePedido(pedidoIconDeleteId);
+        }
+
+        // Agregar eventListener a $pedidoIconAdd para agregar items
+        // al pedido desde offcanvas
+        $pedidoIconAdd.onclick = () => {
+            let arrayClasesIconAdd = Array.from($pedidoIconAdd.classList);
+            let pedidoIconAddId = '';
+            // Busco el id de producto en el listado de clases de pedido icon
+            for(clase of arrayClasesIconAdd){
+                if(clase !== 'far' && clase !== 'fa-plus-square' && clase != 'ms-auto'){
+                    pedidoIconAddId = clase;
+                }
+            }
+            agregarProductoDesdeMenu(pedidoIconAddId);
         }
     }
 
@@ -260,6 +285,7 @@ const agregarProductoADetallePedido = () =>{
 
 // Elimina producto de pedidoArray
 const eliminarProductoDePedido = (id) => {
+    console.log(id);
     // Actualiza el contador del objeto
     for(producto of pedidoArray){
         // Si la cantidad de items es al menos 1, se disminuye el contador
@@ -276,6 +302,24 @@ const eliminarProductoDePedido = (id) => {
                     pedidoArray.splice(posicionEnArray, 1);
                 }
             }
+        }
+    }
+    // Vuelve a imprimir HTML del pedido
+    agregarProductoADetallePedido();
+    // Actualiza estado de pedido
+    mostrarEstadoPedido();
+    // Actualiza cantidad de productos en el indicador cart
+    activarIndicadorCart();
+}
+
+// Agrega producto desde el offcanvas de pedido
+const agregarProductoDesdeMenu = (id) => {
+    // Actualiza el contador del objeto
+    for(producto of pedidoArray){
+        // Si la cantidad de items es al menos 1, se disminuye el contador
+        if(id === producto.id && producto.contadorProductoEnPedido >= 1){
+            console.log('coincidencia id');
+            producto.contadorProductoEnPedido++;
         }
     }
     // Vuelve a imprimir HTML del pedido

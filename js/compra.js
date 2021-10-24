@@ -17,7 +17,7 @@
 
 
 let $fragmentoPedidoCompra = document.createDocumentFragment();
-let $listadoPedido = document.getElementById('listadoPedido');
+let $listadoPedido = '';
 
 // Al cargar el documento, recupera el pedido guardado en el local storage
 // y lo muestra en la sección
@@ -31,6 +31,7 @@ window.addEventListener('load', (e) => {
 
 const imprimirPedido = () => {
     let pedido = JSON.parse(localStorage.getItem('pedido'));
+    $listadoPedido = document.getElementById('listadoPedido');
     console.log(pedido);
     for(producto of pedido){
         let $item = document.createElement('p');
