@@ -17,6 +17,7 @@
 
 
 let $fragmentoPedidoCompra = document.createDocumentFragment();
+let $fragmentoEstadoPedido = document.createDocumentFragment();
 let $listadoPedido = '';
 
 // Al cargar el documento, recupera el pedido guardado en el local storage
@@ -27,6 +28,7 @@ let $listadoPedido = '';
 }); */
 window.addEventListener('load', (e) => {
     imprimirPedido();
+    imprimirEstadoPedido();
 })
 
 const imprimirPedido = () => {
@@ -35,10 +37,22 @@ const imprimirPedido = () => {
     console.log(pedido);
     for(producto of pedido){
         let $item = document.createElement('p');
-        let detalle = `${producto.contadorProductoEnPedido} ${producto.nombre}: $${formatoCurrency(producto.precio)}`;
+        let detalle = `${producto.contadorProductoEnPedido} ${producto.nombre}: $${formatoCurrency(producto.precio * producto.contadorProductoEnPedido)}`;
         console.log(detalle);
         $item.innerHTML = detalle;
         $fragmentoPedidoCompra.appendChild($item);
     }
     $listadoPedido.appendChild($fragmentoPedidoCompra);
+}
+
+const imprimirEstadoPedido = () => {
+    let estadoPedido = JSON.parse(localStorage.getItem('estadoPedido'));
+    console.log(estadoPedido);
+    for(prop in estadoPedido){
+        console.log(`${prop}: ${estadoPedido[prop]}`);
+        let $p = document.createElement('p');
+        $p.innerHTML = `${estadoPedido[prop]}`;
+        $fragmentoEstadoPedido.appendChild($p);
+    };
+    $listadoPedido.appendChild($fragmentoEstadoPedido);
 }

@@ -30,6 +30,13 @@ let pedidoId = 0;
 let totalPedido = 0;
 let totalAPagar = 0;
 let estadoCostoEnvio;
+let tiempoPreparacion;
+const estadoPedido = {
+    totalPedido: '',
+    estadoCostoEnvio: '',
+    totalAPagar: '',
+    tiempoPreparacion: '',
+};
 
 // Variables elementos HTML
 let $menuCards = document.getElementById('menu-cards');
@@ -199,13 +206,21 @@ const mostrarEstadoPedido = () => {
     $totalAPagar.innerHTML = `Total a pagar: $${formatoCurrency(totalAPagar)}`;
     $fragmentoPedidoEstado.appendChild($totalAPagar);
 
-    let tiempo = calcularTiempoPreparacionPedido(pedidoArray);
+    tiempoPreparacion = calcularTiempoPreparacionPedido(pedidoArray);
     if(pedidoArray.length > 0){
-        $tiempoPreparacion.innerHTML = `Tiempo estimado de preparación: ${tiempo}`;
+        $tiempoPreparacion.innerHTML = `Tiempo estimado de preparación: ${tiempoPreparacion}`;
         $fragmentoPedidoEstado.appendChild($tiempoPreparacion);
     } 
 
-    $pedidoEstado.appendChild($fragmentoPedidoEstado)
+    // Actualizar valores del objeto estadoPedido para después
+    // guardarlo en local storage y usar esa info en compra.html
+    estadoPedido.totalPedido = `Total pedido: $${formatoCurrency(totalPedido)}`;
+    estadoPedido.estadoCostoEnvio = estadoCostoEnvio;
+    estadoPedido.totalAPagar = `Total a pagar: $${formatoCurrency(totalAPagar)}`;
+    estadoPedido.tiempoPreparacion = `Tiempo de preparación: ${tiempoPreparacion}`;
+    console.log(estadoPedido);
+
+    $pedidoEstado.appendChild($fragmentoPedidoEstado);
 }
 
 // Agrega listado de pedido[] a HTML 
@@ -338,5 +353,9 @@ $btnComprar.addEventListener('click', (e) => {
     console.log(pedidoJSON);
     // Guarda pedidoJSON en local storage para poder recuperarlo en compra.html
     localStorage.setItem('pedido', pedidoJSON);
+    // Convierte estadoPedido en JSON
+    // Se usa para mostrar el estado de pedido actualizado en compra.html
+    let estadoPedidoJSON = JSON.stringify(estadoPedido);
+    localStorage.setItem('estadoPedido', estadoPedidoJSON);
 })
 
