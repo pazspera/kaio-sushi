@@ -375,6 +375,12 @@ a:hover, a:focus, a:active {
   margin-bottom: -3.5rem;
 }
 
+.main__compra {
+  min-height: 100vh;
+  padding: 2rem 0;
+  background-color: #F0F2EF;
+}
+
 /* Footer  */
 .footer {
   background-color: #0A0908;
