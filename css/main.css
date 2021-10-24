@@ -116,6 +116,10 @@ a:hover, a:focus, a:active {
   padding: 0.5em 0;
 }
 
+.btn__full-width {
+  width: 100%;
+}
+
 .card {
   max-width: 300px;
   border-radius: 0;
