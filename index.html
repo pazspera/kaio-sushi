@@ -110,14 +110,15 @@
         <div class="container">
           <div class="row">
             <div class="col-10 offset-1">
-              <button id="btn-comprar" class="btn btn__full-width btn__secondary mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Comprar</button>
+              <a id="btn-comprar" class="btn btn__full-width btn__secondary mb-2" href="compra.html">Comprar</a>
+              <!-- Atributos para modal: data-bs-toggle="modal" data-bs-target="#staticBackdrop" -->
             </div>
           </div>
         </div>
       </aside>
 
       <!-- Modal pago -->
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -133,13 +134,12 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <section id="pedido" class="d-none">
+      <!-- <section id="pedido" class="d-none">
         <span class="anchor" id="anchor_pedido"></span>
         <div class="container pb-5">
           <div class="row">
-            <!-- Título Menu -->
             <div class="col-12 mb-4 py-3 pedido">
               <h2 class="pedido__title mb-3">Mi pedido</h2>
               <div id="pedido-items"></div>
@@ -147,7 +147,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- Map -->
       <!-- <section class="map">
@@ -210,9 +210,10 @@
     <!-- jQuery -->
     <script src="./js/jquery-3.6.0.min.js"></script>
     <!-- Main JS -->
+    <script src="./js/funcionesEnComun.js"></script>
     <script src="./js/productos.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="./js/pagos.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/compra.js"></script>
     <!-- Bootstrap JS -->
     <script src="./js/bootstrap.bundle.min.js"></script>
 </body>

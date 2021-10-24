@@ -15,16 +15,11 @@ let productos;
 
 // --------- FUNCIONES ---------
 
-// Dar formato a los números
-const formatoCurrency = (num) => {
-    return Intl.NumberFormat('es-AR').format(num);
-}
+
 
 // Recuperar los productos desde productos.json
 $(document).ready( () => {
     $.get(URL_JSON, function(respuesta, estado){
-        console.log(respuesta);
-        console.log(estado);
         if(estado === 'success'){
             productos = respuesta;
             // Divide los productos en dos arrays: combos y piezas
@@ -34,8 +29,6 @@ $(document).ready( () => {
             }
             imprimirCards(menuPiezas);
             agregarEventosBtnCards();
-            console.log(menuPiezas);
-            console.log(menuCombos);
         }
     })
 });

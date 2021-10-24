@@ -41,6 +41,8 @@ let $tiempoPreparacion = document.createElement('p');
 let $cartIndicador = document.querySelector('.cart__indicador');
 let $cart = document.querySelector('.cart__icon');
 
+let $btnComprar = document.getElementById('btn-comprar');
+
 let $fragmentoPedidoItems = document.createDocumentFragment();
 let $fragmentoPedidoEstado = document.createDocumentFragment();
 
@@ -284,27 +286,13 @@ const eliminarProductoDePedido = (id) => {
     activarIndicadorCart();
 }
 
-// Animación entre secciones del sitio
-$('#navbar-anchor').on('click', function(){
-    $('html, body').animate({
-        scrollTop: $('#navbar').offset().top
-    }, 1500);
-});
+// Al hacer click en #btn-comprar, guardar una copia de pedidoArray en local storage
+$btnComprar.addEventListener('click', (e) => {
+    console.log(pedidoArray);
+    // Convierte pedidoArray a JSON
+    let pedidoJSON = JSON.stringify(pedidoArray);
+    console.log(pedidoJSON);
+    // Guarda pedidoJSON en local storage para poder recuperarlo en compra.html
+    localStorage.setItem('pedido', pedidoJSON);
+})
 
-$('#navbar-footer').on('click', function(){
-    $('html, body').animate({
-        scrollTop: $('#footer').offset().top
-    }, 1500);
-});
-
-$('#navbar-menu').on('click', function(){
-    $('html, body').animate({
-        scrollTop: $('#anchor_menu').offset().top
-    }, 1500);
-});
-
-$('#btn-main').on('click', function(){
-    $('html, body').animate({
-        scrollTop: $('#anchor_menu').offset().top
-    }, 1500);
-});
