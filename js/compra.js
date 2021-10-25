@@ -13,6 +13,13 @@
     - Desde
     - Hasta
     - Cvc  
+
+    SPINNER AJAX
+
+    - Buscar una librería con spinner y agregarla a compra.html hidden
+    - Cuando se hace click en btn-submit, hacer petición ajax sacarle el hidden al spinner y borrar todo el contenido del pedido
+    - La página de prueba usaba una petición a la dummy API pero no usaba ninguno de los datos devueltos, capaz puedo implementar eso también
+    - El texto de confirmación dice que por mensaje de texto le van a avisar cuando salga el pedido y que tenga un btn para volver al inicio
 */
 
 
@@ -23,10 +30,6 @@ let $btnSubmit = document.getElementById('btn-submit');
 
 // Al cargar el documento, recupera el pedido guardado en el local storage
 // y lo muestra en la sección
-/* window.addEventListener('load', (e)=>{
-    imprimirCards(menuPiezas);
-    agregarEventosBtnCards();
-}); */
 window.addEventListener('load', (e) => {
     imprimirPedido();
     imprimirEstadoPedido();

@@ -375,10 +375,21 @@ a:hover, a:focus, a:active {
   margin-bottom: -3.5rem;
 }
 
+.lds-dual-ring {
+  font-size: 1.953rem;
+}
+
 .main__compra {
   min-height: 100vh;
   padding: 2rem 0;
   background-color: #F0F2EF;
+}
+
+#loading {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Footer  */

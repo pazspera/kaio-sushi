@@ -15,8 +15,6 @@ let productos;
 
 // --------- FUNCIONES ---------
 
-
-
 // Recuperar los productos desde productos.json
 $(document).ready( () => {
     $.get(URL_JSON, function(respuesta, estado){
@@ -114,6 +112,30 @@ const agregarEventosBtnCards = (e)=>{
 
 
 // Menú: muestra y oculta cards dependiendo si el btn piezas o combos está activado
+// Función con Vanilla JS
+$menuOpciones.addEventListener('click', (e) =>{
+    if(e.target.matches('#menu-piezas')){
+        // Toggle estado activo de los btn 
+        $menuPiezas.classList.add('menu-active');
+        $menuCombos.classList.remove('menu-active');
+        // Toggle estado activo de los btn
+        $($menuCards).empty();
+        // Imprime cards de menuPiezas
+        imprimirCards(menuPiezas);
+    }
+    
+    if(e.target.matches('#menu-combos')){
+        // Toggle estado activo de los btn
+        $menuCombos.classList.add('menu-active');
+        $menuPiezas.classList.remove('menu-active');
+        // Borra elementos ya impresos
+        $($menuCards).empty();
+        // Imprime cards de menuCombos
+        imprimirCards(menuCombos);
+    }
+
+    agregarEventosBtnCards();
+});
 // Función con jQuery
 /* $('#menu-opciones').on('click', (e) => {
     if(e.target.matches('#menu-piezas')){
@@ -139,31 +161,6 @@ const agregarEventosBtnCards = (e)=>{
 
     agregarEventosBtnCards();
 }) */
-
-// Función con Vanilla JS
-$menuOpciones.addEventListener('click', (e) =>{
-    if(e.target.matches('#menu-piezas')){
-        // Toggle estado activo de los btn 
-        $menuPiezas.classList.add('menu-active');
-        $menuCombos.classList.remove('menu-active');
-        // Toggle estado activo de los btn
-        $($menuCards).empty();
-        // Imprime cards de menuPiezas
-        imprimirCards(menuPiezas);
-    }
-    
-    if(e.target.matches('#menu-combos')){
-        // Toggle estado activo de los btn
-        $menuCombos.classList.add('menu-active');
-        $menuPiezas.classList.remove('menu-active');
-        // Borra elementos ya impresos
-        $($menuCards).empty();
-        // Imprime cards de menuCombos
-        imprimirCards(menuCombos);
-    }
-
-    agregarEventosBtnCards();
-});
 
 
 // Por defecto, el menú de piezas va a estar seleccionado
