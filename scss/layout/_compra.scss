@@ -2,11 +2,23 @@
     min-height: 100vh;
     padding: 2rem 0;
     background-color: $gray-light;
+    position: relative;
 }
 
-#loading {
-    min-height: 100vh;
+.loading {
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 99;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: red;
+}
+
+.pedido-form{
+    background-color: $white;
 }

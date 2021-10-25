@@ -64,4 +64,13 @@ const imprimirEstadoPedido = () => {
 // Impide que el btn-submit recargue la página
 $btnSubmit.addEventListener('click', (e) =>{
     e.preventDefault();
+    let $spinner = document.getElementById('loading');
+    let $pedidoForm = document.getElementById('pedido-form');
+    // Hace spinner visible
+    $spinner.classList.toggle('d-none');
+    // Va a top de la página
+    goToTop($spinner);
+    // Oculta formulario
+    $pedidoForm.classList.toggle('d-none');
 });
+

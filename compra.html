@@ -44,10 +44,17 @@
     </header>
 
     <main id="compra-main" class="main__compra mt-5 py-5">
-        <section class="container" id="pedido-form">
+        <!-- Spinner -->
+        <div class="container d-none loading" id="loading">
+          <div class="row">
+            <div class="lds-dual-ring"></div>
+          </div>
+        </div>
+        <section class="container pedido-form" id="pedido-form">
             <div class="row">
                 <div class="col-12">
                     <h1 class="mb-4">Finalizá tu pedido</h1>
+                    
                 </div>
                 <div class="col-12 col-md-6">
                     <form>
@@ -102,13 +109,9 @@
                     <div id="listadoPedido"></div>
                 </div>
             </div>
-        </sec>
-        <!-- Spinner -->
-        <section class="container" id="loading">
-          <div class="row">
-            <div class="lds-dual-ring"></div>
-          </div>
+            
         </section>
+        
     </main>
 
     <!-- Footer -->
