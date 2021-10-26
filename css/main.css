@@ -411,6 +411,7 @@ a:hover, a:focus, a:active {
 .footer {
   background-color: #0A0908;
   color: #FCFFFE;
+  z-index: -99;
 }
 
 .footer__logo {
@@ -446,6 +447,10 @@ a:hover, a:focus, a:active {
 
 .footer__section {
   margin-bottom: 2rem;
+}
+
+.main {
+  background-color: #F0F2EF;
 }
 
 .menu__title {
