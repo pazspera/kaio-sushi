@@ -1,24 +1,9 @@
 /* 
-    AGREGAR EL MENÚ CON MI PEDIDO 
+    DESAFÍO CLASE 14: AJAX EN TU PROYECTO
 
-    Al tocar el ícono de cart, desde la derecha aparece
-    un panel con el resultado de pedidoArray. 
-    Usar Offcanvas de Bootstrap para esto
-
-    INCORPORAR AJAX
-
-
-    DIVIDIR ARCHIVO MAIN.JS EN VARIOS ARCHIVOS
-
-
-    AGREGAR FORMULARIO PARA PAGAR 
-
-
-    AGREGAR HTML CON CONFIRMACION DE PEDIDO
-    
-    1. Mover icono de + a flex end
-    2. Funcionalidad de icono +
-    3. Agregar preventDefault al btn de envío de pago
+    -   Agregué compra.html para realizar el pago una vez seleccionado el pedido
+    -   Agregué petición ajax get para imprimir las cards desde JSON en productos.js
+    -   Agregué petiición ajax post para simular el procesamiento de pago en compra.js
 */
 
 
