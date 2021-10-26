@@ -23,14 +23,6 @@ $('#btn-main').on('click', function(){
     }, 1500);
 });
 
-// Animación go to top
-const goToTop = (elem) => {
-    elem.addEventListener('click', function(){
-        $('html, body').animate({
-            scrollTop: $('#navbar').offset().top
-        }, 1500);
-    });
-}
 
 // Dar formato a los números
 const formatoCurrency = (num) => {

@@ -28,6 +28,8 @@ let $fragmentoEstadoPedido = document.createDocumentFragment();
 let $listadoPedido = '';
 let $btnSubmit = document.getElementById('btn-submit');
 
+const URL_POST = 'https://jsonplaceholder.typicode.com/posts';
+
 // Al cargar el documento, recupera el pedido guardado en el local storage
 // y lo muestra en la sección
 window.addEventListener('load', (e) => {
@@ -61,16 +63,50 @@ const imprimirEstadoPedido = () => {
     $listadoPedido.appendChild($fragmentoEstadoPedido);
 }
 
-// Impide que el btn-submit recargue la página
-$btnSubmit.addEventListener('click', (e) =>{
+$('#btnSubmit').on('click', (e) => {
+    // Impide que mande formulario
     e.preventDefault();
+    // Va al top de la página
+    $('html, body').animate({ scrollTop: 0 }, '10');
+    
+    let nombre = $('#nombre').val();
+
+    $.ajax({
+        url: URL_POST,
+        type: 'POST',
+        data: {
+            nombre: nombre,
+        },
+        beforeSend: function() {
+            // Oculta formulario
+            $('#pedido-form').toggleClass('d-none');
+            // Carga spinner
+            $('#loading').toggleClass('d-none');
+        },
+        success: function(data){
+            // Hace visible section confirmación
+            $('#confirmacion').toggleClass('d-none');
+            $('#confirmacionResultado').html(`<p>¡Gracias por tu compra, ${nombre}!`);
+        },
+        complete: function() {
+            // Oculta spinner
+            $('#loading').toggleClass('d-none');
+        }
+    })
+})
+// Impide que el btn-submit recargue la página
+/* $btnSubmit.addEventListener('click', (e) =>{
+    e.preventDefault();
+    // Va a top de la página
+    // $(spinner).scrollTop();
+    //window.scrollTo(0,0);
+    scrollToTop();
     let $spinner = document.getElementById('loading');
     let $pedidoForm = document.getElementById('pedido-form');
     // Hace spinner visible
     $spinner.classList.toggle('d-none');
-    // Va a top de la página
-    goToTop($spinner);
     // Oculta formulario
     $pedidoForm.classList.toggle('d-none');
 });
+ */
 

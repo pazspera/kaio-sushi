@@ -22,6 +22,7 @@
     <title>Kaió Sushi</title>
 </head>
 <body>
+    <div id="navbar"></div>
     <!-- Menú navegación -->
     <header class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -50,6 +51,7 @@
             <div class="lds-dual-ring"></div>
           </div>
         </div>
+        <!-- Formulario -->
         <section class="container pedido-form" id="pedido-form">
             <div class="row">
                 <div class="col-12">
@@ -100,7 +102,7 @@
                           </div>
                         </div>
 
-                        <button id="btn-submit" type="submit" class="btn btn__primary mt-3">Confirmar compra</button>
+                        <button id="btnSubmit" type="submit" class="btn btn__primary mt-3">Confirmar compra</button>
 
                       </form>
                 </div>
@@ -111,7 +113,14 @@
             </div>
             
         </section>
-        
+        <!-- Confirmación -->
+        <section class="container d-none confirmacion" id="confirmacion">
+          <div class="row">
+            <div class="col-12" id="confirmacionResultado">
+
+            </div>
+          </div>
+        </section>
     </main>
 
     <!-- Footer -->

@@ -387,7 +387,7 @@ a:hover, a:focus, a:active {
 }
 
 .loading {
-  height: 50vh;
+  min-height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -397,11 +397,14 @@ a:hover, a:focus, a:active {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: red;
 }
 
 .pedido-form {
   background-color: #FCFFFE;
+}
+
+.confirmacion {
+  min-height: 100vh;
 }
 
 /* Footer  */
