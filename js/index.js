@@ -1,10 +1,3 @@
-/* 
-    DESAFÍO CLASE 14: AJAX EN TU PROYECTO
-
-    -   Agregué compra.html para realizar el pago una vez seleccionado el pedido
-    -   Agregué petición ajax get para imprimir las cards desde JSON en productos.js
-    -   Agregué petiición ajax post para simular el procesamiento de pago en compra.js
-*/
 
 
 // --------- VARIABLES ---------

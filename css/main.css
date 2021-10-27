@@ -407,6 +407,24 @@ a:hover, a:focus, a:active {
   min-height: 100vh;
 }
 
+.listado-pedido {
+  border: 1px solid #F0F2EF;
+  position: relative;
+}
+
+.listado-pedido:before, .listado-pedido:after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  height: 6px;
+  width: 290px;
+}
+
+.listado-pedido:after {
+  bottom: -5px;
+  background: radial-gradient(circle, transparent, transparent 50%, #FBFBFB 50%, #FBFBFB 100%) -7px -2px/16px 16px repeat-x;
+}
+
 /* Footer  */
 .footer {
   background-color: #0A0908;

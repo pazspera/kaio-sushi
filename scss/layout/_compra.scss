@@ -25,3 +25,22 @@
 .confirmacion {
     min-height: 100vh;
 }
+
+.listado-pedido {
+    border: 1px solid $gray-light;
+    position: relative;
+    
+    /* &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        left: 5px;
+        height: 6px;
+        width: 290px;
+    }
+
+    &:after {
+        bottom: -5px;
+        background: radial-gradient(circle, transparent, transparent 50%, #FBFBFB 50%, #FBFBFB 100% ) -7px -2px / 16px 16px repeat-x,
+    } */
+}
