@@ -52,6 +52,12 @@ const buscarObjetoPorId = (id) => {
 window.addEventListener('load', (e)=>{
     // Recuperar pedido desde local storage
     let pedidoLocalStorage = JSON.parse(localStorage.getItem('pedido'));
+    // Si pedido es null en local storage, igualo pedidoLocalStorage a []
+    // Esto impide que tire error de null al cargar
+    if(pedidoLocalStorage === null){
+        console.log('null local storage');
+        pedidoLocalStorage = [];
+    }
     console.log(pedidoLocalStorage);
     // Si hay al menos un producto en local storage,
     // igualar pedidoLocalStorage a pedidoArray
@@ -68,7 +74,7 @@ window.addEventListener('load', (e)=>{
     // Borrar estadoPedido de local storage
     // Esta variable solo se actualiza al hacer click en comprar y pasar 
     // a compra.html
-    localStorage.setItem(JSON.parse('estadoPedido', []));
+    // localStorage.setItem(JSON.parse('estadoPedido', []));
 }); 
 
 const agregarProductoAPedido = (copiaObjetoProducto) => {

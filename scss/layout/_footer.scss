@@ -37,14 +37,14 @@
 }
 
 
-.footer__text a {
-    color: $white !important;
+.footer__link  {
+    color: $primary-medium !important;
     text-decoration: none;
     transition: all 0.5s ease-in-out;
 
     &:hover,
     &:focus {
-        color: $primary-medium !important;
+        color: $white !important;
         transition: all 0.5s ease-in-out;
     }
 }

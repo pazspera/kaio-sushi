@@ -458,14 +458,14 @@ a:hover, a:focus, a:active {
   margin-bottom: 0;
 }
 
-.footer__text a {
-  color: #FCFFFE !important;
+.footer__link {
+  color: #E03616 !important;
   text-decoration: none;
   transition: all 0.5s ease-in-out;
 }
 
-.footer__text a:hover, .footer__text a:focus {
-  color: #E03616 !important;
+.footer__link:hover, .footer__link:focus {
+  color: #FCFFFE !important;
   transition: all 0.5s ease-in-out;
 }
 
