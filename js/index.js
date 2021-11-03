@@ -1,9 +1,7 @@
 /* 
-    DESAFÍO CLASE 14: AJAX EN TU PROYECTO
-
-    -   Agregué compra.html para realizar el pago una vez seleccionado el pedido
-    -   Agregué petición ajax get para imprimir las cards desde JSON en productos.js
-    -   Agregué petiición ajax post para simular el procesamiento de pago en compra.js
+    GUARDAR PEDIDO EN LOCAL STORAGE, QUE AL REFRESCAR LA PÁGINA REVISE SI HAY
+    ITEMS EN EL LOCAL STORAGE Y QUE LOS MUESTRE
+    
 */
 
 
@@ -50,6 +48,29 @@ const buscarObjetoPorId = (id) => {
     return objeto;
 }
 
+// Revisa si hay productos guardados en local storage al cargar la página
+window.addEventListener('load', (e)=>{
+    // Recuperar pedido desde local storage
+    let pedidoLocalStorage = JSON.parse(localStorage.getItem('pedido'));
+    console.log(pedidoLocalStorage);
+    // Si hay al menos un producto en local storage,
+    // igualar pedidoLocalStorage a pedidoArray
+    // Esto hace falta porque agregarProductoADetallePedido() recorre
+    // pedidoArray para imprimir el detalle del pedido
+    pedidoArray = pedidoLocalStorage
+    // Recorrer pedido y agregar productos a detalle pedido
+    for(producto of pedidoLocalStorage){
+        console.log(producto);
+        console.log(pedidoArray);
+        agregarProductoADetallePedido();
+        activarIndicadorCart();
+    }
+    // Borrar estadoPedido de local storage
+    // Esta variable solo se actualiza al hacer click en comprar y pasar 
+    // a compra.html
+    localStorage.removeItem('estadoPedido');
+}); 
+
 const agregarProductoAPedido = (copiaObjetoProducto) => {
     let $itemPedido = '';
     // El primer objeto que ingresa al pedidoArray[] se agrega directamente
@@ -61,6 +82,8 @@ const agregarProductoAPedido = (copiaObjetoProducto) => {
         // Crea item para imprimir en el HTML del detalle de pedido
         $itemPedido = crearHTMLItemPedido(copiaObjetoProducto);
         agregarProductoADetallePedido();
+        // Actualiza valor pedido en local storage
+        actualizarLocalStorage();
         return activarIndicadorCart();
     }
 
@@ -80,6 +103,8 @@ const agregarProductoAPedido = (copiaObjetoProducto) => {
             producto.contadorProductoEnPedido++;
             agregarProductoADetallePedido();
             $itemPedido = crearHTMLItemPedido(copiaObjetoProducto);
+            // Actualiza valor pedido en local storage
+            actualizarLocalStorage();
             return activarIndicadorCart();
         } else{
             // Si el id no existe, agregar el objeto y actualizar contador a 1
@@ -87,6 +112,8 @@ const agregarProductoAPedido = (copiaObjetoProducto) => {
             pedidoArray.push(copiaObjetoProducto);
             agregarProductoADetallePedido();
             $itemPedido = crearHTMLItemPedido(copiaObjetoProducto);
+            // Actualiza valor pedido en local storage
+            actualizarLocalStorage();
             return activarIndicadorCart();
         } 
     } 
@@ -131,8 +158,6 @@ const actualizarValorCart = () =>{
     }
     return contador;
 }
-
-
 
 // Calcular total pedido
 const calcularTotalPedido = (array) =>{
@@ -203,7 +228,6 @@ const mostrarEstadoPedido = () => {
     estadoPedido.estadoCostoEnvio = estadoCostoEnvio;
     estadoPedido.totalAPagar = `Total a pagar: $${formatoCurrency(totalAPagar)}`;
     estadoPedido.tiempoPreparacion = `Tiempo de preparación: ${tiempoPreparacion}`;
-    console.log(estadoPedido);
 
     $pedidoEstado.appendChild($fragmentoPedidoEstado);
 }
@@ -285,23 +309,24 @@ const agregarProductoADetallePedido = () =>{
 
 // Elimina producto de pedidoArray
 const eliminarProductoDePedido = (id) => {
-    console.log(id);
     // Actualiza el contador del objeto
     for(producto of pedidoArray){
         // Si la cantidad de items es al menos 1, se disminuye el contador
         if(id === producto.id && producto.contadorProductoEnPedido >= 1){
-            console.log('coincidencia id');
             producto.contadorProductoEnPedido--;
+            // Actualiza valor pedido en local storage
+            actualizarLocalStorage();
         }
         // Si la cantidad de items es 0, se borra el producto de pedidoArray
         if(id === producto.id && producto.contadorProductoEnPedido < 1){
-            console.log(pedidoArray);
             for(producto of pedidoArray) {
                 if(producto.id === id) {
                     let posicionEnArray = pedidoArray.indexOf(producto);
                     pedidoArray.splice(posicionEnArray, 1);
                 }
             }
+            // Actualiza valor pedido en local storage
+            actualizarLocalStorage();
         }
     }
     // Vuelve a imprimir HTML del pedido
@@ -318,8 +343,9 @@ const agregarProductoDesdeMenu = (id) => {
     for(producto of pedidoArray){
         // Si la cantidad de items es al menos 1, se disminuye el contador
         if(id === producto.id && producto.contadorProductoEnPedido >= 1){
-            console.log('coincidencia id');
             producto.contadorProductoEnPedido++;
+            // Actualiza valor pedido en local storage
+            actualizarLocalStorage();
         }
     }
     // Vuelve a imprimir HTML del pedido
@@ -330,17 +356,20 @@ const agregarProductoDesdeMenu = (id) => {
     activarIndicadorCart();
 }
 
-// Al hacer click en #btn-comprar, guardar una copia de pedidoArray en local storage
+// Al hacer click en #btn-comprar, guardar una copia de estadoPedido en local storage
 $btnComprar.addEventListener('click', (e) => {
-    console.log(pedidoArray);
-    // Convierte pedidoArray a JSON
-    let pedidoJSON = JSON.stringify(pedidoArray);
-    console.log(pedidoJSON);
-    // Guarda pedidoJSON en local storage para poder recuperarlo en compra.html
-    localStorage.setItem('pedido', pedidoJSON);
+    // Actualiza valor pedido en local storage
+    actualizarLocalStorage();
     // Convierte estadoPedido en JSON
     // Se usa para mostrar el estado de pedido actualizado en compra.html
     let estadoPedidoJSON = JSON.stringify(estadoPedido);
     localStorage.setItem('estadoPedido', estadoPedidoJSON);
 })
 
+// Actualiza el valor de pedido en local storage
+const actualizarLocalStorage = () => {
+    // Convierte pedidoArray a JSON
+    let pedidoJSON = JSON.stringify(pedidoArray);
+    // Guarda pedidoJSON en local storage para poder recuperarlo en compra.html
+    localStorage.setItem('pedido', pedidoJSON);
+}

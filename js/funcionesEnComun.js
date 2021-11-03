@@ -29,4 +29,3 @@ const formatoCurrency = (num) => {
     return Intl.NumberFormat('es-AR').format(num);
 }
 
-
