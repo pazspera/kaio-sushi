@@ -79,6 +79,10 @@ a:hover, a:focus, a:active {
   }
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .btn {
   border-radius: 0;
   text-transform: uppercase;
@@ -447,6 +451,22 @@ a:hover, a:focus, a:active {
 
 .footer__section {
   margin-bottom: 2rem;
+}
+
+.footer p,
+.footer i {
+  margin-bottom: 0;
+}
+
+.footer__text a {
+  color: #FCFFFE !important;
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.footer__text a:hover, .footer__text a:focus {
+  color: #E03616 !important;
+  transition: all 0.5s ease-in-out;
 }
 
 .main {

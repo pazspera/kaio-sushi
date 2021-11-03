@@ -57,7 +57,7 @@ window.addEventListener('load', (e)=>{
     // igualar pedidoLocalStorage a pedidoArray
     // Esto hace falta porque agregarProductoADetallePedido() recorre
     // pedidoArray para imprimir el detalle del pedido
-    pedidoArray = pedidoLocalStorage
+    pedidoArray = pedidoLocalStorage;
     // Recorrer pedido y agregar productos a detalle pedido
     for(producto of pedidoLocalStorage){
         console.log(producto);
@@ -68,7 +68,7 @@ window.addEventListener('load', (e)=>{
     // Borrar estadoPedido de local storage
     // Esta variable solo se actualiza al hacer click en comprar y pasar 
     // a compra.html
-    localStorage.removeItem('estadoPedido');
+    localStorage.setItem(JSON.parse('estadoPedido', []));
 }); 
 
 const agregarProductoAPedido = (copiaObjetoProducto) => {
@@ -229,6 +229,8 @@ const mostrarEstadoPedido = () => {
     estadoPedido.totalAPagar = `Total a pagar: $${formatoCurrency(totalAPagar)}`;
     estadoPedido.tiempoPreparacion = `Tiempo de preparación: ${tiempoPreparacion}`;
 
+    // Los items de estadoPedido se guardan en un fragmento,
+    // después el fragmento lo agrego al html para hacer solo una inserción al DOM
     $pedidoEstado.appendChild($fragmentoPedidoEstado);
 }
 

@@ -30,3 +30,21 @@
 .footer__section{
     margin-bottom: 2rem;
 }
+
+.footer p, 
+.footer i {
+    margin-bottom: 0;
+}
+
+
+.footer__text a {
+    color: $white !important;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+
+    &:hover,
+    &:focus {
+        color: $primary-medium !important;
+        transition: all 0.5s ease-in-out;
+    }
+}

@@ -86,7 +86,7 @@ $('#btnSubmit').on('click', (e) => {
         success: function(data){
             // Hace visible section confirmación
             $('#confirmacion').toggleClass('d-none');
-            $('#confirmacionResultado').html(`<p>¡Gracias por tu compra, ${nombre}!`);
+            $('#confirmacionResultado').html(`<p>¡Gracias por tu compra, ${nombre}!</p>`);
         },
         complete: function() {
             // Oculta spinner
