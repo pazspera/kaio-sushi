@@ -93,6 +93,13 @@ $('#btnSubmit').on('click', (e) => {
             $('#loading').toggleClass('d-none');
         }
     })
+
+    // Al terminar la compra, el pedido de local storage se cambia a null,
+    // borrando el pedido anterior
+    // Definir un array vacío tiraba error con el JSON, null funciona bien
+    let array = null;
+    localStorage.setItem('pedido', JSON.parse(array));
+    localStorage.setItem('estadoPedido', JSON.parse(array));
 })
 // Impide que el btn-submit recargue la página
 /* $btnSubmit.addEventListener('click', (e) =>{

@@ -71,10 +71,11 @@ window.addEventListener('load', (e)=>{
         agregarProductoADetallePedido();
         activarIndicadorCart();
     }
-    // Borrar estadoPedido de local storage
-    // Esta variable solo se actualiza al hacer click en comprar y pasar 
-    // a compra.html
-    // localStorage.setItem(JSON.parse('estadoPedido', []));
+    // Revisa si hay elementos en el cart, en caso de haberlos, 
+    // hace que el btnComprar del offcanvas esté activo
+    if(pedidoArray.length > 0){
+        $btnComprar.classList.remove('disabled');
+    }
 }); 
 
 const agregarProductoAPedido = (copiaObjetoProducto) => {
@@ -90,6 +91,10 @@ const agregarProductoAPedido = (copiaObjetoProducto) => {
         agregarProductoADetallePedido();
         // Actualiza valor pedido en local storage
         actualizarLocalStorage();
+        // Activa btnComprar del offcanvas
+        // Por default está inactivo hasta que se agregue el primer producto
+        $btnComprar.classList.remove('disabled');
+        // El return es necesario para que ejecute el código siguiente
         return activarIndicadorCart();
     }
 
@@ -343,6 +348,13 @@ const eliminarProductoDePedido = (id) => {
     mostrarEstadoPedido();
     // Actualiza cantidad de productos en el indicador cart
     activarIndicadorCart();
+    if(pedidoArray.length === 0){
+        // Revisa si pedidoArray está vacío, si lo está, deshabilita
+        // el btnComprar del offcanvas
+        $btnComprar.classList.add('disabled');
+        // Borra detalles estado de pedido
+        $('#pedido-estado').empty();
+    }
 }
 
 // Agrega producto desde el offcanvas de pedido
