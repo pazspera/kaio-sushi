@@ -83,22 +83,27 @@ const imprimirEstadoPedido = () => {
 */
 
 const verificarInput = (input) => {
-    let regex = new RegExp(input.pattern);
-    if(regex.exec(input.value)){
-        document.getElementById(input.id).classList.remove('d-none'); 
-    }
+    let pattern = String(input.pattern);
+    console.log(pattern);
+    let regex = new RegExp(pattern);
+    console.log(regex);
+    /* let inputId = `form-${input.id}`;
+    console.log(regex);
+    if(!regex.exec(input.value) || input.value === ''){
+        console.log(input.value);
+        document.getElementById(inputId).classList.remove('d-none'); 
+    } */
 }
 
-const $inputs = document.querySelectorAll('.form-control');
+const $inputs = Array.from(document.querySelectorAll('.form-control'));
 console.log($inputs);
 
 $inputs.forEach(input => {
     const $span = document.createElement('span');
-    $span.id = input.name;
+    $span.id = `form-${input.name}`;
     $span.textContent = input.title;
     $span.classList.add('formulario-error', 'd-none');
     input.insertAdjacentElement('afterend', $span);
-    verificarInput(input);
 })
 
 $('#btnSubmit').on('click', (e) => {
@@ -109,6 +114,10 @@ $('#btnSubmit').on('click', (e) => {
     let formularioCompleto = false;
     // Agregar validación de formulario: que todos los required inputs estén llenos
 
+    $inputs.forEach(input => {
+        console.log(input);
+        verificarInput(input);
+    })
 
 
     // TODO ESTE CÓDIGO VA EN UN IF 
@@ -149,9 +158,9 @@ $('#btnSubmit').on('click', (e) => {
     // Al terminar la compra, el pedido de local storage se cambia a null,
     // borrando el pedido anterior
     // Definir un array vacío tiraba error con el JSON, null funciona bien
-    let array = null;
+    /* let array = null;
     localStorage.setItem('pedido', JSON.parse(array));
-    localStorage.setItem('estadoPedido', JSON.parse(array));
+    localStorage.setItem('estadoPedido', JSON.parse(array)); */
 })
 
 
