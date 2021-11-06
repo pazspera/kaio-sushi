@@ -63,37 +63,42 @@ const imprimirEstadoPedido = () => {
     $listadoPedido.appendChild($fragmentoEstadoPedido);
 }
 
+let inputsInvalid = jQuery('input:invalid');
+
+console.log(inputsInvalid);
+
+
 $('#btnSubmit').on('click', (e) => {
     // Impide que mande formulario
     e.preventDefault();
-    // Va al top de la página
+    
     $('html, body').animate({ scrollTop: 0 }, '10');
     
-    let nombre = $('#nombre').val();
+        let nombre = $('#nombre').val();
 
-    $.ajax({
-        url: URL_POST,
-        type: 'POST',
-        data: {
-            nombre: nombre,
-        },
-        beforeSend: function() {
-            // Oculta formulario
-            $('#pedido-form').toggleClass('d-none');
-            // Carga spinner
-            $('#loading').toggleClass('d-none');
-        },
-        success: function(data){
-            // Hace visible section confirmación
-            $('#confirmacion').toggleClass('d-none');
-            $('#confirmacionResultado').html(`<p>¡Gracias por tu compra, ${nombre}!</p>`);
-        },
-        complete: function() {
-            // Oculta spinner
-            $('#loading').toggleClass('d-none');
-        }
-    })
-
+        $.ajax({
+            url: URL_POST,
+            type: 'POST',
+            data: {
+                nombre: nombre,
+            },
+            beforeSend: function() {
+                // Oculta formulario
+                $('#pedido-form').toggleClass('d-none');
+                // Carga spinner
+                $('#loading').toggleClass('d-none');
+            },
+            success: function(data){
+                // Hace visible section confirmación
+                $('#confirmacion').toggleClass('d-none');
+                $('#confirmacionResultado').html(`<p>¡Gracias por tu compra, ${nombre}!</p>`);
+            },
+            complete: function() {
+                // Oculta spinner
+                $('#loading').toggleClass('d-none');
+            }
+        })
+    
     // Al terminar la compra, el pedido de local storage se cambia a null,
     // borrando el pedido anterior
     // Definir un array vacío tiraba error con el JSON, null funciona bien
@@ -101,6 +106,59 @@ $('#btnSubmit').on('click', (e) => {
     localStorage.setItem('pedido', JSON.parse(array));
     localStorage.setItem('estadoPedido', JSON.parse(array));
 })
+
+/* $('#btnSubmit').on('click', (e) => {
+    // Impide que mande formulario
+    e.preventDefault();
+    // Esta variable impide que se mande el formulario hasta
+    // que se haya chequeado que todos los inputs estén completos
+    let formularioCompleto = false;
+    // Agregar validación de formulario: que todos los required inputs estén llenos
+
+
+    // TODO ESTE CÓDIGO VA EN UN IF 
+    // que se activa en caso de que todos los inputs required estén llenos
+    // Puede haber una variable que venga por default y verifique que todos los
+    // input tengan valid
+    // Va al top de la página
+
+    if(formularioCompleto) {
+        $('html, body').animate({ scrollTop: 0 }, '10');
+    
+        let nombre = $('#nombre').val();
+
+        $.ajax({
+            url: URL_POST,
+            type: 'POST',
+            data: {
+                nombre: nombre,
+            },
+            beforeSend: function() {
+                // Oculta formulario
+                $('#pedido-form').toggleClass('d-none');
+                // Carga spinner
+                $('#loading').toggleClass('d-none');
+            },
+            success: function(data){
+                // Hace visible section confirmación
+                $('#confirmacion').toggleClass('d-none');
+                $('#confirmacionResultado').html(`<p>¡Gracias por tu compra, ${nombre}!</p>`);
+            },
+            complete: function() {
+                // Oculta spinner
+                $('#loading').toggleClass('d-none');
+            }
+        })
+    }
+    
+    // Al terminar la compra, el pedido de local storage se cambia a null,
+    // borrando el pedido anterior
+    // Definir un array vacío tiraba error con el JSON, null funciona bien
+    let array = null;
+    localStorage.setItem('pedido', JSON.parse(array));
+    localStorage.setItem('estadoPedido', JSON.parse(array));
+}) */
+
 // Impide que el btn-submit recargue la página
 /* $btnSubmit.addEventListener('click', (e) =>{
     e.preventDefault();
