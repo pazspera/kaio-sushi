@@ -2,13 +2,17 @@
 // Colores
 $primary-light: #FFC370;
 $primary-medium: #E03616;
-$primary-dark: #FF990A;
+$primary-dark: #BA2E12;
+$primary-dark-transparent:rgba(186, 46, 18, 0.75); 
 $gray-light: #F0F2EF;
 $gray-medium: #E2DFE1;
 $gray-dark: #B2A9AF;
 $white: #FCFFFE;
 $black: #0A0908;
 $black-transparent: rgba(10, 9, 8, 0.75);
+
+$form-color-ok: #00A676;
+$form-color-error: $primary-dark-transparent;
 
 // Fuentes
 $font-text: 'Mukta', sans-serif;
