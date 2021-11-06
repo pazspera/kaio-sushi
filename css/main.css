@@ -325,9 +325,25 @@ a:hover, a:focus, a:active {
   border: thin solid rgba(186, 46, 18, 0.75);
 }
 
+.form-control {
+  margin-bottom: -0.05em;
+}
+
 .form-control:focus, .form-control:active {
   -webkit-box-shadow: 0 0 0 0.25em rgba(186, 46, 18, 0.75);
           box-shadow: 0 0 0 0.25em rgba(186, 46, 18, 0.75);
+}
+
+.formulario-error {
+  font-size: 0.8rem;
+  background-color: rgba(186, 46, 18, 0.75);
+  color: #FCFFFE;
+  -webkit-transition: all 800ms ease;
+  transition: all 800ms ease;
+  display: inline-block;
+  text-align: center;
+  font-family: "Mukta", sans-serif;
+  width: 100%;
 }
 
 /*  Hero    */
