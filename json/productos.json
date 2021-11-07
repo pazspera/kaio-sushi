@@ -24,12 +24,52 @@
         "descripcion": "Relleno de salmón y palta con cobertura de salmón."
     },
     {
+        "id": "roll_brooklyn",
+        "nombre": "Brooklyn",
+        "precio": 420,
+        "piezas": 5,
+        "tipo": "piezas",
+        "descripcion": "Salmón ahumado y queso Philadelphia envuelto en palta."
+    },
+    {
+        "id": "roll_manhattan",
+        "nombre": "Manhattan",
+        "precio": 460,
+        "piezas": 5,
+        "tipo": "piezas",
+        "descripcion": "Salmón, queso Philadelphia, verdeo y palta rebosado en Panko."
+    },
+    {
         "id": "sashimi",
         "nombre": "Sashimi",
         "precio": 450,
         "piezas": 5,
         "tipo": "piezas",
         "descripcion": "Lonjas de salmón rosado."
+    },
+    {
+        "id": "geisha",
+        "nombre": "Geisha salmón",
+        "precio": 375,
+        "piezas": 3,
+        "tipo": "piezas",
+        "descripcion": "Geishas de salmón rellenas de queso Philadelphia y palta."
+    },
+    {
+        "id": "nigiri",
+        "nombre": "Nigiri salmón",
+        "precio": 375,
+        "piezas": 5,
+        "tipo": "piezas",
+        "descripcion": "Bocadito de arroz cubierto de salmón."
+    },
+    {
+        "id": "nigiri_langostino",
+        "nombre": "Nigiri langostino",
+        "precio": 325,
+        "piezas": 5,
+        "tipo": "piezas",
+        "descripcion": "Bocadito de arroz cubierto de langostino."
     },
     {
         "id": "promo_20_piezas",
