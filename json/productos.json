@@ -8,33 +8,33 @@
         "descripcion": "Salmón rosado, queso Philadelphia y palta."
     },
     {
-        "id": "roll_atun",
-        "nombre": "Atún",
-        "precio": 250,
+        "id": "roll_bilbao",
+        "nombre": "Bilbao",
+        "precio": 300,
         "piezas": 5,
         "tipo": "piezas",
         "descripcion": "Atún, queso Philadelphia y palta."
     },
     {
-        "id": "roll_salmon_doble",
-        "nombre": "Salmón doble",
-        "precio": 450,
+        "id": "roll_sorrento",
+        "nombre": "Sorrento",
+        "precio": 465,
         "piezas": 5,
         "tipo": "piezas",
         "descripcion": "Relleno de salmón y palta con cobertura de salmón."
     },
     {
-        "id": "roll_brooklyn",
-        "nombre": "Brooklyn",
+        "id": "roll_valencia",
+        "nombre": "Valencia",
         "precio": 420,
         "piezas": 5,
         "tipo": "piezas",
         "descripcion": "Salmón ahumado y queso Philadelphia envuelto en palta."
     },
     {
-        "id": "roll_manhattan",
-        "nombre": "Manhattan",
-        "precio": 460,
+        "id": "roll_marsella",
+        "nombre": "Marsella",
+        "precio": 475,
         "piezas": 5,
         "tipo": "piezas",
         "descripcion": "Salmón, queso Philadelphia, verdeo y palta rebosado en Panko."
@@ -42,7 +42,7 @@
     {
         "id": "roll_milan",
         "nombre": "Milán",
-        "precio": 400,
+        "precio": 380,
         "piezas": 5,
         "tipo": "piezas",
         "descripcion": "Tomates secos, verdeo y queso Philadelphia rebosado en Panko."
@@ -58,7 +58,7 @@
     {
         "id": "sashimi",
         "nombre": "Sashimi",
-        "precio": 450,
+        "precio": 485,
         "piezas": 5,
         "tipo": "piezas",
         "descripcion": "Lonjas de salmón rosado."
@@ -66,7 +66,7 @@
     {
         "id": "geisha",
         "nombre": "Geisha salmón",
-        "precio": 375,
+        "precio": 415,
         "piezas": 3,
         "tipo": "piezas",
         "descripcion": "Geishas de salmón rellenas de queso Philadelphia y palta."
@@ -96,11 +96,35 @@
         "descripcion": "Bocadito de arroz cubierto de morrón asado y sésamo."
     },
     {
-        "id": "promo_20_piezas",
-        "nombre": "Promo 20 piezas",
-        "precio": 1900,
+        "id": "kaio_combo",
+        "nombre": "Kaió Combo",
+        "precio": 1050,
+        "piezas": 13,
+        "tipo": "combo",
+        "descripcion": "5 rolls Bilbao, 5 rolls Olimpia y 3 nigiri salmón."
+    },
+    {
+        "id": "puro_salmon",
+        "nombre": "Puro Salmón",
+        "precio": 2300,
         "piezas": 20,
         "tipo": "combo",
-        "descripcion": "5 rolls Nueva York, 5 rolls de atún, 5 rolls de salmón doble y 5 sashimi."
+        "descripcion": "5 rolls Nueva York, 5 rolls Marsella, 5 rolls Sorrento y 5 sashimi."
+    },
+    {
+        "id": "gran_kaio",
+        "nombre": "Gran Kaió",
+        "precio": 1900,
+        "piezas": 30,
+        "tipo": "combo",
+        "descripcion": "5 rolls Marsella, 5 rolls Sorrento, 5 rolls Milán, 5 rolls Valencia, 5 nigiri salmón, 5 geishas."
+    },
+    {
+        "id": "vegetariano",
+        "nombre": "Vegetariano",
+        "precio": 1900,
+        "piezas": 15,
+        "tipo": "combo",
+        "descripcion": "5 rolls Milán, 5 rolls Olimpia, 5 nigiri vegetarianos."
     }
 ]
