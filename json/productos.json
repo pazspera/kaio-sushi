@@ -40,6 +40,22 @@
         "descripcion": "Salmón, queso Philadelphia, verdeo y palta rebosado en Panko."
     },
     {
+        "id": "roll_milan",
+        "nombre": "Milán",
+        "precio": 400,
+        "piezas": 5,
+        "tipo": "piezas",
+        "descripcion": "Tomates secos, verdeo y queso Philadelphia rebosado en Panko."
+    },
+    {
+        "id": "roll_olimpia",
+        "nombre": "Olimpia",
+        "precio": 340,
+        "piezas": 5,
+        "tipo": "piezas",
+        "descripcion": "Rúcula, zanahoria, pepino, brotes de alfalfa y palta."
+    },
+    {
         "id": "sashimi",
         "nombre": "Sashimi",
         "precio": 450,
@@ -66,10 +82,18 @@
     {
         "id": "nigiri_langostino",
         "nombre": "Nigiri langostino",
-        "precio": 325,
+        "precio": 350,
         "piezas": 5,
         "tipo": "piezas",
         "descripcion": "Bocadito de arroz cubierto de langostino."
+    },
+    {
+        "id": "nigiri_vegetariano",
+        "nombre": "Nigiri vegetariano",
+        "precio": 325,
+        "piezas": 5,
+        "tipo": "piezas",
+        "descripcion": "Bocadito de arroz cubierto de morrón asado y sésamo."
     },
     {
         "id": "promo_20_piezas",
