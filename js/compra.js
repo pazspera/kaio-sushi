@@ -96,7 +96,7 @@ $('#formulario').submit((e) => {
             <h2 class="confirmacion__titulo">¡Gracias por tu compra, ${nombre}!</h2>
             <div class="confirmacion__texto">
             <p>Te enviaremos un email cuando tu pedido esté en camino.</p>
-            <p>Cualquier consulta nos podés contactar telefónicamente al (11) 4855-3212 o por correo en <a href="#">hola@kaio-sushi.com.ar</a></p>
+            <p>Cualquier consulta nos podés contactar telefónicamente al (11) 4855-3212 o por correo <a href="#">hola@kaio-sushi.com.ar</a></p>
             </div>`);
         },
         complete: function() {
