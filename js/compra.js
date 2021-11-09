@@ -86,7 +86,12 @@ $('#btnSubmit').on('click', (e) => {
         success: function(data){
             // Hace visible section confirmación
             $('#confirmacion').toggleClass('d-none');
-            $('#confirmacionResultado').html(`<p>¡Gracias por tu compra, ${nombre}!</p>`);
+            $('#confirmacionResultado').html(`<i class="far fa-check-circle confirmacion__icono"></i>
+            <h2 class="confirmacion__titulo">¡Gracias por tu compra, ${nombre}!</h2>
+            <div class="confirmacion__texto">
+            <p>Te enviaremos un mensaje cuando tu pedido salga de nuestra sucursal.</p>
+            <p>Cualquier consulta nos podés contactar telefónicamente al 113490-3212 o por correo en <a href="#">hola@kaio-sushi.com.ar</a></p>
+            </div>`);
         },
         complete: function() {
             // Oculta spinner

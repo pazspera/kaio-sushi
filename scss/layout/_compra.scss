@@ -24,4 +24,28 @@
 
 .confirmacion {
     min-height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__resultado {
+        max-width: 75vw;
+        text-align: center;
+    }
+
+    &__texto{
+        max-width: 60vw;
+        margin: 0 auto;
+    }
+
+    &__titulo {
+        margin-bottom: 1em;
+    }
+
+    &__icono {
+        font-size: $size1;
+        margin-bottom: 0.5em;
+        color: $color-success;
+    }
 }
