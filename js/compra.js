@@ -63,6 +63,8 @@ const imprimirEstadoPedido = () => {
     $listadoPedido.appendChild($fragmentoEstadoPedido);
 }
 
+
+// Petición ajax de envío de formulario
 $('#formulario').submit((e) => {
     // Impide que mande formulario
     e.preventDefault();
@@ -89,7 +91,7 @@ $('#formulario').submit((e) => {
             $('#confirmacionResultado').html(`<i class="far fa-check-circle confirmacion__icono"></i>
             <h2 class="confirmacion__titulo">¡Gracias por tu compra, ${nombre}!</h2>
             <div class="confirmacion__texto">
-            <p>Te enviaremos un mensaje cuando tu pedido salga de nuestra sucursal.</p>
+            <p>Te enviaremos un email cuando tu pedido esté en camino.</p>
             <p>Cualquier consulta nos podés contactar telefónicamente al 113490-3212 o por correo en <a href="#">hola@kaio-sushi.com.ar</a></p>
             </div>`);
         },
