@@ -215,6 +215,8 @@ const calcularTiempoPreparacionPedido = (array) => {
 
 // Mostrar estado del pedido
 const mostrarEstadoPedido = () => {
+    let $separador = document.createElement('hr');
+    $fragmentoPedidoEstado.appendChild($separador);
 
     totalPedido = calcularTotalPedido(pedidoArray);
     $totalPedido.innerHTML = `Total pedido: $${formatoCurrency(totalPedido)}`;

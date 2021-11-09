@@ -39,6 +39,7 @@ window.addEventListener('load', (e) => {
 
 const imprimirPedido = () => {
     let pedido = JSON.parse(localStorage.getItem('pedido'));
+
     $listadoPedido = document.getElementById('listadoPedido');
     console.log(pedido);
     for(producto of pedido){
@@ -53,6 +54,9 @@ const imprimirPedido = () => {
 
 const imprimirEstadoPedido = () => {
     let estadoPedido = JSON.parse(localStorage.getItem('estadoPedido'));
+    let $separador = document.createElement('hr');
+    $fragmentoEstadoPedido.appendChild($separador);
+
     console.log(estadoPedido);
     for(prop in estadoPedido){
         console.log(`${prop}: ${estadoPedido[prop]}`);
