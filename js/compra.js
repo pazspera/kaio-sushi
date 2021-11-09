@@ -63,11 +63,11 @@ const imprimirEstadoPedido = () => {
     $listadoPedido.appendChild($fragmentoEstadoPedido);
 }
 
-$('#btnSubmit').on('click', (e) => {
+$('#formulario').submit((e) => {
     // Impide que mande formulario
     e.preventDefault();
     // Va al top de la página
-    $('html, body').animate({ scrollTop: 0 }, '10');
+     $('html, body').animate({ scrollTop: 0 }, '10');
     
     let nombre = $('#nombre').val();
 
@@ -97,7 +97,7 @@ $('#btnSubmit').on('click', (e) => {
             // Oculta spinner
             $('#loading').toggleClass('d-none');
         }
-    })
+    }) 
 
     // Al terminar la compra, el pedido de local storage se cambia a null,
     // borrando el pedido anterior
@@ -106,19 +106,51 @@ $('#btnSubmit').on('click', (e) => {
     localStorage.setItem('pedido', JSON.parse(array));
     localStorage.setItem('estadoPedido', JSON.parse(array));
 })
-// Impide que el btn-submit recargue la página
-/* $btnSubmit.addEventListener('click', (e) =>{
-    e.preventDefault();
-    // Va a top de la página
-    // $(spinner).scrollTop();
-    //window.scrollTo(0,0);
-    scrollToTop();
-    let $spinner = document.getElementById('loading');
-    let $pedidoForm = document.getElementById('pedido-form');
-    // Hace spinner visible
-    $spinner.classList.toggle('d-none');
-    // Oculta formulario
-    $pedidoForm.classList.toggle('d-none');
-});
- */
 
+
+
+/* $('#btnSubmit').on('submit', (e) => {
+    // Impide que mande formulario
+    e.preventDefault();
+    // Va al top de la página
+     $('html, body').animate({ scrollTop: 0 }, '10');
+    
+    let nombre = $('#nombre').val();
+
+    $.ajax({
+        url: URL_POST,
+        type: 'POST',
+        data: {
+            nombre: nombre,
+        },
+        beforeSend: function() {
+            // Oculta formulario
+            $('#pedido-form').toggleClass('d-none');
+            // Carga spinner
+            $('#loading').toggleClass('d-none');
+        },
+        success: function(data){
+            // Hace visible section confirmación
+            $('#confirmacion').toggleClass('d-none');
+            $('#confirmacionResultado').html(`<i class="far fa-check-circle confirmacion__icono"></i>
+            <h2 class="confirmacion__titulo">¡Gracias por tu compra, ${nombre}!</h2>
+            <div class="confirmacion__texto">
+            <p>Te enviaremos un mensaje cuando tu pedido salga de nuestra sucursal.</p>
+            <p>Cualquier consulta nos podés contactar telefónicamente al 113490-3212 o por correo en <a href="#">hola@kaio-sushi.com.ar</a></p>
+            </div>`);
+        },
+        complete: function() {
+            // Oculta spinner
+            $('#loading').toggleClass('d-none');
+        }
+    }) 
+
+    // Al terminar la compra, el pedido de local storage se cambia a null,
+    // borrando el pedido anterior
+    // Definir un array vacío tiraba error con el JSON, null funciona bien
+    let array = null;
+    localStorage.setItem('pedido', JSON.parse(array));
+    localStorage.setItem('estadoPedido', JSON.parse(array));
+})
+
+ */
