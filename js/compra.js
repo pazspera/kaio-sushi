@@ -63,6 +63,23 @@ const imprimirEstadoPedido = () => {
     $listadoPedido.appendChild($fragmentoEstadoPedido);
 }
 
+// Validación del formulario
+$(document).ready(function() {
+    $('#formulario').validate({
+        rules: {
+            name: {
+                required: true,
+                text: true
+            }
+        },
+        messages: {
+            name: {
+                required: 'Ingresa tu nombre',
+            }
+        }
+    });
+})
+
 $('#btnSubmit').on('click', (e) => {
     // Impide que mande formulario
     e.preventDefault();
