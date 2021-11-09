@@ -10,15 +10,27 @@
     font-weight: 500;
 }
 
+.footer__link {
+    text-decoration: none;
+}
+
 .footer__group{
     display: flex;
     align-items: baseline;
 
+    a i {
+        text-decoration: none;
+    }
+
     .fas,
     .far, 
     .fab {
-        margin-right: 15px;
         color: $primary-medium;
+        width: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        margin-right: 1rem;
     }
 }
 

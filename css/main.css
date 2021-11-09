@@ -546,6 +546,10 @@ a:hover, a:focus, a:active {
   font-weight: 500;
 }
 
+.footer__link {
+  text-decoration: none;
+}
+
 .footer__group {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -555,11 +559,25 @@ a:hover, a:focus, a:active {
           align-items: baseline;
 }
 
+.footer__group a i {
+  text-decoration: none;
+}
+
 .footer__group .fas,
 .footer__group .far,
 .footer__group .fab {
-  margin-right: 15px;
   color: #E03616;
+  width: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  margin-right: 1rem;
 }
 
 .footer__social {
