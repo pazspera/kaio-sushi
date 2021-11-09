@@ -38,6 +38,9 @@ let $btnComprar = document.getElementById('btn-comprar');
 
 let $fragmentoPedidoItems = document.createDocumentFragment();
 let $fragmentoPedidoEstado = document.createDocumentFragment();
+// Agrego el separador fuera de la función para evitar duplicados
+let $separador = document.createElement('hr');
+$fragmentoPedidoEstado.appendChild($separador);
 
 // --------- FUNCIONES ---------
 
@@ -215,9 +218,6 @@ const calcularTiempoPreparacionPedido = (array) => {
 
 // Mostrar estado del pedido
 const mostrarEstadoPedido = () => {
-    let $separador = document.createElement('hr');
-    $fragmentoPedidoEstado.appendChild($separador);
-
     totalPedido = calcularTotalPedido(pedidoArray);
     $totalPedido.innerHTML = `Total pedido: $${formatoCurrency(totalPedido)}`;
     $fragmentoPedidoEstado.appendChild($totalPedido);

@@ -498,7 +498,7 @@ a:hover, a:focus, a:active {
 }
 
 .confirmacion {
-  min-height: 100vh;
+  min-height: 70vh;
   background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -517,7 +517,7 @@ a:hover, a:focus, a:active {
 }
 
 .confirmacion__texto {
-  max-width: 60vw;
+  max-width: 25rem;
   margin: 0 auto;
 }
 

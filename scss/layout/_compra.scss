@@ -23,7 +23,7 @@
 }
 
 .confirmacion {
-    min-height: 100vh;
+    min-height: 70vh;
     background-color: white;
     display: flex;
     justify-content: center;
@@ -35,7 +35,7 @@
     }
 
     &__texto{
-        max-width: 60vw;
+        max-width: 25rem;
         margin: 0 auto;
     }
 
