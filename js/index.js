@@ -1,11 +1,6 @@
-/* 
-    GUARDAR PEDIDO EN LOCAL STORAGE, QUE AL REFRESCAR LA PÁGINA REVISE SI HAY
-    ITEMS EN EL LOCAL STORAGE Y QUE LOS MUESTRE
-    
-*/
-
 
 // --------- VARIABLES ---------
+
 const COSTO_ENVIO = 150;
 let pedidoArray = [];
 // pedidoId va a generar un id a cada pedido que se agregue a pedidoArray
@@ -44,7 +39,6 @@ $fragmentoPedidoEstado.appendChild($separador);
 
 // --------- FUNCIONES ---------
 
-
 // Buscar la info de producto en productos[] con el id de la card
 const buscarObjetoPorId = (id) => {
     let objeto = productos.find(producto => producto.id === id);
@@ -58,10 +52,8 @@ window.addEventListener('load', (e)=>{
     // Si pedido es null en local storage, igualo pedidoLocalStorage a []
     // Esto impide que tire error de null al cargar
     if(pedidoLocalStorage === null){
-        console.log('null local storage');
         pedidoLocalStorage = [];
     }
-    console.log(pedidoLocalStorage);
     // Si hay al menos un producto en local storage,
     // igualar pedidoLocalStorage a pedidoArray
     // Esto hace falta porque agregarProductoADetallePedido() recorre
@@ -69,8 +61,6 @@ window.addEventListener('load', (e)=>{
     pedidoArray = pedidoLocalStorage;
     // Recorrer pedido y agregar productos a detalle pedido
     for(producto of pedidoLocalStorage){
-        console.log(producto);
-        console.log(pedidoArray);
         agregarProductoADetallePedido();
         activarIndicadorCart();
     }
@@ -154,7 +144,7 @@ const crearHTMLItemPedido = (copiaObjetoProducto) => {
     return $pedidoDetalle;
 }
 
-// Activar indicador cart para que muestre cantidad productos agregardos a carrito
+// Activar indicador cart para que muestre cantidad productos agregados a carrito
 const activarIndicadorCart = () =>{
     if(pedidoArray.length > 0){
         $cartIndicador.classList.remove('d-none');
@@ -250,10 +240,6 @@ const mostrarEstadoPedido = () => {
 // Agrega listado de pedido[] a HTML 
 const agregarProductoADetallePedido = () =>{
     $('#pedido-items').empty();
-    // En vez de recibir cada producto e ir agregándolo de a uno, 
-    // lo que puedo hacer es que cada vez que se agregue un producto, 
-    // se recorra pedidoArray y se impriman los elementos HTML desde el array
-    // en vez de enviarlos como parámetros
     for(producto of pedidoArray){
         // Crea contenedor para el item de pedido
         let $pedidoItem = document.createElement('div');

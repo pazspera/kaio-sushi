@@ -321,13 +321,6 @@ a:hover, a:focus, a:active {
   }
 }
 
-/* .formulario [required]:valid {
-    border: thin solid $form-color-ok;
-}
-
-.formulario [required]:invalid {
-    border: thin solid $form-color-error;
-} */
 .form-control {
   margin-bottom: -0.05em;
   border-radius: 0 !important;
@@ -340,7 +333,6 @@ a:hover, a:focus, a:active {
 
 .formulario-error {
   font-size: 0.8rem;
-  /* background-color: $form-color-error; */
   color: #FCFFFE;
   -webkit-transition: all 800ms ease;
   transition: all 800ms ease;
@@ -348,6 +340,42 @@ a:hover, a:focus, a:active {
   text-align: center;
   font-family: "Mukta", sans-serif;
   width: 100%;
+}
+
+.pedido-form [required]:valid {
+  border: thin solid #00C49A;
+}
+
+.pedido-form [required]:invalid {
+  border: thin solid #A72A11;
+}
+
+.formulario-error .is-active {
+  display: block;
+  -webkit-animation: show-message 1s 1 normal 0 ease-out both;
+          animation: show-message 1s 1 normal 0 ease-out both;
+}
+
+@-webkit-keyframes show-message {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes show-message {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 /*  Hero    */

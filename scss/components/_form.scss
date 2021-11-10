@@ -1,12 +1,4 @@
 
-/* .formulario [required]:valid {
-    border: thin solid $form-color-ok;
-}
-
-.formulario [required]:invalid {
-    border: thin solid $form-color-error;
-} */
-
 // Override Bootstrap
 .form-control {
     margin-bottom: -0.05em;
@@ -18,13 +10,10 @@
     } 
 }
 
-.formulario-error {
-    font-size: $size7;
-    /* background-color: $form-color-error; */
-    color: $white;
-    transition: all 800ms ease;
-    display: inline-block;
-    text-align: center;
-    font-family: $font-text;
-    width: 100%;
+.pedido-form [required]:valid {
+    border: thin solid $color-success;
 }
+.pedido-form [required]:invalid {
+    border: thin solid $color-error;
+}
+

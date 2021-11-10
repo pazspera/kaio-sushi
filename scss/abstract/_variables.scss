@@ -1,6 +1,5 @@
 
 // Colores
-$primary-light: #57534e;
 $primary-medium: #E03616;
 $primary-dark: #A72A11;
 $primary-dark-transparent: rgba(167, 42, 17, 0.75);
@@ -12,6 +11,7 @@ $black: #0A0908;
 $black-transparent: rgba(10, 9, 8, 0.75);
 
 $color-success: #00C49A;
+$color-error: $primary-dark;
 
 // Fuentes
 $font-text: 'Mukta', sans-serif;

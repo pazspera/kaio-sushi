@@ -41,7 +41,7 @@
                 </ul>
               </div>
             </div>
-          </nav>
+        </nav>
     </header>
 
     <main id="compra-main" class="main__compra mt-5 py-5">
@@ -62,7 +62,7 @@
                     <form id="formulario">
                         <div class="mb-3">
                             <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" required pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" title="Nombre solo acepta letras y espacios en blanco">
+                            <input type="text" class="form-control" id="nombre" required="true" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" title="Nombre solo acepta letras y espacios en blanco">
                         </div>
 
                         <div class="mb-3">
@@ -72,14 +72,14 @@
 
                         <div class="mb-3">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email" title="Email incorrecto" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
+                            <input type="email" class="form-control" id="email" title="Email incorrecto" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
                         </div>
 
                         <h3 class="mt-3">Datos de tarjeta</h3>
 
                         <div class="mb-3 mt-3">
                             <label for="numero-tarjeta">Número de tarjeta</label>
-                            <input type="number" class="form-control" id="numero-tarjeta" required pattern="^[0-9]+$" minlength="16" maxlength="16" title="Cantidad de dígitos incorrecta">
+                            <input type="number" class="form-control" id="numero-tarjeta" required pattern="^[0-9]+$" min="16" title="Cantidad de dígitos incorrecta">
                         </div>
 
                         <div class="mb-3">
@@ -90,11 +90,11 @@
                         <div class="row g-3 mb-3">
                           <div class="col">
                             <label for="hasta-tarjeta">Hasta</label>
-                            <input type="number" class="form-control" id="hasta-tarjeta" placeholder="00/00" required pattern="/^[0-9]+$/" maxlength="4" title="Ingresa mes y año de la fecha de vencimiento">
+                            <input type="number" class="form-control" id="hasta-tarjeta" placeholder="00/00" required pattern="/^[0-9]+$/" min="4" title="Ingresa mes y año de la fecha de vencimiento">
                           </div>
                           <div class="col">
                             <label for="cvc-tarjeta">CVC</label>
-                            <input type="number" class="form-control" id="cvc-tarjeta" required pattern="/^[0-9]+$/"  maxlength="3" title="El código CVC son los 3 números en el reverso de la tarjeta">
+                            <input type="number" class="form-control" id="cvc-tarjeta" required pattern="/^[0-9]+$/"  min="3" title="El código CVC son los 3 números en el reverso de la tarjeta">
                           </div>
                         </div>
 

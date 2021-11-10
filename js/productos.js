@@ -1,4 +1,6 @@
+
 // --------- VARIABLES ---------
+
 const URL_JSON = "json/productos.json";
 const menuPiezas = [];
 const menuCombos = [];
@@ -86,7 +88,6 @@ const imprimirCards = (array) => {
     }
 } */
 
-
 // Función para agregar event listeners a btn de cards
 const agregarEventosBtnCards = (e)=>{
     pedidoId = 0;
@@ -109,7 +110,6 @@ const agregarEventosBtnCards = (e)=>{
         })
     });
 }
-
 
 // Menú: muestra y oculta cards dependiendo si el btn piezas o combos está activado
 // Función con Vanilla JS
@@ -136,6 +136,7 @@ $menuOpciones.addEventListener('click', (e) =>{
 
     agregarEventosBtnCards();
 });
+
 // Función con jQuery
 /* $('#menu-opciones').on('click', (e) => {
     if(e.target.matches('#menu-piezas')){
